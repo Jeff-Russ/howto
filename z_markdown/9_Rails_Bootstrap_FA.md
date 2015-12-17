@@ -1,9 +1,32 @@
 --------------------------------------------------------------------------------
 
-# 1. SETUP
+# 9. RAILS: USER INTERFACE
   
+.--------------------------------------------------------------------------------
+### 9.1 Font Awesome setup
+
+> Add this to Gemfile:
+
+		# add font awesome library for icons
+		gem 'font-awesome-sass'
+		
+> Run this terminal command which will fetch the gem online and install it:
+
+		$ bundle install
+		
+> Add this to app/assets/stylesheets/application.css.scss:
+
+		@import "font-awesome-sprockets";
+		@import "font-awesome";
+	
+
+
+
+
+
+
 --------------------------------------------------------------------------------
-### 1.1 Bootstrap
+### 9.12 Bootstrap Install
 
 > Go to our Gemfile and add this anywhere logical and save the file:  
 
@@ -38,60 +61,9 @@ Require Bootstrap JS in app/assets/javascripts/application.js
 if you have a navigation bar with a number of option they will compress into a menu  
 but the menu will not be functional without this inclusion.  
 
-.--------------------------------------------------------------------------------
-### 1.2 Font Awesome
 
-> Add this to Gemfile:
-
-		# add font awesome library for icons
-		gem 'font-awesome-sass'
-		
-> Run this terminal command which will fetch the gem online and install it:
-
-		$ bundle install
-		
-> Add this to app/assets/stylesheets/application.css.scss:
-
-		@import "font-awesome-sprockets";
-		@import "font-awesome";
-	
-
---------------------------------------------------------------------------------
-### 1.3 ImageMagick & Paperclip
-
-> The Paperclip gem allows are site to have users upload photos. It requires   
-software called ImageMagick to be installed. It may already be installed. Check:
-
-		$ identify
-		$ which convert
-
-> If that command results ouput you have the software. If not run this:
-
-		$ sudo apt-get install ImageMagick
-		
-> Next add this to Gemfile:
-
-		# For image uploading
-		gem 'paperclip', '4.2.1'
-		
-> And lastly install the Gemfile
-	
-		$ bundle install
-		
-.-------------------------------------------------------------------------------	
-### 1.3 Amazon AWS for Images
-
-
-
-
-
-
-
-
-
-
---------------------------------------------------------------------------------
-### 1.13 ADDING BOOTSTRAP   
+.-------------------------------------------------------------------------------
+### 9.13 Bootstrap It Up   
 
 > Add the following to body in app/views/layouts/application.html.erb
 

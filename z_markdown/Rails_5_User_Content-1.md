@@ -6,40 +6,40 @@
 --------------------------------------------------------------------------------
 ### 5.1 PROFILE DATA AND CONTROLLER
 **Overview** We want to create a model for user profiles. The user profiles  
-will have ss_user_id as an integer, first_name, last_name, job_title, phone_number,  
+will have user_id as an integer, first_name, last_name, job_title, phone_number,  
 and contact_email all as strings, a description as text and a timestamp. 
 
 1. **Generate Migration File and Model:**   
 
-		  $ rails generate model SsProfile ss_user_id:integer first_name:string  last_name:string job_title:string phone_number:string contact_email:string description:text 
+		  $ rails generate model Profile user_id:integer first_name:string  last_name:string job_title:string phone_number:string contact_email:string description:text 
 	 
 2. **Define Associations:**  
-	 Entire contents of app/models/ss_profile.rb:
+	 Entire contents of app/models/profile.rb:
 
-		  class SsProfile < ActiveRecord::Base
-			 belongs_to :ss_user
+		  class Profile < ActiveRecord::Base
+			 belongs_to :user
 		  end
 		  
-	Add to app/models/ss_user.rb:  
+	Add to app/models/user.rb:  
 		  ...
-		  has_one :ss_profile
+		  has_one :profile
 		  ...
 3. **Run Migration:**
 
 		  $ bundle exec rake db:migrate
 		 
-4. **Create app/controllers/ss_profiles_controller.rb**
+4. **Create app/controllers/profiles_controller.rb**
 
-	 Eventually we will need the following actions in our ss_profiles_controller:
-	 `new create edit update ss_profile_params only_current_ss_user` but we will only  
-	 need views for `new` and `edit`. These will be in a new directory views/ss_profiles/  
+	 Eventually we will need the following actions in our profiles_controller:
+	 `new create edit update profile_params only_current_user` but we will only  
+	 need views for `new` and `edit`. These will be in a new directory views/profiles/  
 	 
-		  $ bundle exec rails generate controller SsProfiles new edit
+		  $ bundle exec rails generate controller Profiles new edit
 
 	 This method also generated two unwanted lines in routes.rb. Delete these:
 	 
-			 get 'ss_profiles/new'
-			 get 'ss_profiles/edit'
+			 get 'profiles/new'
+			 get 'profiles/edit'
 
 	 
 --------------------------------------------------------------------------------
@@ -50,46 +50,46 @@ provide  profile info. We'll also add a link to this on the home page.
 	
 1. **Add to config/routes.rb**
 
-		  resources :ss_users do
-			 resource :ss_profile
+		  resources :users do
+			 resource :profile
 		  end
 	 
-	 This generates many nested resources. By nested we mean we get the /ss_users/ url  
-	 and nested within it we have many others, such as ss_users/:ss_user_id for every user  
-	 and then for each user we get /ss_profile. For all users, we get /ss_users/edit,   
-	 ss_users/sign_up, ss_users/edit just to name a few. Run rake rountes to see. 
+	 This generates many nested resources. By nested we mean we get the /users/ url  
+	 and nested within it we have many others, such as users/:user_id for every user  
+	 and then for each user we get /profile. For all users, we get /users/edit,   
+	 users/sign_up, users/edit just to name a few. Run rake rountes to see. 
 
 2. **Add Link to Create Profile On Home Page**
 
 	We need a way for the user to get to the profile creation form page (the new  
-	action of the ss_profiles_controller). This page is different for each user. rake  
-	routes reveals that ss_profiles#new was given a helper called `new_ss_user_ss_profile` which  
-	takes them to a url for the particular user: `ss_users/:ss_user_id/ss_profile/new`  
-	Notice that is has a :key for ss_user_id which is a required parameter. In order  
-	to go to this page (via the helper) you must pass in the key for the `:ss_user_id`  
+	action of the profiles_controller). This page is different for each user. rake  
+	routes reveals that profiles#new was given a helper called `new_user_profile` which  
+	takes them to a url for the particular user: `users/:user_id/profile/new`  
+	Notice that is has a :key for user_id which is a required parameter. In order  
+	to go to this page (via the helper) you must pass in the key for the `:user_id`  
 	
 	From this it looks like in order to get to this page we use the helper like this:  
 
-		  new_ss_user_ss_profile_path(ss_user_id: 1)
+		  new_user_profile_path(user_id: 1)
 
-	Notice we appended with `_path` and we provided a static ss_user_id. We obviously  
+	Notice we appended with `_path` and we provided a static user_id. We obviously  
 	don't want everyone to be editing the profile for user # 1! We need it to be  
-	the current user's id dynamically. The devise gem gives us a variable `current_ss_user`  
+	the current user's id dynamically. The devise gem gives us a variable `current_user`  
 
-		  new_ss_user_ss_profile_path(current_ss_user)
+		  new_user_profile_path(current_user)
 		  
-	`current_ss_user` returns a key value pair for the current user. The key is `ss_user_id`.
+	`current_user` returns a key value pair for the current user. The key is `user_id`.
 		  
-	If no user is currently logged on, `current_ss_user` will evaluate to false. The  
+	If no user is currently logged on, `current_user` will evaluate to false. The  
 	link will take them to an error page. There is no reason for the link to even  
-	appear if no user is logged in and we can use use `current_ss_user` as a boolean  
-	to hide the link by adding `if current_ss_user`
+	appear if no user is logged in and we can use use `current_user` as a boolean  
+	to hide the link by adding `if current_user`
 	
-	Add the following line to the very top of app/views/ss_pages/home.html.erb  
+	Add the following line to the very top of app/views/pages/home.html.erb  
 
-		  <%= link_to "Create your profile!", new_ss_user_ss_profile_path(current_ss_user) if current_ss_user %>
+		  <%= link_to "Create your profile!", new_user_profile_path(current_user) if current_user %>
 
-3. **Add to app/controllers/ss_profiles_controller.rb**
+3. **Add to app/controllers/profiles_controller.rb**
 
 	Once the user is at the custom url generated by the new action for their profile,  
 	we need to make sure the controller provides the view with their own personal  
@@ -101,12 +101,12 @@ provide  profile info. We'll also add a link to this on the home page.
 
 		  def new
 			 # form where a user can fill out their own profile.
-			 @ss_user = SsUser.find( params[:ss_user_id] )
-			 @ss_profile = @ss_user.build_ss_profile
+			 @user = User.find( params[:user_id] )
+			 @profile = @user.build_profile
 		  end
 	
 	The last line creates a new @profile instance variable and sets it to the  
-	result of calling `.build_ss_profile` on the user object. `build_ss_profile` is available  
+	result of calling `.build_profile` on the user object. `build_profile` is available  
 	to us because we established the model associoations between users and profiles.  
 	
 4. **Experiment to Understand Parameters**
@@ -114,13 +114,13 @@ provide  profile info. We'll also add a link to this on the home page.
 	*This is a good time to **git commit** since we will undo the changes in this step!*
 
 	Both the @user and @profile variable are available in the view file for new  
-	(app/views/ss_profiles/new.html.erb). But lets do an experiment to prove it  
+	(app/views/profiles/new.html.erb). But lets do an experiment to prove it  
 	
 	Back on the home page, the call to new_user_profile_path() takes one parameter,  
 	but if we overflow it with more arguments, they will be sent as **query string  
 	parameters.** Change the call to:
 
-		  new_user_profile_path(current_ss_user, hello: 'world', hi: '101')
+		  new_user_profile_path(current_user, hello: 'world', hi: '101')
 
 	Save this and go back to the home page to inspect the link to see something like:
 
@@ -143,28 +143,28 @@ provide  profile info. We'll also add a link to this on the home page.
 
 --------------------------------------------------------------------------------
 ### 5.3 PROFILE NEW FORM
-**Overview** We'll put the actual form in app/views/ss_profiles/new.html.erb  
+**Overview** We'll put the actual form in app/views/profiles/new.html.erb  
 Commit this with message "Added profile form" 
 
 1. **Create Form Element in Embedded Ruby**
   
-		  <%= form_for @ss_profile, url: ss_user_ss_profile_path do |f| %>
+		  <%= form_for @profile, url: user_profile_path do |f| %>
 		  <!-- the entire form goes here !-->
 		  <% end %>
 	
-	If you Look at rake routes you will see the POST verb for the ss_profiles_controller  
-	(ss_profile#create) has the helper `ss_user_ss_profile_path`. This is our destination url.  
-	The variable we want to work with is `@ss_profile` since that's the variable we created  
-	by calling `.build_ss_profile` on the current user's object. profile is singular  
+	If you Look at rake routes you will see the POST verb for the profiles_controller  
+	(profile#create) has the helper `user_profile_path`. This is our destination url.  
+	The variable we want to work with is `@profile` since that's the variable we created  
+	by calling `.build_profile` on the current user's object. profile is singular  
 	and it applies to one user. If we were working on something plural for all users  
-	we would not need the `, url: ss_user_ss_profile_path` second argument.   
+	we would not need the `, url: user_profile_path` second argument.   
 	 
 2. **Structure of a Form Field**
 	
 	Each user will be a div with the bootstrap class `form-field` for spacing.  
 	The variable our `do` block is working with is `f` so wee will call methods on it.  
 	
-		  <%= form_for @ss_profile, url: ss_user_ss_profile_path do |f| %>
+		  <%= form_for @profile, url: user_profile_path do |f| %>
 		  
 			 <div class="form-group">
 				<%= f.label :first_name %>
@@ -187,7 +187,7 @@ Commit this with message "Added profile form"
 	for other options. Description is a `.text_area` and the last is the `.button`  
 	with the bootstrap classes `btn btn-primary`.
 	
-		  <%= form_for @ss_profile, url: ss_user_ss_profile_path do |f| %>
+		  <%= form_for @profile, url: user_profile_path do |f| %>
 			 <div class="form-group">
 				<%= f.label :first_name %>
 				<%= f.text_field :first_name, class: 'form-control' %>
@@ -236,33 +236,33 @@ Commit this with message "Added profile form"
 --------------------------------------------------------------------------------
 #### 5.4 PROFILE CREATE ACTION  
 **Overview** Now we will add the create action needed to save the profile in the  
-ss_profiles_controller. We first whitelist all of the fields into a single object  
-we will choose to call `ss_profile_params`, pass it into the `.build_ss_profile` method  
-on `@ss_user` and then assign the return of that to `@ss_profile`. The `@ss_profile.save`  
+profiles_controller. We first whitelist all of the fields into a single object  
+we will choose to call `profile_params`, pass it into the `.build_profile` method  
+on `@user` and then assign the return of that to `@profile`. The `@profile.save`  
 will actually save it.
 
 1. **Whitelist the fields into `profile_params`**
 	
-	This is app/controllers/ss_profiles_controller.rb   
+	This is app/controllers/profiles_controller.rb   
 	
 		  private
-		  def ss_profile_params
-			 params.require(:ss_profile).permit(:first_name, :last_name, :job_title, :phone_number, :contact_email, :description)
+		  def profile_params
+			 params.require(:profile).permit(:first_name, :last_name, :job_title, :phone_number, :contact_email, :description)
 		  end
 	
 2. **Add the `create` action to take the parameters**
 
 		  def create 
-			 @ss_user = SsUser.find( params[:ss_user_id] )
-			 @ss_profile = @ss_user.build_ss_profile(ss_profile_params)
+			 @user = User.find( params[:user_id] )
+			 @profile = @user.build_profile(profile_params)
 			 # next step is to insert here
 		  end
 		  
 3. **Finish `create` action so that it saves the data and redirects**
 
-		  if @ss_profile.save
+		  if @profile.save
 			 flash[:success] = "Profile Updated!"
-			 redirect_to ss_user_path( params[:ss_user_id] )
+			 redirect_to user_path( params[:user_id] )
 		  else
 			 render action: :new
 		  end
@@ -275,7 +275,7 @@ will actually save it.
 
 1. **Maunually create Action and View for showing user profiles*  
 
-		  $ bundle exec rails generate controller SsUsers index show
+		  $ bundle exec rails generate controller Users index show
 	 
 	This also create two new routes in routes.rb which we will not need.  
 
@@ -284,30 +284,30 @@ will actually save it.
 	In users_controller.rb:
 
 		  def show
-			 @ss_user = SsUser.find( params[:id] )
+			 @user = User.find( params[:id] )
 		  end
 		  
-	You may woner why we have :id and not :ss_user_id. If you look at rake routes you   
-	will see why: `/ss_users/:id(.:format)`. does not show user_id. 
+	You may woner why we have :id and not :user_id. If you look at rake routes you   
+	will see why: `/users/:id(.:format)`. does not show user_id. 
 		  
 3. **app/views/users/show.html.erb** 
 
 	Put a placeholder in the show file first:
 
-		  <%= @ss_user %>
+		  <%= @user %>
 		  
 	Launch the rails server and fill out a profile to check it out. If it loads  
 	the object, we now it's working. 
 	 
 	Now replace the placeholder with:
 
-		<%= @ss_user.ss_profile.first_name %> <%= @ss_user.ss_profile.last_name %>
-		<%= @ss_user.ss_profile.job_title %><br/>
-		<% if current_ss_user.plan_id == 2 %>
-			<%= @ss_user.ss_profile.phone_number %><br/>
-			<%= @ss_user.ss_profile.contact_email %><br/>
+		<%= @user.profile.first_name %> <%= @user.profile.last_name %>
+		<%= @user.profile.job_title %><br/>
+		<% if current_user.plan_id == 2 %>
+			<%= @user.profile.phone_number %><br/>
+			<%= @user.profile.contact_email %><br/>
 		<% end %>
-		<%= @ss_user.ss_profile.description %><br/>
+		<%= @user.profile.description %><br/>
 		  
 	notice that we want the profile object with the user object. Upon that we can  
 	ask for each field. Notice that the contact info is wrapped in an if. This is  
@@ -329,22 +329,22 @@ It's also a good idea to hide sign up links if the user is already signed up.
 
 1. **Safeguard profile#new Page  QUESTIONABLE**  
 
-	in app/controllers/ss_profiles_controller.rb make this change this line in def new
+	in app/controllers/profiles_controller.rb make this change this line in def new
 	 
-		  @ss_profile = SsProfile.build_ss_profile
+		  @profile = Profile.build_profile
 		  
 	To this, which unlinks the profile from the user:
 	 
-		  @ss_profile = SsProfile.new
+		  @profile = Profile.new
 
 2. **Hide Sign-up Links For Users Already Signed in**  
 
-	in app/views/ss_pages/home.html.erb after div class="row" and before  
+	in app/views/pages/home.html.erb after div class="row" and before  
 	div class="col-md-6", add the following:
 	
 		  <!-- <div class="row"> is here !-->
-			 <% if ss_user_signed_in? %>
-				<%= link_to "Create your profile!", new_ss_user_ss_profile_path(current_ss_user) if current_ss_user %>
+			 <% if user_signed_in? %>
+				<%= link_to "Create your profile!", new_user_profile_path(current_user) if current_user %>
 			 <% else %>
 			 <!-- Buttons we already have !-->
 			 <% end %>
@@ -354,22 +354,22 @@ It's also a good idea to hide sign up links if the user is already signed up.
 	 We copied the link to create profile from the top of the page and pasted it.  
 	 
 	 We only want it to "create" a profile if the don't already have one. Of the  
-	 people that are signed in, some return nil when `current_ss_user.profile` is  
+	 people that are signed in, some return nil when `current_user.profile` is  
 	 called. These people haven't made a profile yet. 
 	 
-			 <% if ss_user_signed_in? %>
+			 <% if user_signed_in? %>
 			 
-				<% if current_ss_user.ss_profile>
+				<% if current_user.profile>
 				  <%= link_to "Edit your profile", "#" %>
-				  <%= link_to "View your profile", ss_user_path(current_ss_user) %>
+				  <%= link_to "View your profile", user_path(current_user) %>
 				  
 				<% else>
-				  <%= link_to "Create your profile!", new_ss_user_ss_profile_path(current_ss_user) if current_ss_user %>
+				  <%= link_to "Create your profile!", new_user_profile_path(current_user) if current_user %>
 				  
 				<% end %>
 	 
 	We also added a paragraph to advertise creating the profile.  
-	If you load the page without the current_ss_user args you on user_path you will  
+	If you load the page without the current_user args you on user_path you will  
 	get an errors because user_path needs an :id key as confirmed by rake routes.  
 	
 3. **Add some style**
@@ -382,13 +382,13 @@ It's also a good idea to hide sign up links if the user is already signed up.
 				  <div class="well">
 					 <h2 class="text-center">Your Profile</h2>
 					 
-					 <% if current_ss_user.ss_profile %>
+					 <% if current_user.profile %>
 						<%= link_to "Edit your profile", "#", class: 'btn btn-default btn-lg btn-block' %>
-						<%= link_to "View your profile", user_path(current_ss_user), class: 'btn btn-default btn-lg btn-block' %>
+						<%= link_to "View your profile", user_path(current_user), class: 'btn btn-default btn-lg btn-block' %>
 					
 					 <% else %>
 						<p>Create your profile so that you can share your information with the community.</p>
-						<%= link_to "Create your profile", new_user_profile_path(current_ss_user), class: 'btn btn-default btn-lg btn-block'%>
+						<%= link_to "Create your profile", new_user_profile_path(current_user), class: 'btn btn-default btn-lg btn-block'%>
 					 
 					 <% end %>
 					 
@@ -425,9 +425,9 @@ We also need to fix the link to this edit profile page. Let's do that first;
 	In app/views/pages/home.html.erb we stubbed out the link to the edit profile  
 	page with `<%= link_to "Edit your profile", "#",`...etc. Lets change # to:
 	
-		  edit_user_profile_path(user_id: current_ss_user.id)
+		  edit_user_profile_path(user_id: current_user.id)
 	
-	We could have had the argument simply be `current_ss_user` but you should understand  
+	We could have had the argument simply be `current_user` but you should understand  
 	the verbose, literal way. 
 
 2. **Create Partial Form File**  

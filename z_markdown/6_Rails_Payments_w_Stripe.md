@@ -3,111 +3,7 @@
 # RAILS 6. RAILS PAYMENTS WITH STRIPE
   
 --------------------------------------------------------------------------------
-### 6.1 INSTALL STRIPE AND FIGARO		
-		
-> Sign up for stripe. Go to the dashboard and make sure you're in test mode.  
-Go back to your Gemfile and add these:
-  
-		# use stripe for handling payments
-		gem 'stripe'
-		
-		# use figaro to hide secret keys
-		gem 'figaro'
-  
-> Also, comment out this because it might conflict
-
-		# gem 'turbolinks'
-		
-> Install gem:
-
-		$ bundle install
-  
-> Now disable turbolinks from our app. In app/views/layouts/application.html.erb,  
-remove the following:
-
-		, 'data-turbolinks-track' => true
-		, 'data-turbolinks-track' => true  
-  
-> in app/assets/javascripts/application.js remove this line: 
-
-		//= require turbolinks
-		
-> Now run installer:
-
-		$ bundle exec figaro install
-				
-> create config/initializers/stripe.rb and add:
-
-		Stripe.api_key = ENV["stripe_api_key"]
-		STRIPE_PUBLIC_KEY = ENV["stripe_publishable_key"]
-
-> In config/application.yml (Put your keys in this file)
-		
-		stripe_api_key: sk_test_j4pitqOhsguy2ycyS29yasdf
-		stripe_publishable_key: pk_test_opJrdVYavI0jqtE9pjKLasdf
-		#
-		production:
-		  stripe_api_key: sk_test_j4pitqOhsguy2ycyS29yasdf
-		  stripe_publishable_key: pk_test_opJrdVYavI0jqtE9pjKLasdf
-
---------------------------------------------------------------------------------
-### 6.2 COMMUNICATING WITH STRIPE SERVERS
-
-> sign up for stripe. Go to the dashboard and make sure you're in test mode.  
-Go back to your Gemfile and add this:  
-  
-		# use stripe for handling payments
-		gem 'stripe'
-		
-		# use figaro to hide secret keys
-		gem 'figaro'
-  
-> Also, comment out this because it might conflict  
-
-		# gem 'turbolinks'
-  
-> Then run  $ bundle install  Then disable turbolinks from our app.  
-In app/views/layouts/application.html.erb, remove the following:  
-
-		, 'data-turbolinks-track' => true
-		, 'data-turbolinks-track' => true  
-  
-> in app/assets/javascripts/application.js remove this line:  
-
-		//= require turbolinks
-		
-		$ git add .
-		$ git commit -m "Added stripe keys"
-		$ git push origin stripe_integration
-  
-> Go to your stripe dashboard and click on plans -> create your first plan.  
-
-		ID    1           ID    2
-		Name  Basic       Name  Pro
-		Amount 0.0        Amount 10.0
-  
-> No go back to cloud9. We need to hide sensitive information from stripe.  
-
-		$ bundle exec figaro install
-  
-> BTW .gitignore is a list of files not included in your git repo. This is useful  
-for senstive data. 
-  
-> In app/config/intitializers/ create stripe.rb  
-
-		Stripe.api_key = ENV["stripe_api_key"]
-		STRIPE_PUBLIC_KEY = ENV["stripe_publishable_key"]
-  
-> In app/config/application.yml (Uncomment and put your keys in this file)  
-
-		...
-		# pusher_secret: abdc3b896a0ffb85d373
-		stripe_api_key: sk_test_RE93dXx7wPZhAU41Of56vnp4
-		stripe_publishable_key: pk_test_o3AtpVVVTUpb8zqsIh4bBdvc
-		#
-		# production:
-		stripe_api_key: sk_test_RE93dXx7wPZhAU41Of56vnp4
-		stripe_publishable_key: pk_test_o3AtpVVVTUpb8zqsIh4bBdvc
+### 6.0 BACKGROUND INFO	
 
 > Stripe makes it so the web developer doesn't see the actual CC info. This is  
 great because we don't have to handle security. We will write some JS code that  
@@ -123,7 +19,65 @@ this time we're telling Stripe to go ahead and create a customer and charge thei
 card.  
 
 > The inspiration for this approach is comming from a combination of resources.  
-The stripe documentation itself is good, especially the tut by Larry Ullman.  
+The stripe documentation itself is good, especially the tut by Larry Ullman. 
+
+.-------------------------------------------------------------------------------
+### 6.1 INSTALL STRIPE AND FIGARO	
+ 
+		
+> Sign up for stripe. Go to the dashboard and make sure you're in test mode.  
+> In the stripe dashboard, click on plans -> create your first plan.  
+
+		ID    1           ID    2
+		Name  Basic       Name  Pro
+		Amount 0.0        Amount 10.0  
+		
+> Now add these to your Gemfile
+
+		# use figaro to hide secret keys
+		gem 'figaro'
+		
+> And because need to hide sensitive information from stripe:
+
+		# use stripe for handling payments
+		gem 'stripe'
+		
+> Also, comment out this because it might conflict
+	
+		# gem 'turbolinks'
+		
+> Install:
+	
+		$ bundle install
+		$ bundle exec figaro install
+  
+> Now disable turbolinks from our app. In app/views/layouts/application.html.erb,  
+remove the following:
+	
+		, 'data-turbolinks-track' => true
+		, 'data-turbolinks-track' => true  
+	
+> in app/assets/javascripts/application.js remove this line: 
+	
+		//= require turbolinks
+		
+--------------------------------------------------------------------------------
+### 6.2 COMMUNICATING WITH STRIPE SERVERS
+  
+> create config/initializers/stripe.rb and add:
+	
+		Stripe.api_key = ENV["stripe_api_key"]
+		STRIPE_PUBLIC_KEY = ENV["stripe_publishable_key"]
+	
+> In config/application.yml (Put your keys in this file)
+		
+		stripe_api_key: sk_test_j4pitqOhsguy2ycyS29yasdf
+		stripe_publishable_key: pk_test_opJrdVYavI0jqtE9pjKLasdf
+		#
+		production:
+		  stripe_api_key: sk_test_j4pitqOhsguy2ycyS29yasdf
+		  stripe_publishable_key: pk_test_opJrdVYavI0jqtE9pjKLasdf
+	
 
 #
 --------------------------------------------------------------------------------
@@ -343,10 +297,15 @@ In controllers/users/registrations_controller.rb add this as the first line of c
 		> Plan.create(name: 'pro', price: 10)
 		> exit
 		$ heroku domains
+		
+		
+		
 		####console commands (Add your keys here after the '=')
 		$ heroku config:set stripe_api_key=sk_test_xyz...
 		$ heroku config:set stripe_publishable_key=pk_test_xyz...
   
+  
+  test with CC# 4242424242424242, any cvv and any exp date
   
 --- stripe explanation ----
  

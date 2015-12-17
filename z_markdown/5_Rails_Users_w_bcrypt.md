@@ -1,5 +1,8 @@
+--------------------------------------------------------------------------------
+
 ## 0. Overview
 
+--------------------------------------------------------------------------------
 #### 1. The session Object
 
 Each Rails application has a session table which identifies each client and 
@@ -12,6 +15,8 @@ so would be a very insecure way to handle user authenticaion. Hackers would not
 have any meaningful way to manipulate the string contained in the cookies unless 
 they had your secret_key_base which would allow them to become any user they want! 
  
+ 
+.-------------------------------------------------------------------------------
 #### 2. Sessions and Users
 
 A post request can tell your app what user is signed in:
@@ -23,15 +28,13 @@ A post request can tell your app what user is signed in:
 	    session[:current_user_id] = @user.id
 	    ...
 	    
+	    
 And a get request can query session information:
 
 class UsersController < ApplicationController
 
 
-
-
-
-
+.-------------------------------------------------------------------------------
 ## 0. The Plan
 
 An authentication system is made up of signup, login, logout functionality. 
@@ -46,6 +49,7 @@ redirects to the root of the app if there is no such user.
 Before actions act as filters. They call methods before executing controller actions.
 
 
+.-------------------------------------------------------------------------------
 ## 1. Signup
 
 Store passwords as encrypted strings in the database. This is what the 
@@ -99,6 +103,8 @@ create action, the line
 creates a new session by taking the value @user.id and assigning it to the key 
 :user_id
 
+
+.-------------------------------------------------------------------------------
 ## 2. Login
  
  1. Sessions controller - get /login => def new end
@@ -133,6 +139,8 @@ sessions#create
 This create action checks whether your email and password exist in the database, 
 creates a new session, and redirects to the albums page.
 
+
+.-------------------------------------------------------------------------------
 ## 3. Logout
 
 1. Sessions controller - delete '/logout' => 'sessions#destroy'
@@ -141,7 +149,9 @@ creates a new session, and redirects to the albums page.
 	  session[:user_id] = nil 
 	  redirect_to '/' 
 	end
-	
+
+
+--------------------------------------------------------------------------------	
 ## 4. current_user 
 
 1. Add def for current_user in ApplicationController
@@ -160,7 +170,6 @@ that user; otherwise the user is logged out and @current_user will be nil.
 The line helper_method :current_user makes current_user method available in the 
 views. By default, all methods defined in Application Controller are already 
 available in the controllers.
-
 
 
 2. Also add require_user
@@ -184,6 +193,8 @@ or show actions.
 
 	<% if current_user %> 
 
+
+--------------------------------------------------------------------------------
 ## 5. User Roles
 
 There are various ways to have different levels of access to different users. If 
