@@ -66,10 +66,21 @@ you can create it:
 		$ heroku run rake db:migrate
 
 
-
+	heroku restart -a app_name
 
 You can use heroku pg:reset DATABASE command to reset the entire database. The command will simply drop and create the database.
 
 You have to use heroku rake db:migrate to create the tables then.
 
 Alternatively you can use rake db:reset command locally and then run heroku db:push to update the production db.
+
+
+# TODO Comment out if OK with secrets being uploaded to the repo
+config/initializers/secret_token.rb
+config/secrets.yml
+
+http://stackoverflow.com/questions/23180650/how-to-solve-error-missing-secret-key-base-for-production-environment-on-h
+
+http://stackoverflow.com/questions/18556955/heroku-config-secret-key-base-error
+
+http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
