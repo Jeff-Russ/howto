@@ -1,0 +1,97 @@
+/* This is a manifest file that'll be compiled into application.css, which will include all the files listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the compiled 
+ * file so the styles you add here take precedence over styles defined in any styles defined in the other 
+ * CSS/SCSS files in this directory. It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@media print {
+	@page { margin: 0; }
+	body { margin: 1.6cm; }
+}
+.invisible { display: none; }
+
+// BOOTSTRAP CLASS OVERRIDES
+.form-control { color: #ffe; background-color: #555; }
+.jumbotron    { color: #ffffd0 !important; background-color: #505F50 !important; }
+.well         { color: #ddd !important; background-color: #393939 !important; border-color: #666 !important;}
+.navbar-brand { padding-top: 0px;padding-right: 0px;border-right: 0px;margin-right: 0px;}
+.modal.custom .modal-dialog .modal-body { background-color: #404040; }
+.navbar-right                       { float: right!important; margin-top: 5px; }
+	/* disable navbar collapse */
+.navbar-collapse.collapse           { display: block!important;       }
+.navbar-nav>li, .navbar-nav         { float: left !important;         }
+.navbar-nav.navbar-right:last-child { margin-right: -15px !important; }
+
+// BOOTSTRAP ADD-ON CLASSES
+.navbar-prev{ color: #94ba65; font-size:35px; margin-right:12px; }
+.navbar-rbtn{ color: #94ba65; background-color: #3e423e; margin-top: -15px; }
+.navbar-next{ color: #94ba65; font-size:35px; margin-left:12px;  }
+.nav-spacer { padding-top: 60px; }
+.spacer     { margin-top: 40px; background-color: #404040; }
+.blacknav   { color: #ffffd0 !important; background-color: #333333 !important; }
+.greenwell  { color: #94ba65 !important; background-color: #3e423e !important; }
+.nonwell    { color: #94ba65 !important; background: transparent !important;   }
+.btn-xlarge {
+	padding: 18px 28px;
+	font-size: 14px;
+	line-height: normal;
+	-webkit-border-radius: 8px;
+	   -moz-border-radius: 8px;
+	        border-radius: 8px;
+	}
+.btn-large {
+	padding: 18px 28px;
+	font-size: 12px;
+	line-height: normal;
+	-webkit-border-radius: 8px;
+	   -moz-border-radius: 8px;
+	        border-radius: 8px;
+	}
+.btn-ghost {
+	background: transparent !important;
+	color: #ffffd0 !important;
+	/* CSS Transition */
+	-webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+	   -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+	    -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+	     -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+	        transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+// CUSTOM CLASSES
+.jr-dark-body  { color: #ffffd0; background-color: #404040; }
+.black-text    { color: #444; }
+.jr-green-bg   { background-color: #606F60; }
+.bluish        { color: #bbddee; }
+.jr-green      { color: #94ba65; }
+.dark-bg-g     { background-color: #404347;  }
+.border-orange { outline: 1px solid orange;  }
+.border-red    { outline: 1px solid red;     }
+.border-green  { outline: 1px solid #20f030; }
+
+// HTML OVERRIDES
+a:hover, a:focus { text-decoration: none !important; }
+xmp {
+	border:1px solid #999;
+	background-color: #444;
+	text-align: left;
+	color: #cceeff;
+	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+	font-size: 85%;
+	tab-size: 3;
+}
+
+// for syntax highlighter
+//*= require syntax-highlighter-rails/shCore
+//*= require syntax-highlighter-rails/shThemeDefault
