@@ -372,40 +372,10 @@ It's also a good idea to hide sign up links if the user is already signed up.
 	If you load the page without the current_user args you on user_path you will  
 	get an errors because user_path needs an :id key as confirmed by rake routes.  
 	
-3. **Add some style**
+3. **Add some style in app/views/pages/home.html.erb**
 		  
-	Now lets add some bootstrap to match the rest of the page
+	REMOVED
 
-			 <% if user_signed_in? %>
-			 
-				<div class="col-md-6">
-				  <div class="well">
-					 <h2 class="text-center">Your Profile</h2>
-					 
-					 <% if current_user.profile %>
-						<%= link_to "Edit your profile", "#", class: 'btn btn-default btn-lg btn-block' %>
-						<%= link_to "View your profile", user_path(current_user), class: 'btn btn-default btn-lg btn-block' %>
-					
-					 <% else %>
-						<p>Create your profile so that you can share your information with the community.</p>
-						<%= link_to "Create your profile", new_user_profile_path(current_user), class: 'btn btn-default btn-lg btn-block'%>
-					 
-					 <% end %>
-					 
-				  </div>
-				</div>
-			 
-				<div class="col-md-6">
-				  <div class="well">
-					 <h2 class="text-center">The Community</h2>
-					 <!-- Next step will insert here !-->
-				  </div>
-				</div>
-			 
-	Before we had the left half be the Basic button and the right be the Pro button.  
-	Now the plan is to have links to edit and view on the left and a link to the  
-	community on the right. 
-	
 4. **Stub Out Link to Community**
 	
 	Now let's stub out a link to the community: 
@@ -479,3 +449,122 @@ We also need to fix the link to this edit profile page. Let's do that first;
 		  ...
 		  
 	The else is in case it fails and it just brings them back to the edit page.  
+
+
+
+--------------------------------------------------------------------------------
+
+# RAILS 6: USER CONTENT PART 2
+
+--------------------------------------------------------------------------------
+### 6.1 BEFORE ACTION TO SECURE PAGES
+**Overview** Right now our site allows for some activities that we would like to 
+restrict for security reasons. Here is what we would like to prevent:
+
+1. **Non-members can view profiles**
+	The show action for each profile is a url that anyone can access.
+
+2. **Non-members can edit or re-create any user's profile**
+	The pages handled by profiles_controller.rb are not restricted to users.
+
+3. **Users can edit or re-create other user's profiles**
+	The pages handled by profiles_controller.rb are not restricted their owner.
+
+We will use Rail's 'before actions" to fix these here are the solutions:
+
+1. **Non-members CAN'T view profiles**
+	In users_controller.rb, add the following to the top of the class.  
+	authenticate_user is defined by the devise gem.  
+	
+		  before_action :authenticate_user!
+
+2. **Non-members CAN'T edit or re-create any user's profile**
+	In profiles_controller.rb, add the same line to the top of the class.
+
+3. **Users CAN'T edit or re-create other user's profiles**
+  In profiles_controller.rb, add this below :authenticate_user.
+
+		  before_action :only_current_user
+
+	only_current_user is not defined at all. We need to define it in this class:  
+	
+		  def only_current_user
+			 @user = User.find( params[:user_id] )
+			 redirect_to(pages_home_path) unless @user == current_user
+		  end
+
+
+
+
+--------------------------------------------------------------------------------
+### 6.5 COMMUNITY INDEX PAGE
+**Overview** Commit with message "Added index action and updated link"
+	
+1. **Add index Action to Users Controller**  
+	
+	Define index in app/controllers/users_controller.rb:
+		  ...
+		  def index
+			 @users = User.all   #   or @users = User.includes(:profile)
+		  end
+		  ...
+	
+	Create the matching view file app/views/users/index.html.erb
+	
+2. **Finish the Link to Community on the Home Page**  
+	
+	In app/views/pages/home.html.erb we have a # placeholder. The line should now be:  
+		  ...
+		  <%= link_to "Visit the community", users_path, class: 'btn btn-default btn-lg btn-block' %>
+		  ...
+	We got users_path from rake routes but, btw, we can also use users_url but keep  
+	In mind that it exposed the url if someone inspects the button.  
+	
+3. **Expermental Views of @users Object**
+	
+	Now that we have the @users object available, go to /users/index.html.erb and  
+	Try accessing it in various ways, surrounded by `<%= %>`. If you try @users  
+	in there you will get the address of an ActiveRecord_Relation object. Now try 
+	@users.count and it will show you how many users there are. Now try this:
+	
+		<% @users.each do |user|%>
+			<%= user.id %><%= user.profile.job_title %><br>
+			<%= user.profile.first_name %> <%= user.profile.last_name %><br>
+		<% end %>
+	
+4.**Final State of app/views/users/index.html**
+
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<ul class="list-unstyled">
+					<% @users.each do |user|%>
+						<% if user.profile %>
+							<li>
+								<div class="well row 
+								<%= cycle('white-bg', '') %>">
+									<div class="col-sm-4 text-center">
+										<% if user.profile.avatar %><%= link_to user do %>
+											<%= image_tag user.profile.avatar.url(:thumb) %>
+										<% end %>
+								<% end %>
+									</div>
+									<div>
+										<%= link_to user do %>
+											<h2><%= user.profile.first_name %> 
+											    <%= user.profile.last_name %></h2>
+										<% end %>
+										<p><%= user.profile.job_title %> 
+										<% if user.plan_id == 2 %>
+											<span class="label label-success">PRO</span>
+										<% else %>
+											<span class="label label-default">Basic</span>
+										<% end %></p>
+									</div>
+								</div>
+							</li>
+						<% end %>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	

@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------
 
-# RAILS 5. RAILS USERS WITH DEVISE
+# RAILS - RAILS USERS WITH DEVISE
   
 -------------------------------------------------------------------------------
-### 5.1 SETUP DEVISE
+### 1. Setup Devise
 
 > We will add multi-account functionality to the site with a Ruby Gem called Devise.  
 > Add this to Gemfile:
@@ -53,7 +53,7 @@ and below. Here are more helpers:
 		user_session
 		
 --------------------------------------------------------------------------------
-### 5.2 DEVISE USER VIEWS
+### 2. Devise User Views
 
 > Devise has it's views packages up inside the Gem and not the app. Since we want 
 do define the views we use the following generator to give us access to the views 
@@ -80,7 +80,7 @@ Devise offers an easy way to customize views. Check their documentation.
 > Now start the server and go to /users/sign_up ... boom. it's there.  
 
 --------------------------------------------------------------------------------
-### 5.3 PLAN MODEL: BASIC + PRO
+### 3. Plan Model: Basic & Pro
 	
 __DATABASE ASSOCIATIONS__
 
@@ -125,7 +125,7 @@ list of all the users that belong to it.
 		> exit
 	
 --------------------------------------------------------------------------------
-### 5.4 ADD PLAN TO USER
+### 4. Add Plan to User
 
 > For our site, each user will belong_to either a free plan or playing plan.  
 Likewise, each plan has_many users. Now we need to associate the users with the 
@@ -167,7 +167,7 @@ __FOREIGN KEY__
 		$ bundle exec rake db:migrate
 	
 --------------------------------------------------------------------------------
-### 5.5 PARTIALS & MORE ON QSP
+### 5. Partials & More on QSP
 
 > We will have a different form for the user to fill out depending on whether 
 they're signing up for a basic or pro account. We could just make two different 
@@ -257,7 +257,7 @@ What we can do now is add some if statements to the destination page.
 	  </div>
 
 --------------------------------------------------------------------------------
-### 5.6 RAILS PARTIALS
+### 6. Rails Partials
 
 > Now to display the fields of the form for CC input we will use a feature of rails  
 called partials. We can divide our views out into these partials. Right click on  

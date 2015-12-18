@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------
 
-# RAILS 2. Adding Pages
+# RAILS - ADDING PAGES
   
 --------------------------------------------------------------------------------
-### 2.1 About The Rails MVC
+### 1. About The Rails MVC
 
 > 1\. THE REQUEST
 		
@@ -42,7 +42,7 @@
 	>> This will mainly be a Javascript running in the browser.
 	
 --------------------------------------------------------------------------------
-### 2.2 Generating a Controller for Pages
+### 2. Generating a Controller for Pages
 
 >	We will create two pages, a home page and an about page. First need a controller to  
 	handle the fetching of either view. Rails can generate this for us:  
@@ -67,7 +67,7 @@
 	method-action we add to the `pages_controller` class. 
 	
 --------------------------------------------------------------------------------
-### 2.3 Creating Home & About Views 
+### 3. Creating Home & About Views 
 	
 1. **Adding a route to the HTTP request**  
 	
@@ -114,7 +114,7 @@
 		<h2>About Us<h2>
 		
 --------------------------------------------------------------------------------
-### 2.4 The Quick Way
+### 4. The Quick Way
 
 > We created the controller and views separately but there is a way to do all of 
 this with one single command:

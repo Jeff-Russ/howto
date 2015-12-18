@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------
 
-# RAILS 3. Heroku Deploy
+# RAILS - HEROKU DEPLOYMENT
   
 -------------------------------------------------------------------------------
-### 3.1 Gemfile Update
+### 1. Gemfile Update
 
 > Heroku is well known in the Ruby community. It's the most popular Rails host.  
 They have very elegant hosting and deployment setup that we would all benefit in  
@@ -26,7 +26,7 @@ provides it with a domain name for deployment.
 		$ bundle install 
 
 ------------------------------------------------------------------------------
-### 3.2 Heroku Account
+### 2. Heroku Account
 
 1. Make and account at heroku.com with the same email address you used with github. 
 2. Go to your email to complete the account creation. 
@@ -42,14 +42,14 @@ provides it with a domain name for deployment.
 		$ heroku create
 		
 --------------------------------------------------------------------------------
-### 3.3 DEPLOY TO HEROKU
+### 3. Deploy to Heroku
 
 > Make sure you are on the master branch and all (stable) changes are merged in. 
 
 		$ git push heroku master
 		
 --------------------------------------------------------------------------------
-### 3.4 TROUBLESHOOTING HEROKU
+### 4. Troubleshooting Heroku
 
 > This grabs the latest copy from Git and sends it to the URL  
 If you go to your URL later and it's not there, that's okay, heroku sleeps it.  

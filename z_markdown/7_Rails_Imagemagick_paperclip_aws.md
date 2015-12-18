@@ -1,5 +1,9 @@
 --------------------------------------------------------------------------------
-### 7.1 ImageMagick & Paperclip setup
+
+# RAILS - IMAGEMAGICK PAPERCLIP AND AWS
+  
+--------------------------------------------------------------------------------
+### 1. ImageMagick & Paperclip setup
 
 > The Paperclip gem allows are site to have users upload photos. It requires   
 software called ImageMagick to be installed. It may already be installed. Check:
@@ -21,7 +25,7 @@ software called ImageMagick to be installed. It may already be installed. Check:
 		$ bundle install
 		
 --------------------------------------------------------------------------------
-### 7.2 ImageMagick & Paperclip code
+### 2. ImageMagick & Paperclip code
 
 **Overview** 
 
@@ -47,7 +51,7 @@ To continue the addition of image uploading support we need to:
 		  $ bundle exec rake db:migrate
 
 --------------------------------------------------------------------------------
-### 7.3 ImageMagick & Paperclip upload
+### 3. ImageMagick & Paperclip upload
 **Overview** Commit with message "Added file fields for image upload on profiles"
 
 1. **app/views/profiles/_form.html.erb**  
@@ -82,7 +86,7 @@ To continue the addition of image uploading support we need to:
 	store media. You can Use Heroku together with Paperclip on Amazon S3!
 		
 .-------------------------------------------------------------------------------	
-### 7.4 Add Amazon AWS setup
+### 4. Add Amazon AWS setup
 
 https://devcenter.heroku.com/articles/paperclip-s3
 
@@ -109,7 +113,7 @@ https://devcenter.heroku.com/articles/paperclip-s3
 		$ heroku config:set AWS_SECRET_ACCESS_KEY=your_secret_access_key
 		
 .-------------------------------------------------------------------------------	
-### 7.4 Add Amazon AWS code
+### 5. Add Amazon AWS code
 		
 > Now we need to define the file locations in our app. Add this to whatever model 
 needs access to the image
@@ -131,27 +135,27 @@ size of the image).
 
 __Update database__
 
-> A database migration is needed to add the avatar attribute on Friend in the 
+> A database migration is needed to add the avatar attribute on  Profiles in the 
 database schema. Run the following rails helper method to generate a stub migration.
 
-		$ rails g migration AddAvatarToFriends
+		$ rails g migration AddAvatarToProfiles
 
 > Paperclip comes with the migration helper methods add_attachment and 
 remove_attachment. They are used to create the columns needed to store image 
-data in the database. Use them in the AddAvatarToFriends migration.
+data in the database. Use them in the AddAvatarToProfiles migration.
 
-		class AddAvatarToFriends < ActiveRecord::Migration
+		class AddAvatarToProfiles < ActiveRecord::Migration
 		  def self.up
-		    add_attachment :friends, :avatar
+		    add_attachment :profiles, :avatar
 		  end
 		
 		  def self.down
-		    remove_attachment :friends, :avatar
+		    remove_attachment :profiles, :avatar
 		  end
 		end
 
 > This migration will create avatar_file_name, avatar_file_size, 
-avatar_content_type, and avatar_updated_at attributes on the Friend model. 
+avatar_content_type, and avatar_updated_at attributes on the  Profiles model. 
 These attributes will be set automatically when files are uploaded.
 Run the migrations with rake db:migrate to update your database.
 
@@ -163,7 +167,7 @@ your models to perform validations and other processing before being sent to S3.
 > Add a file input field to the web form that allows users to browse and select 
 images from their local filesystem.Make sure the form has multipart: true added to it.
 
-		<%= form_for(@friend, multipart: true) do |f| %>
+		<%= form_for(@profile, multipart: true) do |f| %>
 		  <div class="field">
 		    <%= f.label :name %>
 		    <%= f.text_field :name %>
@@ -173,8 +177,8 @@ images from their local filesystem.Make sure the form has multipart: true added 
 		    <%= f.file_field :avatar %>
 		  </div>
 		  <div class="actions">
-		    <%= f.submit 'Make a friend' %>
-		    <%= link_to 'Nevermind', friends_path, class: 'button' %>
+		    <%= f.submit 'Make a profile' %>
+		    <%= link_to 'Nevermind', profiles_path, class: 'button' %>
 		  </div>
 		<% end %>
 
@@ -186,14 +190,14 @@ __Upload controller__
 > With Rails 4 we’ll need to specify the permitted params. We’ll permit :name 
 and :avatar in the params.
 
-		class FriendsController < ApplicationController
+		class ProfilesController < ApplicationController
 		  # Other CRUD actions omitted
 		
 		  def create
-		    @friend = Friend.new(friend_params)
+		    @profile =  Profiles.new(profile_params)
 		
-		    if @friend.save
-		      redirect_to @friend, notice: 'Friend was successfully created.'
+		    if @profile.save
+		      redirect_to @profile, notice: ' Profiles was successfully created.'
 		     else
 		       render action: 'new'
 		    end
@@ -201,8 +205,8 @@ and :avatar in the params.
 		
 		  private
 		
-		  def friend_params
-		    params.require(:friend).permit(:avatar, :name)
+		  def profile_params
+		    params.require(:profile).permit(:avatar, :name)
 		  end
 		end
 
@@ -219,13 +223,13 @@ in the model’s table in the database.
 Access the file’s url through the url method on the model’s file attribute (avatar 
 in this example).
 
-		friend.avatar.url #=> http://your_bucket_name.s3.amazonaws.com/...
+		profile.avatar.url #=> http://your_bucket_name.s3.amazonaws.com/...
 
 > This url can be used directly in the view to display uploaded images.
 
-		<%= image_tag @friend.avatar.url(:square) %>
+		<%= image_tag @profile.avatar.url(:square) %>
 
-> The url method can take a style (defined earlier in the Friend model) to access 
+> The url method can take a style (defined earlier in the  Profiles model) to access 
 a specific processed version of the file.
 
 __Paperclip Demo Application__
@@ -234,14 +238,14 @@ __Paperclip Demo Application__
 requests and allow your page to load quicker than serving directly from your app.
 Display the medium sized image by passing :medium to the url method.
 
-		<%= image_tag @friend.avatar.url(:medium) %>
+		<%= image_tag @profile.avatar.url(:medium) %>
 
 __Deploy__
 
 > Once you’ve updated your application to use Paperclip commit the modified files 
 to git.
 		
-		$ git commit -m "Upload friend images via Paperclip"
+		$ git commit -m "Upload profile images via Paperclip"
 
 > On deployment to Heroku you will need to migrate your database to support the required file columns.
 

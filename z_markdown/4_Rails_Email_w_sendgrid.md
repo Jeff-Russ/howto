@@ -1,10 +1,10 @@
 
 -------------------------------------------------------------------------------
 
-# Rails 4. EMAIL WITH SENDGRID 
+# RAILS - EMAIL WITH SENDGRID 
   
 --------------------------------------------------------------------------------
-### 4.1 Setup Heroku
+### 1. Setup Heroku
 
 > You have already done this step in 3.x but in case you haven't:
 
@@ -39,7 +39,7 @@
 		$ heroku create
 		
 --------------------------------------------------------------------------------
-### 4.2 Setup Sendgrid
+### 2. Setup Sendgrid
 
 > Heroku has an add-on called Sendgrid which enables your site to send emails.  
 
@@ -55,7 +55,7 @@ enables sendgrid for this particular app over at heroku. It does not modify
 your local project.
 
 .-------------------------------------------------------------------------------
-### 4.3 Setup ActionMailer
+### 3. Setup ActionMailer
 
 **With this addition we have the final state of app/config/environment.rb**
 
@@ -120,7 +120,7 @@ a line of code in another controller looking like this:
 		ContactMailer.contact_email(name, email, body).deliver
 
 --------------------------------------------------------------------------------
-### 4.4 Contacts Model and Controller
+### 4. Contacts Model and Controller
 	
 > Each time someone fills out the form to send us an email we will save it to our 
 database before sending it to ourselves. We will have a controller called contacts 
@@ -162,7 +162,7 @@ controller. Make the contents of app/controllers/contacts_controller.rb be:
 		end
 		
 .-------------------------------------------------------------------------------
-### 4.5 Form to Send Email
+### 5. Form to Send Email
 
 1. **Create a Basic View for the Form**
 	
@@ -187,7 +187,7 @@ controller. Make the contents of app/controllers/contacts_controller.rb be:
 
 
 .-------------------------------------------------------------------------------
-### 4.6 Sending the Email
+### 6. Sending the Email
 
 > At this point the submit button doesn't do anything. Go to your new.html.erb view.  
 If you inspect the HTML that it put to the browser you will see that the entire  
@@ -289,7 +289,7 @@ established yet. This line:
 		redirect_to new_contact_path
 
 .-------------------------------------------------------------------------------
-### 4.7 Using Rails Console w/ DB
+### 7. Using Rails Console w/ DB
 
 > Lets use the rails console to simulate what the new action from the class   
 contacts_controller does. 
@@ -324,7 +324,7 @@ database there in the same way.
 		$ heroku run console
 		
 --------------------------------------------------------------------------------
-### 4.8 THE FLASH HASH EXPLAINED
+### 8. The Flash Hash Explained
 
 > We need to give the user some reassuring feedback when the form has submitted. 
 We already have this added in our views/layouts/application.html.erb but here 
@@ -350,7 +350,7 @@ because they come from bootstrap.
 
 #
 --------------------------------------------------------------------------------
-### 4.9 Form Validation
+### 9. Form Validation
 
 > At this point we can input a totally blank form and it will submit it. No good.   
 

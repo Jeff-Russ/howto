@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------
 
-# RAILS 6. RAILS PAYMENTS WITH STRIPE
+# RAILS - RAILS PAYMENTS WITH STRIPE
   
 --------------------------------------------------------------------------------
-### 6.0 BACKGROUND INFO	
+### 0. Background Info	
 
 > Stripe makes it so the web developer doesn't see the actual CC info. This is  
 great because we don't have to handle security. We will write some JS code that  
@@ -22,7 +22,7 @@ card.
 The stripe documentation itself is good, especially the tut by Larry Ullman. 
 
 .-------------------------------------------------------------------------------
-### 6.1 INSTALL STRIPE AND FIGARO	
+### 1. Intall Stripe and Figaro	
  
 		
 > Sign up for stripe. Go to the dashboard and make sure you're in test mode.  
@@ -62,7 +62,7 @@ remove the following:
 		//= require turbolinks
 		
 --------------------------------------------------------------------------------
-### 6.2 COMMUNICATING WITH STRIPE SERVERS
+### 2. Communicating With Stripe Servers
   
 > create config/initializers/stripe.rb and add:
 	
@@ -81,7 +81,7 @@ remove the following:
 
 #
 --------------------------------------------------------------------------------
-### 6.3 ADDING HIDDEN FIELDS
+### 3. Adding Hidden Fields
 
 > in _basic_form.html.erb add this below the second line:  
 
@@ -116,7 +116,7 @@ In the _pro_form.html.erb modify the body of the div containing the button to:
 		$ git push origin stripe_integration
   
 --------------------------------------------------------------------------------
-### 6.4 STRIPE JAVASCRIPT
+### 4. Stripe Javascript
 
 > Now when submit is hidden, stripe will be sent a hidden field to tell them if it's  
 basic or pro. Right now when a user hits sumbit for pro, it doesn't send anything  
@@ -260,7 +260,7 @@ What we need to add is what rails calls a "before filter"
 
 #
 --------------------------------------------------------------------------------
-### 6.5 RAILS BEFORE FILTER 
+### 5. Rails Before Filter
 
 > If you go to the filters section of the guides.rubyonrails.org you find before filters.  
 In controllers/users/registrations_controller.rb add this as the first line of class:  

@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------
 
-# RAILS 1. SETUP
+# RAILS - SETUP
   
 --------------------------------------------------------------------------------
-### 1.1 Generate the App
+### 1. Generate the App
 
 #### Set up environment with specified ruby and rails versions:
 
@@ -28,7 +28,7 @@ __To install latest Ruby and Rails and create app__
 		$ rails new MySite   # generate web app dir and files
 		
 --------------------------------------------------------------------------------
-### 1.2 Install Gem Add-Ons
+### 2. Install Gem Add-Ons
 	
 > Rails uses add-ons called Gems which you can specify in the file called Gemfile. 
 This file already has recommended gems listed in it, ready to install with the 
@@ -104,7 +104,7 @@ to have exact version numbers. This means removing all ~> and >= from this file.
 		gem 'coderay', '~> 1.0.7'				# for markdown support
 		
 --------------------------------------------------------------------------------
-### 1.3 Launch Site Locally
+### 3. Launch Site Locally
 
 > Now let's launch the site privately:
 
@@ -119,7 +119,7 @@ If you ever need to know your IP address and/or your port you can...
 		$ echo $PORT
 	
 --------------------------------------------------------------------------------
-### 1.4 Setup Git Source Control
+### 4. Setup Git Source Control
 
 > First make a Github or Bitbucket account and VERIFY YOUR EMAIL. 
 
@@ -169,7 +169,7 @@ or operating system, you probably want to add a global ignore instead:
 		
 > Now lets add and commit the project locally.
 	
-		$ git add .    # dot adds everything to the local version control 
+		$ git add -A    # get ready to add added files and delete deleted ones 
 		$ git status	# to view everything that was added
 		$ git commit -m "Initial commit"	# This commits everything locally
 		
@@ -189,7 +189,7 @@ you're sure it's a good idea, merge it into dev. When it seems to be a
 good time, merge dev to master and deploy. Only deploy from master. 
 
 		$ git checkout -b dev 	# makes new branch as copy of current one
-		$ git add .             # . adds all
+		$ git add -A             
 		$ git push origin dev 	# make the development branch at Github
 	
 > If you don't want to save your changes to the branch you are currently on you  
@@ -198,14 +198,14 @@ branch, git will not allow you to switch unless you commit changes in the curren
 branch. 
 
 		$ git checkout -b new_branch
-		$ git add .
+		$ git add -A
 		$ git commit -m 'Questionable changes'
 		$ git checkout development
 				# later if you want to delete it:
 		$ git branch -D new_branch
 		
 > Deleted files are not updated with `git add .` so if you want to update any 
-deleted files you should use git to remove them or run `git add . -A`
+deleted files you should use git to remove them or run `git add -A`
 		
 > If you are sure you want to revert to the previous commit:
 
@@ -221,7 +221,7 @@ deleted files you should use git to remove them or run `git add . -A`
 
 		### in project root directory:  
 		$ git status                # If you see changes that you want to commit
-		$ git add . -A              # add all and update deleted files (if needed)
+		$ git add -A -A              # add all and update deleted files (if needed)
 		$ git status                # check if it was added
 		$ git commit -m "YOUR MSG"  # github commit
 		$ git push origin <branch>  # push to github
