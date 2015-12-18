@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/alexpeattie/heroku_secrets.git
+  revision: 717af8e0acf399bc88d2c8c1a7e230023942af0f
+  specs:
+    heroku_secrets (0.0.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -194,6 +200,7 @@ DEPENDENCIES
   devise
   figaro
   font-awesome-sass
+  heroku_secrets!
   jbuilder (~> 2.0)
   jquery-rails
   paperclip (~> 4.3)

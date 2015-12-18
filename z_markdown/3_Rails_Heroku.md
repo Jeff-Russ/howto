@@ -66,7 +66,6 @@ you can create it:
 		$ heroku run rake db:migrate
 
 
-	heroku restart -a app_name
 
 You can use heroku pg:reset DATABASE command to reset the entire database. The command will simply drop and create the database.
 
@@ -84,3 +83,32 @@ http://stackoverflow.com/questions/23180650/how-to-solve-error-missing-secret-ke
 http://stackoverflow.com/questions/18556955/heroku-config-secret-key-base-error
 
 http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
+
+
+heroku restart -a app_name
+
+# The -a is the same as --app
+Easily aliased with alias hra='heroku restart --app '
+Which you can make a permanent alias by adding it to your .bashrc or .bash_aliases file as described at: http://askubuntu.com/questions/17536/how-do-i-create-a-permanent-bash-alias and
+Creating permanent executable aliases
+Then you can just type hra app_name
+
+You can restart a specific remote, e.g. "staging" with:
+
+heroku restart -a app_name -r remote_name
+Alternatively if you are in the root directory of your rails application you can just type
+
+heroku restart
+to restart that app and and you can create an easy alias for that with
+
+alias hr='heroku restart'`
+You can place these aliases in your .bashrc file or (preferred) in a .bash_aliases file which is called from .bashrc
+
+http://stackoverflow.com/questions/21544626/how-do-you-manage-secret-keys-and-heroku-with-ruby-on-rails-4-1-0beta1/22458102#22458102
+An equivalent for secrets.yml of that Figaro task is provided by the heroku_secrets gem, from https://github.com/alexpeattie/heroku_secrets:
+
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+This lets you run
+
+rake heroku:secrets RAILS_ENV=production
+to make the contents of secrets.yml available to heroku as environment variables.
