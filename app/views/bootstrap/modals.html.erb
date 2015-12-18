@@ -1,0 +1,177 @@
+<%provide(:page, "Bootstrap Modals") %>
+<%provide(:prev, bootstrap_images_path) %>
+<%provide(:next, bootstrap_home_path) %>
+
+<h4 class='bluish'>1. The Parent Divs:</h4>
+<div class='row'>
+	<div class="col-sm-11 col-md-8 col-sm-offset-1">
+		<p>Modal Windows allow windows to pop up over the screen temporarily, usually 
+		for the user to make a selection. Three divs are used to contain the 
+		content of your modal window, the outermost with the class modal, the next 
+		with the class modal-dialog and the innermost with the class modal-content. </p>
+		<br>
+	</div><div class="col-xs-4"></div>
+</div>	
+<div class='row'>
+	<div class="col-sm-11 col-md-4 col-sm-offset-1">
+		<br><br>
+		<p>Additionally, the outermost div needs an id, a tabindex='-1' to block use 
+		of the tab button and role='dialog'. It's quite a bit but a good way to 
+		stub it out it in Sublime Text: .modal#modal-1>.modal-dialog>.modal-content 
+		and hit tab. then just add the tabindex and role. <br><br>
+		Inside the innermost div we will have three divs with the classes 
+		modal-header, modal-body and modal-footer. The body will be the content. </p>
+	</div>
+	<div class="col-sm-11 col-sm-offset-1 col-md-7 col-md-offset-0">
+		<xmp>
+			
+<div class="modal" id="modal-1" tabindex='-1' role='dialog '>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			
+			<div class="modal-header"></div>
+			<div class="modal-body">Content</div>
+			<div class="modal-footer"></div>
+			
+		</div>
+	</div>
+</div>
+			
+		</xmp>
+	</div>
+</div>
+ 
+<br>
+
+<h4 class='bluish'>2. The Header:</h4>
+<div class='row'>
+	<div class="col-sm-11 col-md-4 col-sm-offset-1">
+		<br><br>
+		<p>The header usually contains the close button and the title for the content.
+		The button needs the class close and type='button' and an attribute called 
+		data-dismiss set to 'modal'. The content of the button is the red x symbol. 
+		<br><br>
+		For the title we will use an h4 tag with the class modal-title</p>
+	</div>	
+	<div class="col-sm-11 col-sm-offset-1 col-md-7 col-md-offset-0">
+		<xmp>
+			
+<div class="modal" id="modal-1" tabindex='-1' role='dialog'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss='modal'>
+					&times;</button>
+				<h4 class="modal-title">modal-title</h4>
+			</div>
+			<div class="modal-body">Content</div>
+			<div class="modal-footer"></div>
+			
+		</div>
+	</div>
+</div>
+			
+		</xmp>
+	</div>
+</div>
+			
+<br>
+
+<h4 class='bluish'>3. An Open Button:</h4>
+<div class='row'>
+	<div class="col-sm-11 col-md-4 col-sm-offset-1">
+		<p>The open button is placed outside of the parent modal div, usually before 
+		everything. It has the usual class of 'btn btn-WHATEVER' and type='button'. 
+		Additionally, it needs data-toggle='modal' and the attribute data-target 
+		set to the id of the modal class, with a # added before it's name. It 
+		works now... click and see. </p>
+		<br><br>
+		<button type='button' class="btn btn-primary" data-toggle='modal' 
+				data-target='#modal-1'>It works!</button>
+		<div class="modal" id="modal-1" tabindex='-1' role='dialog '>
+			<div class="modal-dialog">
+				<div class="modal-content black-text">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss='modal'>
+							&times;</button>
+						<h4 class="modal-title">modal-title</h4>
+					</div>
+					<div class="modal-body">Content</div>
+					<div class="modal-footer"></div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class="col-sm-11 col-sm-offset-1 col-md-7 col-md-offset-0">
+		<xmp>
+			
+<button type='button' class="btn btn-primary" data-toggle='modal' 
+		data-target='#modal-1'>It works!</button>
+		
+<div class="modal" id="modal-1" tabindex='-1' role='dialog '>
+	...
+</div>
+			
+		</xmp>
+	</div>
+</div>
+
+<br>					
+
+<h4 class='bluish'>4. The Footer:</h4>
+<div class='row'>
+	<div class="col-sm-11 col-md-8 col-sm-offset-1">
+		<p>The div with modal-footer is where you would put your buttons as in the 
+		case of this modal window being a dialog box. We already have a close 
+		button as an X in the upper right but now we can make a proper button on 
+		the bottom, along with a save button, for example. </p>
+	</div>
+</div>
+<div class='row'>
+	<div class="col-xs-4 col-sm-offset-1"><br>
+		<p>The close button is has the same data-dismiss='modal' as we have seen  
+		previously. </p>
+		<br><br>
+		<button type='button' class="btn btn-primary" data-toggle='modal' 
+				data-target='#modal-2'>w/Footer</button>
+		<div class="modal" id="modal-2" tabindex='-1' role='dialog '>
+			<div class="modal-dialog">
+				<div class="modal-content black-text">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss='modal'>
+							&times;</button>
+						<h4 class="modal-title">modal-title</h4>
+					</div>
+					<div class="modal-body">Content</div>
+					<div class="modal-footer">
+						<a href='#' class="btn btn-default" data-dismiss='modal'>
+							Close</a>
+						<a href='#' class="btn btn primary">Save</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="col-sm-11 col-sm-offset-1 col-md-7 col-md-offset-0">
+		<xmp>
+			
+<div class="modal-footer">
+	<a href='#' class="btn btn-default" data-dismiss='modal'>
+		Close</a>
+	<a href='#' class="btn btn primary">Save</a>
+</div>
+
+		</xmp>
+	</div>
+</div>
+
+ <h4 class='bluish'>5. Other Options:</h4>
+<div class='row'>
+	<div class="col-sm-11 col-md-8 col-sm-offset-1">
+		<p>For a fade effect, simply add the class fade to the div with modal. You 
+		can use .modal-lg along with .modal-dialog for a larger window. You can 
+		use .modal-sm along with .modal-dialog for a larger window. </p>
+	</div>
+</div>

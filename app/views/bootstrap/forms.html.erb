@@ -1,0 +1,460 @@
+<%provide(:page, "Bootstrap Forms") %>
+<%provide(:prev, bootstrap_glyphs_path) %>
+<%provide(:next, bootstrap_dropdowns_path) %>
+
+<h4 class='bluish'>1. Plain HTML forms:</h4>
+<div class="row"><!-- example 1 !-->
+	<div class="col-sm-9 col-sm-offset-1">
+		<p>Basic HTML form look like below. To be submitted correctly, each input field 
+		must have a name attribute.</p><br>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-5 col-sm-2 col-xs-offset-1" style="color:grey">
+		<form>
+			<fieldset>
+				<legend style="color:grey">Personal information:</legend>
+				Enter first name:<br>
+				<input type='text' name="firstname"><br>
+				Enter last name:<br>
+				<input type='text' name="lastname"><br>
+				<input type="radio" name="sex" value="male" checked>Male<br>
+				<input type="radio" name="sex" value="female">Female<br>
+				<input type="checkbox" name="remember" value="remember" checked> Remember me<br>
+				<input type="submit" value="Submit">
+			</fieldset>
+		</form>
+	</div>
+	<div class="col-xs-12 col-sm-8 col-sm-offset-1">
+		<xmp>
+<form action='action_page.php' method="post">
+	<fieldset>
+		<legend>Personal information:</legend>
+		Enter first name:<br>
+		<input type='text' name="firstname"><br>
+		Enter last name:<br>
+		<input type='text' name="lastname"><br>
+		<input type="radio" name="sex" 
+				value="male" checked>Male<br>
+		<input type="radio" name="sex" 
+				value="female">Female<br>
+		<input type="submit" value="Submit">
+	</fieldset>  
+</form>  
+		</xmp>
+	</div><div class="col-xs-3"></div>
+</div><br><br>
+
+<h4 class='bluish'>2. Basic Bootstrap Forms:</h4>
+<div class="row"> <!-- example 2 !-->
+	<div class="col-sm-9 col-sm-offset-1">
+		<p>In Boostrap, our form block will have the role='form' and each form element 
+		will be wrapped in separate div's with the exception of the submit button. 
+		Text field elements have div's with a class='form-group'. The labels are  
+		wrapped in label tags with for='the_id'. The input for the text fielss have 
+		matching id's and a class of form-control. Text field's div's carry the class 
+		form-group but radio buttons have the radio class and checkboxes have the  
+		checkbox class. Buttons need not be wrapped in div's but rather they are put 
+		in button elements with type="submit".</p><br>
+	</div>
+</div>
+<div class="row">	
+	<div class="col-xs-5 col-sm-2 col-xs-offset-1">
+		<form action='' role='form'>
+			<fieldset>
+				<legend style="color:grey">Personal information:</legend>
+				<div class='form-group'>
+					<label for='firstname'>First name:</label>
+					<input type='text' id='firstname' class='form-control'>
+				</div>
+				<div class='form-group'>
+					<label for='lastname'>Last name:</label>
+					<input type='text' id='lastname' class='form-control'>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="optradio">Male</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="optradio">Female</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox"> Remember me</label>
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			<fieldset>
+		</form>    
+	</div>
+	
+	<div class="col-xs-12 col-sm-8 col-sm-offset-1">    
+	<xmp>
+<form action='action_page.php' role='form'>
+	<fieldset>
+		<legend style="color:grey">Personal information:</legend>
+		<div class='form-group'>
+			<label for='firstname'>First name:</label>
+			<input type='text' id='firstname' class='form-control'>
+		</div>
+		<div class='form-group'>
+			<label for='lastname'>Last name:</label>
+			<input type='text' id='lastname' class='form-control'>
+		</div>
+		<div class="radio">
+			<label><input type="radio" name="optradio">Male</label>
+		</div>
+		<div class="radio">
+			<label><input type="radio" name="optradio">Female</label>
+		</div>
+		<div class="checkbox">
+			<label><input type="checkbox"> Remember me</label>
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	<fieldset>
+</form>     
+	</xmp> 
+	</div><div class="col-xs-3"></div>
+</div>
+
+
+<div class="row"> 
+	<div class="col-sm-9 col-sm-offset-1"><br><br>
+		<p>If you want some help text below an input field you can insure it's styled
+		by using a p tag with the class help-block.</p><br>
+	</div><div class='col-xs-4'></div>
+</div>
+<div class="row">		
+	<div class="col-xs-5 col-sm-3 col-xs-offset-1">
+		<form action='' role='form'>
+				<div class='form-group'>
+					<label for='firstname'>First name:</label>
+					<input type='text' id='firstname' class='form-control'>
+					<p class='help-block'>What mommy and daddy call you.</p>
+				</div>
+		</form>    
+	</div>
+	
+	<div class="col-xs-12 col-sm-8 col-sm-offset-1">    
+	<xmp>
+<form action='' role='form'>
+		<div class='form-group'>
+			<label for='firstname'>First name:</label>
+			<input type='text' id='firstname' class='form-control'>
+			<p class='help-block'>What mommy and daddy call you.</p>
+		</div>
+</form>   
+	</xmp> 
+	</div><div class="col-xs-3"></div>
+</div>
+
+
+<h4 class='bluish'>3. Inline Forms:</h4>
+<div class="row"> <!-- example 3 !-->
+	<div class="col-xs-12 col-sm-11 col-sm-offset-1"><br>
+		<form action='' role='form' class='form-inline'>
+			<div class='form-group'>
+				<label for='username' class='sr-only'>User Name:</label>
+				<input type='text' id='username' 
+						class='form-control' placeholder="Username or Email">
+			</div>
+			<div class='form-group'>
+				<label for='password' class='sr-only'>Password:</label>
+				<input type='password' id='password' 
+						class='form-control' placeholder='Password'>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+			<div class="checkbox">
+				<label><input type="checkbox"> Remember me</label>
+			</div>
+		</form>    
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-11 col-sm-offset-1"><br>	
+		<p>You can make the forms line up in a horizontal row by adding the class
+		form-inline to the form element. With this style is customary to not use 
+		labels, although we will have them show with screen readers by adding the 
+		sr-only class.</p> 
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-3 col-sm-offset-1"><br>
+		<p>Instead of labels we will use placeholders by adding the 
+		placeholder attribute with the value of the desired text for each input 
+		element. <br><br>
+		Notice that the input type for password is password, not text. This 
+		insures the digits will not be visible on the screen.</p><br>
+	</div>
+	
+	<div class="col-xs-12 col-sm-8">    
+		<xmp>
+<form action='' role='form' class='form-inline'>
+	<div class='form-group'>
+		<label for='username' class='sr-only'>User Name:</label>
+		<input type='text' id='username' 
+				class='form-control' placeholder="Username or Email">
+	</div>
+	<div class='form-group'>
+		<label for='password' class='sr-only'>Password:</label>
+		<input type='password' id='password' 
+				class='form-control' placeholder='Password'>
+	</div>
+	<button type="submit" class="btn btn-default">Submit</button>
+	<div class="checkbox">
+		<label><input type="checkbox"> Remember me</label>
+	</div>
+</form>  		
+		</xmp> 
+	</div>
+</div>
+
+
+<h4 class='bluish'>4. Horizontal Forms:</h4>
+<div class="row"> <!-- example 4 !-->
+	<div class="col-xm-12 col-md-4 col-sm-offset-1"><br>
+		<p>Horizontal forms are similar to inline form only they place the labels 
+		to the left of the fields.</p><br><br>
+		<form action="#" class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="contact-name" class="col-lg-2 control-label">
+					Name</label>
+				<div class="col-xs-6">
+					<input type="text" class="form-control" 
+							id="contact-name" placeholder="Name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="contact-email" class="col-lg-2 control-label">
+					Email</label>
+				<div class="col-xs-6">
+					<input type="email" class="form-control" 
+							id="contact-email" placeholder="Email Address">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="contact-message" class="col-lg-2 control-label">
+					Message</label>
+				<div class="col-xs-6">
+					<textarea name="contact-message" id="contact-message" 
+							class="form-control" cols="20" rows="10" 
+							placeholder="Message"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-md-6 col-sm-offset-1">    
+		<xmp>
+<form action="#" class="form-horizontal" role="form">
+	
+	<div class="form-group">
+		<label for="contact-name" class="col-lg-2 control-label">
+			Name</label>
+		<div class="col-xs-8">
+			<input type="text" class="form-control" 
+					id="contact-name" placeholder="Name">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="contact-email" class="col-lg-2 control-label">
+			Email</label>
+		<div class="col-xs-8">
+			<input type="email" class="form-control" 
+					id="contact-email" placeholder="Email Address">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="contact-message" class="col-lg-2 control-label">
+			Message</label>
+		<div class="col-xs-8">
+			<textarea name="contact-message" id="contact-message" 
+					class="form-control" cols="20" rows="10" 
+					placeholder="Message"></textarea>
+		</div>
+	</div>
+</form>			
+		</xmp> 
+	</div>
+</div>
+
+<h4 class='bluish'>5. Form Validation Styling:</h4>
+<div class="row"> <!-- example 5 !-->
+	<div class="col-xs-12 col-md-8 col-sm-offset-1"><br>
+		<p>You can conditionally add some styling after validation fails and the user 
+		is redirected. The classes which color the fields are added to the form-group 
+		divs. We have the classes has-warning, has-error and has-success:</p><br><br>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-md-2 col-sm-offset-1"><br><br>
+		<form role='form'>
+			<div class="form-group has-warning">
+				<input class="form-control" type='text' id='elem-1' placeholder='has-warning'>
+			</div>
+			<div class="form-group has-error">
+				<input class="form-control" type='text' id='elem-2' placeholder='has-warning'>
+			</div>
+			<div class="form-group has-success">
+				<input class="form-control" type='text' id='elem-3' placeholder='has-success'>
+			</div>
+		</form>
+	</div>
+	<div class="col-xs-12 col-md-8 col-sm-offset-1">
+		<xmp>
+<form role='form'>
+	<div class="form-group has-warning">
+		<input class="form-control" type='text' id='elem-1' placeholder='has-warning'>
+	</div>
+	<div class="form-group has-error">
+		<input class="form-control" type='text' id='elem-2' placeholder='has-warning'>
+	</div>
+	<div class="form-group has-success">
+		<input class="form-control" type='text' id='elem-3' placeholder='has-success'>
+	</div>
+</form>			
+		</xmp>
+	</div>
+</div>
+<div class="row"> <!-- example 5 cont. !-->
+	<div class="col-xs-12 col-sm-8 col-sm-offset-1"><br>
+		<p>If you want to do the same for the labels, add the class control-label.</p>
+		<br><br>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-lg-2 col-sm-offset-1"><br>
+		<form role='form'>
+			<div class="form-group has-warning">
+				<label for='elem-1' class='control-label'>control-label</label>
+				<input class="form-control" type='text' id='elem-1' placeholder='has-warning'>
+			</div>
+			<label for='elem-2' class='control-label'>control-label</label>
+			<div class="form-group has-error">
+				<input class="form-control" type='text' id='elem-2' placeholder='has-warning'>
+			</div>
+			<label for='elem-3' class='control-label'>control-label</label>
+			<div class="form-group has-success">
+				<input class="form-control" type='text' id='elem-3' placeholder='has-success'>
+			</div>
+		</form>
+	</div>
+	<div class="col-xs-12 col-md-8 col-sm-offset-1">
+		<xmp>
+<form role='form'>
+	<div class="form-group has-warning">
+		<input class="form-control" type='text' id='elem-1' placeholder='has-warning'>
+	</div>
+	<div class="form-group has-error">
+		<input class="form-control" type='text' id='elem-2' placeholder='has-warning'>
+	</div>
+	<div class="form-group has-success">
+		<input class="form-control" type='text' id='elem-3' placeholder='has-success'>
+	</div>
+</form>			
+		</xmp>
+	</div>
+</div>
+
+<div class="row"> <!-- example 5 cont. !-->
+	<div class="col-xs-12 col-lg-8 col-sm-offset-1"><br>
+		<p>You can additionally add Glyphicons for these three statuses. Each form 
+		will need the class of has-feedback along with the has-warning we needed 
+		for the colors. A span is added to each form element with the classes 
+		glyphicon, glyphicon-XYZ, form-control and form-control-feedback. Shortcuts 
+		for these spans in Sublime Text are given as labels below:</p><br><br>
+	</div><div class='col-xs-3'></div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-lg-5 col-sm-offset-1"><br><br>
+		<form role='form'>
+			<div class="form-group has-warning has-feedback">
+				<label for='elem-1' class='control-label'>
+					span.glyphicon.glyphicon-warning-sign.form-control-feedback</label>
+				<input class="form-control" type='text' id='elem-1'>
+				<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+			</div>
+			<div class="form-group has-error has-feedback">
+				<label for='elem-2' class='control-label'>
+					span.glyphicon.glyphicon-remove.form-control-feedback</label>
+				<input class="form-control" type='text' id='elem-2'>
+				<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+			</div>
+			<div class="form-group has-success has-feedback">
+				<label for='elem-3' class='control-label'>
+					span.glyphicon.glyphicon-success.form-control-feedback</label>
+				<input class="form-control" type='text' id='elem-3'>
+				<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+			</div>
+		</form>
+	</div>
+	<div class="col-xs-12 col-lg-5 col-sm-offset-1">
+		<xmp>
+<form role='form'>
+	<div class="form-group has-warning has-feedback">
+		<input class="form-control" type='text' id='elem-1'>
+		<span class="glyphicon glyphicon-warning-sign 
+			form-control-feedback"></span>
+	</div>
+	<div class="form-group has-error has-feedback">
+		<input class="form-control" type='text' id='elem-2'> 
+		<span class="glyphicon glyphicon-remove 
+			form-control-feedback"></span>
+	</div>
+	<div class="form-group has-success has-feedback">
+		<input class="form-control" type='text' id='elem-3'>
+		<span class="glyphicon glyphicon-ok 
+			form-control-feedback"></span>
+	</div>
+</form>		
+		</xmp>
+	</div>
+</div>
+
+
+
+<h4 class='bluish'>6. Different Sizes:</h4>
+<div class="row"> <!-- example 4 !-->
+	<div class="col-xs-12 col-md-8 col-sm-offset-1"><br>
+		<p>You can also control the size of each input element with the class names 
+		similar to those for columns, only without xs. </p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-md-2 col-sm-offset-1"><br><br>
+		<form role='form'>
+			<div class="form-group">
+				<input class="form-control input-sm" type='text' id='elem-1' placeholder='input-sm'>
+			</div>
+			<div class="form-group">
+				<input class="form-control input-md" type='text' id='elem-2' placeholder='input-md'>
+			</div>
+			<div class="form-group">
+				<input class="form-control input-lg" type='text' id='elem-3' placeholder='input-lg'>
+			</div>
+		</form>
+	</div>
+	
+	<div class="col-xs-12 col-md-8 col-sm-offset-1">    
+		<xmp>
+<form role='form'>
+	<div class="form-group">
+		<input class="form-control input-sm" type='text' id='elem-1' placeholder='input-sm'>
+	</div>
+	<div class="form-group">
+		<input class="form-control input-md" type='text' id='elem-2' placeholder='input-md'>
+	</div>
+	<div class="form-group">
+		<input class="form-control input-lg" type='text' id='elem-3' placeholder='input-lg'>
+	</div>
+</form>			
+		</xmp> 
+	</div>
+</div>
+<div class="row"> 
+	<div class="col-xs-12 col-md-8 col-sm-offset-1"><br>
+		<p>Normally form fields span the full width of the parent container. The  
+		reason you are seeing varying widths thought this demonstration is because 
+		they are all wrapped within Boostrap col classes, as is customary.</p>
+	</div>
+</div>

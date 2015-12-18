@@ -1,0 +1,123 @@
+<%provide(:page, "Bootstrap Dropdowns") %>
+<%provide(:prev, bootstrap_forms_path) %>
+<%provide(:next, bootstrap_tabs_path) %>
+
+<div class="row">
+	<div class="col-md-9 col-md-offset-1">  
+		<p>Dropdown menus are just like buttons but they have the added class of 
+		btn-toggle and some extra attributes. Also note that the entire button  
+		element is wraped in a div with class='dropdown'. The additional attributes
+		in the button element are an id="dd-menu" and an attribute called 
+		data-toggle="dropdown".<br><br>
+		Inside the button element you can add a span with the class caret to give it 
+		the little dropdown indicating triangle. </p>
+	</div>
+</div><br>
+
+<div class="row">
+	<div class="col-md-1"> <br><br>
+		<div class="dropdown">
+			<button class='btn btn-default dropdown-toggle' type='button'>
+				Dropdown <span class='caret'></span>
+			</button>
+		</div>  
+	</div>
+	<div class="col-md-10 col-md-offset-1"> 
+		<xmp>
+<div class="dropdown">
+	<button class='btn btn-default dropdown-toggle' 
+					type='button' data-toggle='dropdown'>
+		Dropdown <span class='caret'></span>
+	</button>
+		<!-- add dropdown options here !-->
+</div>
+		</xmp>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-9 col-md-offset-1">  
+		<br><br>
+		<p>To specify the option we see when the dropdown is clicked we use an unordered  
+		list with class='dropdown-menu' and role='menu'.Each list item optionally have 
+		role='presentation' but you should use it. Inside each li tag you have anchor 
+		tags which have role='menuitem' and, in order to prevent access by tabbing, 
+		tabindex='-1'.</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-1"> <br><br>
+		<div class="dropdown">
+			<button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>
+				Dropdown <span class='caret'></span>
+			</button>
+			<ul class='dropdown-menu' role='menu'>
+				<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+				<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+				<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+			</ul>
+		</div>  
+	</div>
+	<div class="col-md-10 col-md-offset-1"> 
+		<xmp>
+<div class="dropdown">
+	<button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown'>
+		Dropdown <span class='caret'></span>
+	</button>
+	<ul class='dropdown-menu' role='menu'>
+		<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+		<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+		<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+	</ul>
+</div> 
+		</xmp>
+		
+	</div>
+</div>
+
+<!-- !-->
+<div class="row">
+	<div class="col-md-9 col-md-offset-1">  
+		<br><br>
+		<p>Add the class='dropdown-header' to a list item and it can be used as a header 
+		atop a group of options. Add class='divider' and you'll get a faint line and 
+		some spacing between the items it it placed between. Add the class='disabled' 
+		to gray out an option. </p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-1"> <br><br>
+		<div class="dropdown">
+			<button class='btn btn-success dropdown-toggle' type='button' data-toggle='dropdown'>
+				Dropdown <span class='caret'></span>
+			</button>
+			<ul class='dropdown-menu' role='menu'>
+				<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+				<li role='presentation' class='dropdown-header'>Header</li>
+				<li role='presentation' class='disabled'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+				<li role='presentation' class='divider'></li>
+				<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+			</ul>
+		</div>  
+	</div>
+	<div class="col-md-10 col-md-offset-1"> 
+		<xmp>
+<div class="dropdown">
+	<button class='btn btn-success dropdown-toggle' type='button' data-toggle='dropdown'>
+		Dropdown <span class='caret'></span>
+	</button>
+	<ul class='dropdown-menu' role='menu'>
+		<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+		<li role='presentation' class='dropdown-header'>Header</li>
+		<li role='presentation' class='disabled'></li>
+		<li role='presentation' class='divider'></li>
+		<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
+	</ul>
+</div> 
+		</xmp>
+		
+	</div>
+</div>
+

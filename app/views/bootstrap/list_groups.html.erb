@@ -1,0 +1,121 @@
+<%provide(:page, "Bootstrap List Groups") %>
+<%provide(:prev, bootstrap_navbars_path) %>
+<%provide(:next, bootstrap_panels_path) %>
+
+<h4 class='bluish'>1. As Unordered Lists:</h4>
+<div class='row'>
+	<div class="col-md-8 col-sm-offset-1">
+		<p>List groups allow for way to style HTML lists with bootstrap. It is list 
+		group could be an unordered list with the class list-group where each item 
+		has the class list-group-item. In Sublime Text type 
+		ul.list-group>li.list-group-item{Item $}*4 and hit tab.</p><br>
+	</div>
+</div>
+<div class='row'>
+	<div class="col-md-3 col-sm-offset-1 black-text">
+		<br>
+		<ul class="list-group">
+			<li class="list-group-item">Item 1</li>
+			<li class="list-group-item">Item 2</li>
+			<li class="list-group-item">Item 3</li>
+			<li class="list-group-item">Item 4</li>
+		</ul>
+	</div>
+	<div class="col-xs-12 col-md-7 col-sm-offset-1">
+		<xmp>
+	
+<ul class="list-group">
+	<li class="list-group-item">Item 1</li>
+	<li class="list-group-item">Item 2</li>
+	<li class="list-group-item">Item 3</li>
+	<li class="list-group-item">Item 4</li>
+</ul>
+			
+		</xmp>
+	</div>
+</div>
+
+<h4 class='bluish'>2. As Divs Containing Links:</h4>
+<div class='row'>
+	<div class="col-md-8 col-sm-offset-1">
+		<p>You can also use a div with anchor tags instead of ul with li, respectively. 
+		Make one list-group-item active by adding the class active. Bootstrap 
+		colors can be added with the class list-group-item-XYZ where XYZ could be 
+		success, info, warning or danger.</p>
+		<br>
+	</div>
+</div>
+<div class='row'>
+	<div class="col-md-3 col-sm-offset-1 black-text">
+		<br>
+		<div class='list-group'>
+			<a class="list-group-item list-group-item-success active">Item 1</a>
+			<a class="list-group-item list-group-item-info">Item 2</a>
+			<a class="list-group-item list-group-item-warning">Item 3</a>
+			<a class="list-group-item list-group-item-danger">Item 4</a>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-7 col-sm-offset-1">
+		<xmp>
+			
+<div class='list-group'>
+	<a class="list-group-item list-group-item-success active">Item 1</a>
+	<a class="list-group-item list-group-item-info">Item 2</a>
+	<a class="list-group-item list-group-item-warning">Item 3</a>
+	<a class="list-group-item list-group-item-danger">Item 4</a>
+</div>
+			
+		</xmp>
+	</div>
+</div>	
+
+<h4 class='bluish'>3. With Custom Content:</h4>
+<div class='row'>
+	<div class="col-md-8 col-sm-offset-1">
+		<p>You aren't limited to just li's and a' in a list group. You can have 
+		headers with the class list-group-item-heading and text with the class 
+		list-group-item-heading:</p>
+	</div>
+</div>
+<div class='row'>
+	<div class="col-md-3 col-sm-offset-1">
+		<br><br>
+		<div class='list-group'>
+			<a class="list-group-item list-group-item-success active">
+				<h4 class='list-group-item-heading'>list-group-item-heading</h4>
+				<p class='list-group-item-text'>list-group-item-text</p>
+			</a>
+			<a class="list-group-item list-group-item-info ">
+				<h4 class='list-group-item-heading'>list-group-item-heading</h4>
+				<p class='list-group-item-text'>list-group-item-text</p>
+			</a>
+			<a class="list-group-item list-group-item-danger ">
+				<h4 class='list-group-item-heading'>list-group-item-heading</h4>
+				<p class='list-group-item-text'>list-group-item-text</p>
+			</a>
+		</div>
+		
+	</div>
+	<div class="col-xs-12 col-md-7 col-sm-offset-1">
+		<xmp>
+			
+<div class='list-group'>
+	<a class="list-group-item list-group-item-success active">
+		<h4 class='list-group-item-heading'>list-group-item-heading</h4>
+		<p class='list-group-item-text'>list-group-item-text</p>
+	</a>
+	<a class="list-group-item list-group-item-info ">
+		<h4 class='list-group-item-heading'>list-group-item-heading</h4>
+		<p class='list-group-item-text'>list-group-item-text</p>
+	</a>
+	<a class="list-group-item list-group-item-danger ">
+		<h4 class='list-group-item-heading'>list-group-item-heading</h4>
+		<p class='list-group-item-text'>list-group-item-text</p>
+	</a>
+</div>
+	
+		</xmp>
+	</div>
+</div>
+
+ 

@@ -1,0 +1,161 @@
+<%provide(:page, "Bootstrap Grids Etc.") %>
+<%provide(:prev, bootstrap_home_path) %>
+<%provide(:next, bootstrap_buttons_path) %>
+
+<h4 class='bluish'>1. Grid Basics:</h4>
+<div class="container dark-bg-g border-orange"><br>
+	<p>The orange border is there to show you that this is a div with the 
+	bootstrap container class.</p><br>
+	<div class="row"><br>
+		<div class="col-xs-12 border-red">
+			<p>The red border is to reveal a div with the bootstrap row class 
+			inside the container div.</p>
+		</div>
+	</div><br>
+	<p>A row has a total of  width of 12 columns regardless of screen size.</p>
+	<div class ="row"><br>
+		<div class="col-xs-1 border-green">1</div>
+		<div class="col-xs-1 border-green">2</div>
+		<div class="col-xs-1 border-green">3</div>
+		<div class="col-xs-1 border-green">4</div>
+		<div class="col-xs-1 border-green">5</div>
+		<div class="col-xs-1 border-green">6</div>
+		<div class="col-xs-1 border-green">7</div>
+		<div class="col-xs-1 border-green">8</div>
+		<div class="col-xs-1 border-green">9</div>
+		<div class="col-xs-1 border-green">10</div>
+		<div class="col-xs-1 border-green">11</div>
+		<div class="col-xs-1 border-green">12</div>
+	</div><br>
+	<p>Each of the green boxes is a div with the class of col-xs-1 which is one row. 
+	These 12 divs are nested in single div with the class row, which is nested
+	in a div with the class container. xs stands for an extra small screen as 
+	in a mobile phone. The div's retain their status as being one column each 
+	all the way down to the smallest screens. The arrangement will look the 
+	same anywhere. see code below:</p>
+	<xmp class="col-sm-12">
+</div>
+<div class="container">
+	<div class ="row">
+		<div class="col-xs-1">1</div>
+		<div class="col-xs-1">2</div>
+		<div class="col-xs-1">3</div>
+		<div class="col-xs-1">4</div>
+		<div class="col-xs-1">5</div>
+		<div class="col-xs-1">6</div>
+		<div class="col-xs-1">7</div>
+		<div class="col-xs-1">8</div>
+		<div class="col-xs-1">9</div>
+		<div class="col-xs-1">10</div>
+		<div class="col-xs-1">11</div>
+		<div class="col-xs-1">12</div>
+	</div>
+</div>
+	</xmp>
+</div><br><br>
+
+<h4 class='bluish'>2. Grid Collapse:</h4>
+<div class="container dark-bg-g border-orange"><br>
+	<p>xs rows will be the side by side on all screen sizes but if you specified lg 
+	instead, the rows would collapse into being stacked vertically on any screen 
+	smaller than large screens, which is defined as 1170px wide. md would stack 
+	if less than 970px and sm would at 750px. Shrink the screen to watch these 
+	collapse:</p><br><br>
+	<div class ="row">
+		<div class="col-md-4 border-green">col-md-4</div>
+		<div class="col-md-4 border-green">col-md-4</div>
+		<div class="col-md-4 border-green">col-md-4</div>
+	</div>
+	<br>
+</div><br><br>
+
+<h4 class='bluish'>3. Adaptive Grids:</h4>
+<div class="container dark-bg-g border-orange"><br>
+	<p>The div's below will size differently on different screen sizes because they 
+	given multiple attributes. Resize the screen to watch them change classes.</p>
+	<br><br>
+	<div class="row">
+		<div class="col-xs-11 col-sm-9 col-md-3 col-lg-1 border-green">I'm bigger on smaller screens</div>
+		<div class="col-xs-1 col-sm-3 col-md-9 col-lg-11 border-green">I'm bigger on bigger screens</div>
+	</div>
+	<xmp>
+<div class="col-xs-11 col-sm-9 col-md-3 col-lg-1">I'm bigger on smaller screens</div>
+<div class="col-xs-1 col-sm-3 col-md-9 col-lg-11">I'm bigger on bigger screens</div>
+	</xmp>
+</div><br><br>
+
+<h4 class='bluish'>4. Grid Offsets:</h4>
+<div class="container dark-bg-g border-orange"><br>
+	<p>You can use offset to add a little empty space to the left. Add empty space 
+	to the right side of the entire row simply by not adding up to 12 before closing 
+	the div with the class row.</p><br><br>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2 border-green">-> Offset by 2</div>
+		<div class="col-sm-4 text-right border-green">there are two empty rows here -></div>
+	</div>
+	<xmp>
+<div class="col-sm-4 col-sm-offset-2">-> Offset by 2</div>
+<div class="col-sm-4 text-right">there are two empty rows here -></div>
+	</xmp>
+	<p>Note that text-right is a bootstrap class, along with text-left and 
+	text-center</p>.
+	<br><br>
+</div>
+<br><br>
+
+<h4 class='bluish' id='jumbotron'>5. Jumbotron:</h4>
+<div class='row'>
+	<div class="col-xs-11  col-sm-11 col-sm-offset-1">
+		<div class="jumbotron">
+			<div class="container text-center">
+				<h1>Jumbotron</h1>
+				<p>A paragraph.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class='row'>
+	<div class="col-sm-5 col-sm-offset-1">
+		<br><br><p>To create a big banner area to put a page title you can create a div with 
+		the class jumbotron. If it is atop the page and you have a navbar, the navbar 
+		will hide part of the jumbrotron. One fix is some inline CSS as you see  
+		here. </p>
+	</div>
+	<div class="col-sm-6">
+		<xmp>
+	<style> body { padding-top 50px; } </style>		
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Jumbotron</h1>
+			<p>A paragraph.</p>
+		</div>
+	</div>
+		</xmp>
+	</div>
+</div>
+			
+<h4 class='bluish'id='well'>6. Well:</h4>
+<div class='row'>
+	<div class="col-xs-6 col-sm-5 col-sm-offset-1">
+		<div class="well">a well</div>
+	</div>
+	<div class="col-xs-6">
+		<div class="well">a well</div>
+	</div>
+</div>
+<div class='row'>
+	<div class="col-sm-5 col-sm-offset-1">
+		<br><br><p>A well is similar to jumbotron only much more subtle. It's meant 
+		to give an element to give it an inset effect.</p>
+	</div>
+	<div class="col-sm-6">
+		<xmp>
+<div class="col-xs-6">
+	<div class="well">a well</div>
+</div>
+<div class="col-xs-6">
+	<div class="well">a well</div>
+</div>
+		</xmp>
+	</div>
+</div>

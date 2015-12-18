@@ -1,0 +1,158 @@
+<%provide(:page, "Bootstrap Buttons") %>
+<%provide(:prev, bootstrap_grids_path) %>
+<%provide(:next, bootstrap_glyphs_path) %>
+
+<h4 class='bluish'>1. Seven Colors:</h4>
+<div class="row"> 
+	<div class="col-sm-11 col-sm-offset-1">
+		<button type="button" class="btn btn-default">Default</button>
+		<button type="button" class="btn btn-primary">Primary</button>
+		<button type="button" class="btn btn-success">Success</button>
+		<button type="button" class="btn btn-info">Info</button>
+		<button type="button" class="btn btn-warning">Warning</button>
+		<button type="button" class="btn btn-danger">Danger</button>
+		<button type="button" class="btn btn-link">Link</button>
+	</div>
+</div>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1"><br>
+		<p>Below is the code for the above buttons. As you can see, bootstrap buttons 
+		play nice with many different HTML elements. If inside a form, you would use 
+		type="submit" rather than type="button"</p>
+	</div>
+</div>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1">
+		<xmp>
+<button type="button" class="btn btn-default">Default</button>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-link">Link</button>
+		</xmp>
+	</div>
+</div>
+
+<br><h4 class='bluish'>2. As Links:</h4>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1">
+		<p>Buttons can also be in used for links using the anchor tag or used with the 
+		link_to function in a Rails application:</p>
+	</div>
+</div>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1">
+		<xmp>
+<a href="#" class="btn btn-default" role="button">GO!</a>
+<%= link_to "GO!", root_path, class: 'btn btn-default' %>
+		</xmp>
+	</div> 
+</div>
+
+<br><h4 class='bluish'>3. Button Sizes:</h4>
+<div class="row"> 
+	<div class="col-sm-11 col-sm-offset-1">
+		<p>They are available in four different sizes:/<p><br>
+		<button type="button" class="btn btn-primary btn-lg">Large</button>
+		<button type="button" class="btn btn-primary btn-md">Medium</button>
+		<button type="button" class="btn btn-primary btn-sm">Small</button>
+		<button type="button" class="btn btn-primary btn-xs">XSmall</button>
+	</div>
+</div>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1"><br>
+		<button type="button" class="btn btn-primary btn-lg">Large</button>
+		<button type="button" class="btn btn-primary btn-md">Medium</button>
+		<button type="button" class="btn btn-primary btn-sm">Small</button>
+		<button type="button" class="btn btn-primary btn-xs">XSmall</button>        
+	</div>
+</div>
+
+<br><h4 class='bluish'>4. Disabled Buttons:</h4>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1">
+		<p>Buttons can be either active or disabled. The active class makes a button 
+		be clickable, and the disabled class makes a button unavailable:<p><br><br>
+		<button type="button" class="btn btn-primary active">Active Primary</button>
+		<button type="button" class="btn btn-primary disabled">Disabled Primary</button>
+	</div>
+</div>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1">
+		<xmp>
+<button type="button" class="btn btn-primary active">Active Primary</button>
+<button type="button" class="btn btn-primary disabled">Disabled Primary</button> 
+		</xmp>
+	</div>
+</div>
+
+<br><h4 class='bluish'>5. Transparent Buttons:</h4>
+<div class="row"> 
+	<div class="col-sm-11 col-sm-offset-1">
+		<p>Although not part of bootstrap, you can get transparent buttons by using a 
+		little CSS.</p><br>
+		<button type="button" class="btn btn-default btn-ghost">Default</button>
+		<button type="button" class="btn btn-primary btn-ghost">Primary</button>
+		<button type="button" class="btn btn-success btn-ghost">Success</button>
+		<button type="button" class="btn btn-info btn-ghost">Info</button>
+		<button type="button" class="btn btn-warning btn-ghost">Warning</button>
+		<button type="button" class="btn btn-danger btn-ghost">Danger</button>
+		<br><br>this was done by adding the class btn-ghost which can be defined 
+		like this:<br>
+	</div>
+</div>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1"><br>	
+		<xmp>
+.btn-ghost{
+background: transparent !important;
+color: #F2F2F2 !important;
+
+/* CSS Transition */
+-webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+-moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+-ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+-o-transition: background .2s ease-in-out, border .2s ease-in-out;
+transition: background .2s ease-in-out, border .2s ease-in-out;
+}       
+		</xmp>
+	</div>
+</div>
+
+<br><h4 class='bluish'>6. Block Level Buttons:</h4>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1">
+		<p>Normally a button will expand and contract to accomodate the contents 
+		inside it.A button with the class btn-block will span the entire width of the 
+		parent element.</p><br>
+		<button type="button" class="btn btn-primary btn-block">Button 1</button>
+		<br>
+		<xmp>
+<button type="button" class="btn btn-primary btn-block">Button 1</button>
+		</xmp>
+	</div>
+</div>
+
+<br><h4 class='bluish'>7. Button Groups:</h4>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1">
+		<p>You can effect the appearance and spacing of buttons by grouping them together. 
+		To do this, simply wrap your buttons in a div with the class btn-group.</p><br>
+		<div class="btn-group">
+			<button type="button" class="btn btn-success btn-lg">BUY NOW!</button>
+			<button type="button" class="btn btn-primary btn-lg">get for free</button>
+		</div>
+	</div>
+</div>
+<div class="row"> 
+	<div class="col-sm-8 col-sm-offset-1"><br>
+		<xmp>
+<div class="btn-group">
+	<button type="button" class="btn btn-success btn-lg">BUY NOW!</button>
+	<button type="button" class="btn btn-primary btn-lg">get for free</button>
+</div>
+		</xmp>
+	</div>
+</div>

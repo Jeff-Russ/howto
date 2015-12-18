@@ -1,0 +1,107 @@
+<%provide(:page, "Bootstrap Tabs") %>
+<%provide(:prev, bootstrap_dropdowns_path) %>
+<%provide(:next, bootstrap_navbars_path) %>
+
+
+<div class="row">
+	<ul class='nav nav-tabs'>
+		<li class='active'><a data-toggle="tab" href="#section-1">Section 1</a></li>
+		<li><a data-toggle="tab" href="#section-2">Section 2</a></li>
+		<li><a data-toggle="tab" href="#section-3">Section 3</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane fade in active" id="section-1">
+			<p>This is section 1 content</p>
+		</div>
+		<div class="tab-pane fade" id="section-2">
+			<p>This is section 2 content</p>
+		</div>
+		<div class="tab-pane fade" id="section-3">
+			<p>This is section 3 content</p>
+		</div>
+	</div>
+</div> 
+
+<div class="row">
+	<div class="col-xs-12 col-md-4"><br>
+		<p>The tabs above were created with the code seen. They are an unordered 
+		list with the classes nav and nav-tabs. The list items are anchors with the 
+		data-toggle attribute set to tab rather than dropdown as we saw earlier. By 
+		the way, if you have Sublime Text keybindings you can generate all of the li 
+		element by typing li*3>a[data-toggle='tab'][href='#section-$']{Section $} 
+		and hitting tab! class='active' is added to make the first tab selected by 
+		default.</p>
+	</div>
+	<div class="col-xs-12 col-md-7 col-md-offset-1"> 
+		<xmp>
+<ul class='nav nav-tabs'>
+	<li class='active'>
+		<a data-toggle="tab" href="#section-1">Section 1</a>
+	</li>
+	<li><a data-toggle="tab" href="#section-2">Section 2</a></li>
+	<li><a data-toggle="tab" href="#section-3">Section 3</a></li>
+</ul>
+		</xmp>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-md-4"><br>
+		<p>The content displayed below the tabs by the div you see on the right. Once 
+		you make the tab-content div you can stub out the other tab-pane div's in 
+		Sublime Text with .tab-pane#section-$*3>p{This is section $ content} and 
+		hitting tab. fade was added to all tab-panes and the first one gets the classes 
+		in and active.<br><br>
+		If you want the tabs to look more like buttons you simply change nav-tabs to 
+		nav-pills</p>
+	</div>
+	
+	<div class="col-xs-12 col-md-7 col-md-offset-1"> 
+		<xmp>
+<div class="tab-content">
+	<div class="tab-pane fade in active" id="section-1">
+		<p>This is section 1 content</p>
+	</div>
+	<div class="tab-pane fade" id="section-2">
+		<p>This is section 2 content</p>
+	</div>
+	<div class="tab-pane fade" id="section-3">
+		<p>This is section 3 content</p>
+	</div>
+</div>
+		</xmp>
+	</div>
+</div>
+
+<div class="row">
+	<ul class='nav nav-pills'><br><br>
+		<li class='active'><a data-toggle="tab" href="#section-1">Section 1</a></li>
+		<li><a data-toggle="tab" href="#section-2">Section 2</a></li>
+		<li><a data-toggle="tab" href="#section-3">Section 3</a></li>
+	</ul>
+</div>
+
+<div class="row"><br><br>
+	<p>If you want them stacked you simply add the class nav-stacked:</p>
+</div>
+<div class="row">
+	<ul class='nav nav-pills nav-stacked'><br><br>
+		<li class='active'><a data-toggle="tab" href="#section-1">Section 1</a></li>
+		<li><a data-toggle="tab" href="#section-2">Section 2</a></li>
+		<li><a data-toggle="tab" href="#section-3">Section 3</a></li>
+	</ul>
+</div>
+<div class="row"><br><br>
+	<p>Change nav-stacked to nav-justified and you get this:</p>
+</div>
+<div class="row">
+	<ul class='nav nav-pills nav-justified'><br><br>
+		<li class='active'><a data-toggle="tab" href="#section-1">Section 1</a></li>
+		<li><a data-toggle="tab" href="#section-2">Section 2</a></li>
+		<li><a data-toggle="tab" href="#section-3">Section 3</a></li>
+	</ul>
+</div>
+<div class="row"><br><br>
+	<p>On screen widths smaller than 768px, nav-justified will become nav-stacked.
+	</p><br><br>
+</div>
