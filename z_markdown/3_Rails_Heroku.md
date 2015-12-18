@@ -112,3 +112,7 @@ This lets you run
 
 rake heroku:secrets RAILS_ENV=production
 to make the contents of secrets.yml available to heroku as environment variables.
+
+
+
+https://devcenter.heroku.com/articles/renaming-apps
