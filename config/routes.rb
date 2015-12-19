@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'rails/initial_setup'
+  get 'rails/generate'
+  get 'rails/sendgrid'
+  get 'rails/bcrypt'
+  get 'rails/devise'
+  get 'rails/stripe'
+  get 'rails/media'
+  get 'rails/markdown'
+
   get 'bootstrap/home'
   get 'bootstrap/grids'
   get 'bootstrap/buttons'

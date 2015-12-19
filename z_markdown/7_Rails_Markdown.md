@@ -54,7 +54,7 @@ controller like this:
 > The file can have any extension you want or none at all.
 > Now in views, this will convert markdown to HTML automatically
 
-      <%= markdown(@file.md) %> 
+      <%= markdown(@file) %> 
       
 > With CodeRay you have to use fenced code blocks and identify the language 
 you're using instead of indenting to signify a code block.
