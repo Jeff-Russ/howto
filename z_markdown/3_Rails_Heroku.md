@@ -84,6 +84,7 @@ http://stackoverflow.com/questions/18556955/heroku-config-secret-key-base-error
 
 http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
 
+bundle exec rake secrets
 
 heroku restart -a app_name
 
@@ -113,6 +114,22 @@ This lets you run
 rake heroku:secrets RAILS_ENV=production
 to make the contents of secrets.yml available to heroku as environment variables.
 
+http://railsinplainenglish.com/2014/03/31/tutorial-set-your-environment-variables-securely-through-figaro/
 
+!!!!!!! figaro heroku:set -e production !!!!!!!
+!!!!!!! bundle exec rake figaro:heroku !!!!!!!
+
+https://github.com/laserlemon/figaro#deployment
 
 https://devcenter.heroku.com/articles/renaming-apps
+
+
+.rb format (not sure about all caps):
+
+	AppName::Application.config.SECRET_KEY_BASE = ''   
+	AppName::Application.config.SECRET_TOKEN = ''
+	
+heroku cli format:
+
+	heroku config:set SECRET_KEY_BASE=''
+	heroku config:set SECRET_TOKEN=''
