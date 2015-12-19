@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails'
+gem 'rails' ,"4.2.5"
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: [:development, :test]
@@ -61,7 +61,7 @@ gem 'devise'
 # Use figaro to hide secret keys
 gem 'figaro'
 # Use paperclip for image uploads
-gem 'paperclip', "~> 4.3"
+gem 'paperclip'
 # For Amazon's S3 service
 gem 'aws-sdk-v1' # If using paperclip <= v4.3.1
 
