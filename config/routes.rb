@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'rails/home'
+
   get 'rails/initial_setup'
   get 'rails/generate'
   get 'rails/sendgrid'
