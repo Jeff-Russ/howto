@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Howto</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<%= favicon_link_tag 'favicon.ico' %>
+	<title>Bootstrap Demo</title>
+	<%= stylesheet_link_tag    'application', media: 'all' %>
+	<%= javascript_include_tag 'application' %>
+	<%= csrf_meta_tags %>
 </head>
 <body class="jr-dark-body ">
 	
 	<nav class="navbar navbar-inverse navbar-fixed-top blacknav" role="navigation">
 		<div class='container'>
 			<div class="navbar-left">
-				<%= link_to root_path, class: "navbar-brand" do %>
+				<%= link_to 'http://www.jeffruss.com', class: "navbar-brand" do %>
 					<button class="btn navbar-btn greenwell">
 						<img style="max-width:50px;"
 							src="http://i1377.photobucket.com/albums/ah75/Jeffrey_Russ/JR_20px_wide_zpsy9os6cdz.png">
@@ -53,19 +54,23 @@
 							</div>
 							<div class="row spacer">
 								<div class="col-xs-4">
+									<%= link_to "Index", bootstrap_home_path, 
+										class: 'btn btn-large btn-block btn-success btn-ghost'%>
+								</div>								
+								<div class="col-xs-4">
 									<%= link_to "Grids & Sections", bootstrap_grids_path,
-										class: 'btn btn-large btn-block btn-info btn-ghost'%>
+										class: 'btn btn-large btn-block btn-warning btn-ghost'%>
 								</div>
 								<div class="col-xs-4">
 									<%= link_to "Buttons", bootstrap_buttons_path, 
 										class: 'btn btn-large btn-block btn-danger btn-ghost'%>
 								</div>
+							</div>    
+							<div class="row spacer">
 								<div class="col-xs-4">
 									<%= link_to "Glyphicons", bootstrap_glyphs_path, 
 										class: 'btn btn-large btn-block btn-info btn-ghost'%>
-								</div>
-							</div>    
-							<div class="row spacer">
+								</div>								
 								<div class="col-xs-4">
 									<%= link_to "Forms", bootstrap_forms_path, 
 										class: 'btn btn-large btn-block btn-success btn-ghost'%>
@@ -74,12 +79,12 @@
 									<%= link_to "Dropdowns", bootstrap_dropdowns_path, 
 										class: 'btn btn-large btn-block btn-warning btn-ghost'%>
 								</div>
+							</div>
+							<div class="row spacer">
 								<div class="col-xs-4">
 									<%= link_to "Tabs", bootstrap_tabs_path, 
 										class: 'btn btn-large btn-block btn-success btn-ghost'%>
 								</div>
-							</div>
-							<div class="row spacer">
 								<div class="col-xs-4">
 									<%= link_to "Navbars", bootstrap_navbars_path, 
 										class: 'btn btn-large btn-block btn-danger btn-ghost'%>
@@ -88,12 +93,12 @@
 									<%= link_to "List Groups", bootstrap_list_groups_path, 
 										class: 'btn btn-large btn-block btn-info btn-ghost'%>
 								</div>
+							</div>
+							<div class="row spacer">
 								<div class="col-xs-4">
 									<%= link_to "Panels", bootstrap_panels_path, 
 										class: 'btn btn-large btn-block btn-danger btn-ghost'%>
-								</div>
-							</div>
-							<div class="row spacer">
+								</div>								
 								<div class="col-xs-4">
 									<%= link_to "Image Carousels", bootstrap_images_path, 
 										class: 'btn btn-large btn-block btn-warning btn-ghost'%>
@@ -111,7 +116,7 @@
 			</div>
 		</div>
 	
-		<%= link_to root_path do %>  
+		<%= link_to bootstrap_home_path do %>  
 		<div class="well text-center link">
 			<h1 class="link"><%= yield(:page) %></h1>
 		</div>

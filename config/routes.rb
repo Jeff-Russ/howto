@@ -1,27 +1,16 @@
 Rails.application.routes.draw do
 
-  root 'bootstrap#home'
-
+  get 'bootstrap/home'
   get 'bootstrap/grids'
-
   get 'bootstrap/buttons'
-
   get 'bootstrap/glyphs'
-
   get 'bootstrap/forms'
-
   get 'bootstrap/dropdowns'
-
   get 'bootstrap/tabs'
-
   get 'bootstrap/navbars'
-
   get 'bootstrap/list_groups'
-
   get 'bootstrap/panels'
-
   get 'bootstrap/images'
-
   get 'bootstrap/modals'
 
   # The priority is based upon order of creation: first created -> highest priority.

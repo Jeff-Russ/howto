@@ -60,76 +60,99 @@ heroku, google domain keroku. If you want to view your domains or run console:
 		$ heroku run console
 		
 > If you have trouble depolying you may want to check out `$ heroku logs` You 
-may  see that some database doesn't exist on the heroku version and in this case 
-you can create it:
+may see that some database doesn't exist on the heroku version and in this case 
+you can create it.Run this command whenever you alter your database:
 
 		$ heroku run rake db:migrate
+		
+> You can use the following command to reset the entire database. The command 
+will simply drop and create the database. Afterward, run db:migrate. 
 
+		$ heroku pg:reset DATABASE
+		
+> Another way is to reset the db locally and then push it to Heroku:
 
+		$ rake db:reset
+		$ heroku db:push
+		
+> This can be used to restart the app on Heroku if you are in the root directory 
+of your rails application
 
-You can use heroku pg:reset DATABASE command to reset the entire database. The command will simply drop and create the database.
+      $ heroku restart
 
-You have to use heroku rake db:migrate to create the tables then.
+--------------------------------------------------------------------------------
+### 5. Public Repos and Heroku
 
-Alternatively you can use rake db:reset command locally and then run heroku db:push to update the production db.
+> Rails uses keys to authorize deployment which should not be shared publicly. 
+There is a filed called .gitignore found at the project root which lists files 
+not to be tracked by git. The problem we run into is that Heroku has you use git 
+to send up the code for deployment and that code will not include the key. There 
+are a few solution to this such as the figaro and heroku_secrets gems. 
 
+> I find there is need for figaro, heroku_secrets or any other gem. Secrets can be 
+organized into two files: config/intializers/secret_token.rb sets the 
+secret_key_base environmental variable used in production. This file is created 
+manually and should be added to gitignore. The second file is config/secrets.yml 
+This file is also created manually and is NOT added to gitignore. It will set 
+secret_key_base used in production using the environmental variable created in 
+secret_token.rb as well as setting secret_key_base for development and testing 
+using strings. 
 
-# TODO Comment out if OK with secrets being uploaded to the repo
-config/initializers/secret_token.rb
-config/secrets.yml
+> I also found no need to set the variables using Heroku CLI's heroku config:set 
+command. Heroku will get and store the key without storing it to a file in the 
+actual Rails app. 
 
-http://stackoverflow.com/questions/23180650/how-to-solve-error-missing-secret-key-base-for-production-environment-on-h
+> In summary you will have three keys: development, test and production. You can 
+generate these yourself with the command `rake secret`
 
-http://stackoverflow.com/questions/18556955/heroku-config-secret-key-base-error
+__ Added to .gitignore __
 
-http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html
+      config/initializers/secret_token.rb
 
-bundle exec rake secrets
+__`example config/initializers/secret_token.rb:`__
 
-heroku restart -a app_name
+      TheAppName::Application.config.secret_key_base = ''   
 
-# The -a is the same as --app
-Easily aliased with alias hra='heroku restart --app '
-Which you can make a permanent alias by adding it to your .bashrc or .bash_aliases file as described at: http://askubuntu.com/questions/17536/how-do-i-create-a-permanent-bash-alias and
-Creating permanent executable aliases
-Then you can just type hra app_name
+> Note that the app name will always begin with a capital letter even if you didn't 
+give it one. Insert a key between '' that you generate with `rake secret`.
 
-You can restart a specific remote, e.g. "staging" with:
+__`example config/secrets.yml:`__
 
-heroku restart -a app_name -r remote_name
-Alternatively if you are in the root directory of your rails application you can just type
+> Insert a keys between '' that you generated with `rake secret`. SECRET_KEY_BASE 
+will take the value set in the gitignored secret_token.rb file. 
 
-heroku restart
-to restart that app and and you can create an easy alias for that with
+      development:
+        secret_key_base: ''
+       
+      test:
+        secret_key_base: ''
+       
+      production:
+        secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+  
+--------------------------------------------------------------------------------
+### 6. Renaming Heroku Apps
 
-alias hr='heroku restart'`
-You can place these aliases in your .bashrc file or (preferred) in a .bash_aliases file which is called from .bashrc
+__From the Heroku Website__ 
 
-http://stackoverflow.com/questions/21544626/how-do-you-manage-secret-keys-and-heroku-with-ruby-on-rails-4-1-0beta1/22458102#22458102
-An equivalent for secrets.yml of that Figaro task is provided by the heroku_secrets gem, from https://github.com/alexpeattie/heroku_secrets:
+      $ heroku apps:rename newname
+       Renaming oldname to newname... done
+       http://newname.herokuapp.com/ | git@herokuapp.com:newname.git
+       Git remote heroku updated
 
-gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
-This lets you run
+> Renaming an app will cause it to immediately become available at the new 
+subdomain (newname.herokuapp.com) and unavailable at the old name 
+(oldname.herokuapp.com). If you have custom domains configured that use these 
+subdomains, for example a CNAME record set up that references 
+oldname.herokuapp.com, then it will also need to be updated.
 
-rake heroku:secrets RAILS_ENV=production
-to make the contents of secrets.yml available to heroku as environment variables.
+> If you are using the CLI to rename an app from inside the Git checkout 
+directory, your remote will be updated automatically. If you rename from the 
+website or have other checkouts, such as those belonging to other developers, 
+these will need to be updated manually:
 
-http://railsinplainenglish.com/2014/03/31/tutorial-set-your-environment-variables-securely-through-figaro/
+      $ git remote rm heroku
+      $ heroku git:remote -a newname
 
-!!!!!!! figaro heroku:set -e production !!!!!!!
-!!!!!!! bundle exec rake figaro:heroku !!!!!!!
-
-https://github.com/laserlemon/figaro#deployment
-
-https://devcenter.heroku.com/articles/renaming-apps
-
-
-.rb format (not sure about all caps):
-
-	AppName::Application.config.SECRET_KEY_BASE = ''   
-	AppName::Application.config.SECRET_TOKEN = ''
-	
-heroku cli format:
-
-	heroku config:set SECRET_KEY_BASE=''
-	heroku config:set SECRET_TOKEN=''
+--------------------------------------------------------------------------------
+### 7. Google Domains and Subdomains
