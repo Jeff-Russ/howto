@@ -2,62 +2,8 @@
 
 # RAILS - USER INTERFACE
   
-.--------------------------------------------------------------------------------
-### 1. Font Awesome setup
-
-> Add this to Gemfile:
-
-		# add font awesome library for icons
-		gem 'font-awesome-sass'
-		
-> Run this terminal command which will fetch the gem online and install it:
-
-		$ bundle install
-		
-> Add this to app/assets/stylesheets/application.css.scss:
-
-		@import "font-awesome-sprockets";
-		@import "font-awesome";
-	
---------------------------------------------------------------------------------
-### 2. Bootstrap Install
-
-> Go to our Gemfile and add this anywhere logical and save the file:  
-
-		# adding bootstrap's gem
-		gem 'bootstrap-sass'
-	
-> Run this terminal command which will fetch the gem online and install it:
-
-		$ bundle install 
-	
-> Look at the docs for bootstrap-sass on github. Find and rename this file using  
-git's command rather than the normal one which results in a delete operation:
-
-		$ cd app/assets/stylesheets 
-		$ git mv application.css application.css.scss
-	
-> Renaming this file lets the preprocessor know we will add SASS syntax to CSS  
-Now we will add these two lines to the bottom and hit save:
-
-		@import "bootstrap-sprockets";
-		@import "bootstrap";
-
-> If you read the bootstrap docs you will see that you need a javascript plugin.  
-Go to the docs on github.com/twbs/bootstrap-sass and you will see  
-Require Bootstrap JS in app/assets/javascripts/application.js 
-
-> Find that file and add below the line for jQuery:
-
-		//= require bootstrap-sprockets
-
-> Without this, the site will adapt to some degree but not completely. For example,  
-if you have a navigation bar with a number of option they will compress into a menu  
-but the menu will not be functional without this inclusion.  
-
-
 .-------------------------------------------------------------------------------
-### 3. Bootstrap It Up   
+### 1. Bootstrap It Up   
 
 > Add the following to body in app/views/layouts/application.html.erb
 

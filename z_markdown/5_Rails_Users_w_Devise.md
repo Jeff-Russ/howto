@@ -17,7 +17,9 @@
 > Google Devise and go to the Github. We will follow the direction you see there:  
 	
 		$ bundle exec rails generate devise:install 
-		
+
+_REVERSAL:_ You can reverse this generate by replacing "generate" with "destroy." 		
+
 > The generator will install config/initializers/devise.rb which sets all of 
 Devise's config options. When you are done, you are ready to add Devise to any 
 of your models using the generator:
@@ -31,6 +33,8 @@ of your models using the generator:
 				create      test/fixtures/users.yml
 				insert    app/models/user.rb
 				 route  devise_for :users	
+				 
+_REVERSAL:_ You can reverse this generate by replacing "generate" with "destroy." 
 				 
 > This will create a model and configure it with default Devise modules and also 
 configures your routes file to point to the Devise controller. It also created 
@@ -59,7 +63,7 @@ and below. Here are more helpers:
 do define the views we use the following generator to give us access to the views 
 inside our app:
 		
-		$ bundle exec rails g devise:views
+		$ bundle exec rails generate devise:views
 		
 			create    app/views/devise/shared/_links.html.erb
 			create    app/views/devise/confirmations/new.html.erb
@@ -78,6 +82,8 @@ Admin, you will notice that Devise uses the same views for all models. Fortunate
 Devise offers an easy way to customize views. Check their documentation.
 
 > Now start the server and go to /users/sign_up ... boom. it's there.  
+
+_REVERSAL:_ You can reverse this generate by replacing "generate" with "destroy." 
 
 --------------------------------------------------------------------------------
 ### 3. Plan Model: Basic & Pro
