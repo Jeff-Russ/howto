@@ -3,7 +3,11 @@ require 'open-uri'
 
 class RailsController < ApplicationController
   def initial_setup
-    @file = File.read("z_markdown/1_Rails_Inital_Setup.md")
+    text = File.read("z_markdown/1_Rails_Inital_Setup.md")
+    html_toc = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:with_toc_data => true))
+    @toc  = html_toc.render(text).html_safe
+    @html = markdown.render(text).html_safe
   end
 
   def generate

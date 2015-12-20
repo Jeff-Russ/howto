@@ -282,11 +282,11 @@ To preview site on c9.io...
 Keep server running. Open new terminal tab...
 
       ### in project root directory:
-      $ git status# If you see changes that you want to commit
-      $ git add -A# add all and update deleted files (if needed)
-      $ git status# check if it was added
-      $ git commit -m "YOUR MSG"# local commit
-      $ git push origin <branch # push to github
+      $ git status # If you see changes that you want to commit
+      $ git add -A # add all and update deleted files (if needed)
+      $ git status # check if it was added
+      $ git commit -m "YOUR MSG" # local commit
+      $ git push origin <branch  # push to github
       
 Consider the master branch to be the one that is completed and deployed.
 It should always mirror what is currently deployed to the live web. 
@@ -439,7 +439,9 @@ __`example config/initializers/secret_token.rb:`__
       TheAppName::Application.config.secret_key_base = '' 
 
 Note that the app name will always begin with a capital letter even if you didn't 
-give it one. Insert a key between '' that you generate with `rake secret`.
+give it one when you generated it with `rails new`. The app's name is declared as 
+a module in `config/application.rb`. Insert a key between '' that you generate 
+with `rake secret`.
 
 __`example config/secrets.yml:`__
 
