@@ -1,15 +1,8 @@
-/* This is a manifest file that'll be compiled into application.css, which will include all the files listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the compiled 
- * file so the styles you add here take precedence over styles defined in any styles defined in the other 
- * CSS/SCSS files in this directory. It is generally better to create a new file per style scope.
- *
+/*
  *= require_tree .
  *= require_self
  */
+ 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
@@ -80,35 +73,8 @@
 .border-red    { outline: 1px solid red;     }
 .border-green  { outline: 1px solid #20f030; }
 
-// HTML OVERRIDES
-a:hover, a:focus { text-decoration: none !important; }
-xmp {
-	border:1px solid #999;
-	background-color: #444;
-	text-align: left;
-	color: #cceeff;
-	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
-	font-size: 85%;
-	tab-size: 3;
-}
 
-// Added for rails howto:
-code {
-	color: #bbddee;
-	background-color: #404040;
-	font-weight: bold;
-	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
 
-}
-pre {
-	border:1px solid #999;
-	background-color: #444;
-	text-align: left;
-	color: #cceeff;
-	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
-	font-size: 85%;
-	tab-size: 3;
-}
 
 // for syntax highlighter
 //*= require syntax-highlighter-rails/shCore
