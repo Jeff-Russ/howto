@@ -3,9 +3,9 @@
 # RAILS - SETUP APP
 
 --------------------------------------------------------------------------------
-### 1. Generate the App
+## 1. Generate the App
 
-#### Set up environment with specified ruby and rails versions:
+__Set up environment with specified ruby and rails versions:__
 
 To check Ruby and rails version:
    
@@ -17,7 +17,7 @@ __To install Ruby and Rails specific version and create app:__
       $ gem uninstall rails
       $ gem uninstall railties
       $ gem install rails -v 4.1.0
-      $ rails _4.1.0_ new MySite # generate web app dir and files
+      $ rails _4.1.0_ new MySite  generate web app dir and files
    
 Specifying the version number it only needed if you have more than one installed.
 If you want mySQL locally, run: `$ rails new MySite -d mysql`
@@ -25,18 +25,18 @@ If you want mySQL locally, run: `$ rails new MySite -d mysql`
 __To install latest Ruby and Rails and create app__
 
       $ gem install rails
-      $ rails new MySite # generate web app dir and files
+      $ rails new MySite  generate web app dir and files
       
 --------------------------------------------------------------------------------
-### 2. Install Gem Add-Ons
+## 2. Install Gem Add-Ons
    
 Rails uses add-ons called Gems which you can specify in the file called Gemfile. 
 This file already has recommended gems listed in it, ready to install with the 
 following command:
 
       $ cd <project/root/directory/>
-      $ bundle update# do this step only if the next one does not work alone
-      $ bundle install --without production		# has remembered option
+      $ bundle update do this step only if the next one does not work alone
+      $ bundle install --without production		 has remembered option
    
 This remembered option means the next time you run `bundle install` it will retain.
 Beware the running things like `bundle update` `bundle install`and
@@ -45,8 +45,8 @@ version used by your app project! Therefore it's much safer to prepend with it.
    
 If you want to verify what has been installed you can run
 
-      $ gem list rails 	# to view only the rails gems
-      $ gem list 			# to list all gems
+      $ gem list rails 	 to view only the rails gems
+      $ gem list 			 to list all gems
       
 __Customize Gemfile__
    
@@ -65,50 +65,50 @@ here is the complete Gemfile as used in a project running Rails 4.1.0:
       source 'https://rubygems.org'
       
       
-      gem 'rails', '4.1.0' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-      gem 'sqlite3', group: [:development, :test] 		# Use sqlite3 as db for Active Record
+      gem 'rails', '4.1.0'  Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+      gem 'sqlite3', group: [:development, :test] 		 Use sqlite3 as db for Active Record
       
-      # Use postgresql as the database for production
+       Use postgresql as the database for production
       group :production do
       gem 'pg'
       gem 'rails_12factor'
       end
       
-      # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-      # gem 'therubyracer',platforms: :ruby 
+       See https://github.com/sstephenson/execjs#readme for more supported runtimes
+       gem 'therubyracer',platforms: :ruby 
       
-      # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-      # gem 'turbolinks'
+       Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+       gem 'turbolinks'
       
-      gem 'sass-rails', '4.0.3'				# Use SCSS for stylesheets
-      gem 'bootstrap-sass', '3.3.1'			# Use bootstrap library for styles
-      gem 'font-awesome-sass', '4.2.0'		# Use font awesome library for icons
+      gem 'sass-rails', '4.0.3'				 Use SCSS for stylesheets
+      gem 'bootstrap-sass', '3.3.1'			 Use bootstrap library for styles
+      gem 'font-awesome-sass', '4.2.0'		 Use font awesome library for icons
       
-      gem 'uglifier', '1.3.0'					# Compressor for JavaScript assets
-      gem 'coffee-rails', '4.0.0' 			# Use .js.coffee assets and views
-      gem 'jquery-rails'						# Use jquery as JavaScript library
-      gem 'jbuilder', '2.0'					# Build JSON APIs with ease
-      gem 'sdoc', '0.4.0', group: :doc		# bundle exec rake doc:rails generates the API under doc/api.
-      gem 'spring', group: :development	# speeds up dev by keeping app running in the bg. 
+      gem 'uglifier', '1.3.0'					 Compressor for JavaScript assets
+      gem 'coffee-rails', '4.0.0' 			 Use .js.coffee assets and views
+      gem 'jquery-rails'						 Use jquery as JavaScript library
+      gem 'jbuilder', '2.0'					 Build JSON APIs with ease
+      gem 'sdoc', '0.4.0', group: :doc		 bundle exec rake doc:rails generates the API under doc/api.
+      gem 'spring', group: :development	 speeds up dev by keeping app running in the bg. 
       
-      gem 'devise', '3.4.1'					# Use devise for user auth
-      # gem 'bcrypt', '3.1.7'					# Use ActiveModel has_secure_password
+      gem 'devise', '3.4.1'					 Use devise for user auth
+       gem 'bcrypt', '3.1.7'					 Use ActiveModel has_secure_password
       
-      gem 'stripe', '1.16.1'					# Use stripe for handling payments
-      gem 'figaro', '1.0.0'					# Use figaro to hide secret keys
+      gem 'stripe', '1.16.1'					 Use stripe for handling payments
+      gem 'figaro', '1.0.0'					 Use figaro to hide secret keys
       
-      gem 'paperclip', '4.2.1'				# Use paperclip for image uploads
-      # gem 'aws-sdk-v1' # For Amazon's S3 service If using paperclip <= v4.3.1
+      gem 'paperclip', '4.2.1'				 Use paperclip for image uploads
+       gem 'aws-sdk-v1'  For Amazon's S3 service If using paperclip <= v4.3.1
       
-      gem 'redcarpet', '~2.1.1' 			# for markdown support
-      gem 'coderay', '~1.0.7'				# for markdown support
+      gem 'redcarpet', '~2.1.1' 			 for markdown support
+      gem 'coderay', '~1.0.7'				 for markdown support
       
-.--------------------------------------------------------------------------------
-### 6. Font Awesome Setup
+--------------------------------------------------------------------------------
+## 3. Font Awesome Setup
 
 Add this to Gemfile:
 
-      # add font awesome library for icons
+       add font awesome library for icons
       gem 'font-awesome-sass'
       
 Run this terminal command which will fetch the gem online and install it:
@@ -121,11 +121,11 @@ Add this to app/assets/stylesheets/application.css.scss:
       @import "font-awesome";
    
 --------------------------------------------------------------------------------
-### 7. Bootstrap Setup
+## 4. Bootstrap Setup
 
 Go to our Gemfile and add this anywhere logical and save the file:
 
-      # adding bootstrap's gem
+       adding bootstrap's gem
       gem 'bootstrap-sass'
    
 Run this terminal command which will fetch the gem online and install it:
@@ -156,13 +156,13 @@ Without this, the site will adapt to some degree but not completely. For example
 if you have a navigation bar with a number of option they will compress into a menu
 but the menu will not be functional without this inclusion.
 
-.-------------------------------------------------------------------------------
-### 3. Launch Site Locally
+--------------------------------------------------------------------------------
+## 5. Launch Site Locally
 
 Now let's launch the site privately:
 
-      $ rails server -p 808						# Do this for local machines
-      $ bundle exec rails server -p $PORT -b $IP 	# Do this for cloud9
+      $ rails server -p 808						 Do this for local machines
+      $ bundle exec rails server -p $PORT -b $IP 	 Do this for cloud9
    
 You can grab the URL and open it anywhere else. When you are done coding you may
 want to take it down by being in the terminal and hitting ctrl-c
@@ -196,15 +196,15 @@ not a normal way we would ever add content!
    
 3. Now launch the page locally again with one of these commands :
    
-      $ rails server -p 808						# Do this for local machines
-      $ bundle exec rails server -p $PORT -b $IP 	# Do this for cloud9
+      $ rails server -p 808						 Do this for local machines
+      $ bundle exec rails server -p $PORT -b $IP 	 Do this for cloud9
 
 --------------------------------------------------------------------------------
 
 # RAILS - SETUP GIT
 
 --------------------------------------------------------------------------------
-### 1. Setup Git Source Control
+## 1. Setup Git Source Control
 
 First make a Github or Bitbucket account and VERIFY YOUR EMAIL. 
 
@@ -216,7 +216,7 @@ always make sure you are at the project root. Do the following only once per com
       $ git config --global user.name "Your Name"
       $ git config --global user.email "your@email.com"
       $ git config --global push.default matching
-      $ cat ~/.ssh/id_rsa.pub			# copy entire key.
+      $ cat ~/.ssh/id_rsa.pub			 copy entire key.
                               
 Go to Github and click on settings for your profile. Click SSH keys and add key from above.
 Now for the things done per-project... 						
@@ -226,7 +226,7 @@ Choose not to make a README.md. After you submit, on the next screen click SSH a
 Before we connect our local file to Github we need to have git setup locally:
 
       $ cd <project/root/directory/
-      $ git init		# this generates the git control files and folders
+      $ git init		 this generates the git control files and folders
       
 Rails uses .rdoc for readme files which is not what Github uses. Change the 
 extension:
@@ -240,11 +240,11 @@ them from ever being uploaded.
 
 See https://help.github.com/articles/ignoring-files for more about ignoring files.
 
-      # TODO Comment out if OK with secrets being uploaded to the repo
+       TODO Comment out if OK with secrets being uploaded to the repo
       config/initializers/secret_token.rb
       config/secrets.yml
 
-      # Ignore application configuration
+       Ignore application configuration
       /config/application.yml
 
 If you find yourself ignoring temporary files generated by your text editor
@@ -254,39 +254,39 @@ or operating system, you probably want to add a global ignore instead:
       
 Now lets add and commit the project locally.
    
-      $ git add -A# get ready to add added files and delete deleted ones 
-      $ git status	# to view everything that was added
-      $ git commit -m "Initial commit"	# This commits everything locally
+      $ git add -A get ready to add added files and delete deleted ones 
+      $ git status	 to view everything that was added
+      $ git commit -m "Initial commit"	 This commits everything locally
       
 Next you get set the origin to be the version online. This mean two things: we connect
 the local with online and we declare the online to be the "origin." The address
 we type in below is the copied SSH not HTML. This means we don't have to keep logging on. 
 
-      ### always in project root directory!!
-      $ git remote add origin git@github.com:yourusername/MySite.git # copied from SSH
-      $ git remote					# to verify. you should see origin
-      $ git push origin master	# This uploads our prior commits to the online repo
+      ## always in project root directory!!
+      $ git remote add origin git@github.com:yourusername/MySite.git  copied from SSH
+      $ git remote					 to verify. you should see origin
+      $ git push origin master	 This uploads our prior commits to the online repo
       
 Deleted files are not updated with `git add .` so if you want to update any 
 deleted files you should use git to remove them or run `git add -A`
       
-.-------------------------------------------------------------------------------
-### 2. Git Routine Suggestions
+--------------------------------------------------------------------------------
+## 2. Git Routine Suggestions
       
 **Your daily workflow routine**
    
 To preview site on c9.io...
 
-      $ bundle exec rails server-p $PORT -b $IP # ctrl-c to take down preview 
+      $ bundle exec rails server-p $PORT -b $IP  ctrl-c to take down preview 
    
 Keep server running. Open new terminal tab...
 
-      ### in project root directory:
-      $ git status # If you see changes that you want to commit
-      $ git add -A # add all and update deleted files (if needed)
-      $ git status # check if it was added
-      $ git commit -m "YOUR MSG" # local commit
-      $ git push origin <branch  # push to github
+      ## in project root directory:
+      $ git status  If you see changes that you want to commit
+      $ git add -A  add all and update deleted files (if needed)
+      $ git status  check if it was added
+      $ git commit -m "YOUR MSG"  local commit
+      $ git push origin <branch   push to github
       
 Consider the master branch to be the one that is completed and deployed.
 It should always mirror what is currently deployed to the live web. 
@@ -304,23 +304,23 @@ I recommend at least two other branches in addition to the master branch:
 
 Here is how you create those:
 
-      $ git checkout -b update # copies current (master) branch to a new one, locally
-      $ git push origin update # uploads the new branch to Github (or whatever)
-      $ git checkout -b revert # copies current (update) branch to a new one, locally
-      $ git push origin revert # uploads the new branch to Github (or whatever)
+      $ git checkout -b update  copies current (master) branch to a new one, locally
+      $ git push origin update  uploads the new branch to Github (or whatever)
+      $ git checkout -b revert  copies current (update) branch to a new one, locally
+      $ git push origin revert  uploads the new branch to Github (or whatever)
       
 You should not work off of the master branch. If you start to and haven't ran 
 any commands to save it you are in luck. You can switch to another branch and save 
 the changes there. Here is how you would save them to the update branch:
 
       $ git checkout update
-      $ git add -A# add the changes to update branch
-      $ git commit -m "YOUR MSG"# local commit
-      $ git push origin update# upload 
+      $ git add -A add the changes to update branch
+      $ git commit -m "YOUR MSG" local commit
+      $ git push origin update upload 
    
 If, instead, you made change that you just want to discard you can run this:
 
-      $ git checkout --force# or -f
+      $ git checkout --force or -f
 
 
 --------------------------------------------------------------------------------
@@ -328,7 +328,7 @@ If, instead, you made change that you just want to discard you can run this:
 # RAILS - SETUP HEROKU
 
 --------------------------------------------------------------------------------
-### 1. Gemfile Update
+## 1. Gemfile Update
 
 Heroku is well known in the Ruby community. It's the most popular Rails host.
 They have very elegant hosting and deployment setup that we would all benefit in
@@ -339,7 +339,7 @@ provides it with a domain name for deployment.
 
       gem 'sqlite3', group: [:development, :test]
       
-      # Use postgresql as the database for production
+       Use postgresql as the database for production
       group :production do
          gem 'pg'
          gem 'rails_12factor'
@@ -347,18 +347,18 @@ provides it with a domain name for deployment.
 
 2. If you just added this, you need to run bundle install
       
-      ### in project root directory:
+      ## in project root directory:
       $ bundle install 
 
 ------------------------------------------------------------------------------
-### 2. Heroku Account
+## 2. Heroku Account
 
 1. Make and account at heroku.com with the same email address you used with github. 
 2. Go to your email to complete the account creation. 
 3. Make sure email is verified with github
 4. Go back to cloud9 terminal:
 
-      ### in project root directory:
+      ## in project root directory:
       $ heroku login
       $ YOUREMAIL@gmail.com
       $ ******** (one cap, one non alpha-num)
@@ -367,14 +367,14 @@ provides it with a domain name for deployment.
       $ heroku create
       
 --------------------------------------------------------------------------------
-### 3. Deploy to Heroku
+## 3. Deploy to Heroku
 
 Make sure you are on the master branch and all (stable) changes are merged in. 
 
       $ git push heroku master
       
 --------------------------------------------------------------------------------
-### 4. Troubleshooting Heroku
+## 4. Troubleshooting Heroku
 
 This grabs the latest copy from Git and sends it to the URL
 If you go to your URL later and it's not there, that's okay, heroku sleeps it.
@@ -406,7 +406,7 @@ of your rails application
       $ heroku restart
 
 --------------------------------------------------------------------------------
-### 5. Public Repos and Heroku
+## 5. Public Repos and Heroku
 
 Rails uses keys to authorize deployment which should not be shared publicly. 
 There is a filed called .gitignore found at the project root which lists files 
@@ -430,7 +430,7 @@ actual Rails app.
 In summary you will have three keys: development, test and production. You can 
 generate these yourself with the command `rake secret`
 
-__ Added to .gitignore __
+__Added to .gitignore__
 
       config/initializers/secret_token.rb
 
@@ -458,7 +458,7 @@ will take the value set in the gitignored secret_token.rb file.
       secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
 
 --------------------------------------------------------------------------------
-### 6. Renaming Heroku Apps
+## 6. Renaming Heroku Apps
 
 __From the Heroku Website__ 
 
@@ -486,7 +486,7 @@ these will need to be updated manually:
 # RAILS - GOOGLE DOMAINS
 
 -------------------------------------------------------------------------------
-### 1. Google Domains with Heroku
+## 1. Google Domains with Heroku
 
 Instead of having your domain be a subdomain of herokuapp.com you can purchase 
 your own domain and have it point to the Heroku app. One solution is to purchase 
@@ -508,8 +508,8 @@ Now you're DONE! It may take a few hour to take effect. Google says it could
 take 48 hours but for me it's usually in effect in a few minutes. Sometimes I'll 
 enter "1m" instead of "1h" but I'm not certain if that makes any difference
 
-.-------------------------------------------------------------------------------
-### 2. Google Subdomains with Heroku
+--------------------------------------------------------------------------------
+## 2. Google Subdomains with Heroku
 
 You may choose to use the single Google domain name for many different apps. 
 One solution is to have a main app at your Google domain and then create other 

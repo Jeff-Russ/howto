@@ -3,9 +3,11 @@ class BootstrapController < ApplicationController
   end
 
   def grids
+    render layout: "bootstrap"
   end
 
   def buttons
+    render layout: "bootstrap"
   end
 
   def glyphs

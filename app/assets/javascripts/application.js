@@ -15,3 +15,6 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+// to fix navbar hiding to of content when linking to spot in page:
+window.addEventListener("hashchange", function() { scrollBy(0, -50) })
