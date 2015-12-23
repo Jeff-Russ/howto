@@ -3,7 +3,7 @@
 <head>
 	<%= favicon_link_tag 'favicon.ico' %>
 	<title>Bootstrap Demo</title>
-	<%= stylesheet_link_tag    'application' %>
+	<%= stylesheet_link_tag    'application', media: 'all' %>
 	<%= javascript_include_tag 'application' %>
 	<%= csrf_meta_tags %>
 </head>
@@ -12,36 +12,28 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top blacknav" role="navigation">
 		<div class='container'>
 			<div class="navbar-left">
-				
-				<%= link_to 'http://www.jeffruss.com', class: "navbar-btn navbar-brand" do %>
-					<button class="btn greenwell">
+				<%= link_to 'http://www.jeffruss.com', class: "navbar-brand" do %>
+					<button class="btn navbar-btn greenwell">
 						<img style="max-width:50px;"
 							src="http://i1377.photobucket.com/albums/ah75/Jeffrey_Russ/JR_20px_wide_zpsy9os6cdz.png">
 					</button>
 				<% end %>
-				
 			</div>
 			
 			<div class="navbar-right">
 				
-				<button class='dropdown btn navbar-btn navbar-rbtn dropdown-toggle' type='button' data-toggle='dropdown'>
-					<%= yield(:topic) %>
-				</button>
-				<ul class='dropdown-menu' role='menu'>
-					<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
-					<li role='presentation' class='dropdown-header'>Header</li>
-					<li role='presentation' class='disabled'></li>
-					<li role='presentation' class='divider'></li>
-					<li role='presentation'><a href='#' role='menuitem' tabindex='-1'>link1</a></li>
-				</ul>	
+				<%= link_to yield(:prev) do %>
+					<span class="glyphicon glyphicon-chevron-left navbar-prev"></span>
+				<% end %>
 				
 				<button type='button' data-toggle='modal' 
 						class="btn navbar-btn navbar-rbtn" data-target='#modal-menu'>
 					<%= yield(:page) %>
 				</button>
 				
-				<%= yield(:toc) %>
-				
+				<%= link_to yield(:next) do %>	
+					<span class="glyphicon glyphicon-chevron-right navbar-next"></span>
+				<% end %>
 			</div>
 		</div>
 	</nav>
@@ -66,7 +58,7 @@
 										class: 'btn btn-large btn-block btn-success btn-ghost'%>
 								</div>								
 								<div class="col-xs-4">
-									<%= link_to "Grids etc.", bootstrap_grids_path,
+									<%= link_to "Grids & Sections", bootstrap_grids_path,
 										class: 'btn btn-large btn-block btn-warning btn-ghost'%>
 								</div>
 								<div class="col-xs-4">
@@ -98,7 +90,7 @@
 										class: 'btn btn-large btn-block btn-danger btn-ghost'%>
 								</div>	
 								<div class="col-xs-4">
-									<%= link_to "Lists", bootstrap_list_groups_path, 
+									<%= link_to "List Groups", bootstrap_list_groups_path, 
 										class: 'btn btn-large btn-block btn-info btn-ghost'%>
 								</div>
 							</div>
@@ -108,11 +100,11 @@
 										class: 'btn btn-large btn-block btn-danger btn-ghost'%>
 								</div>								
 								<div class="col-xs-4">
-									<%= link_to "Carousels", bootstrap_images_path, 
+									<%= link_to "Image Carousels", bootstrap_images_path, 
 										class: 'btn btn-large btn-block btn-warning btn-ghost'%>
 								</div>
 								<div class="col-xs-4">
-									<%= link_to "Modals", bootstrap_modals_path, 
+									<%= link_to "Modal Windows", bootstrap_modals_path, 
 										class: 'btn btn-large btn-block btn-success btn-ghost'%>
 								</div>
 							</div>
@@ -123,13 +115,15 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container">
-		<div class="well text-center">
+	
+		<%= link_to bootstrap_home_path do %>  
+		<div class="well text-center link">
 			<h1 class="link"><%= yield(:page) %></h1>
 		</div>
-		
+		<% end %>
+
 		<%= yield %>
+
 		
 		<div class="row">
 			<div class="span12">
