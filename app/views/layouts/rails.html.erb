@@ -12,47 +12,9 @@
 			</div>
 			<div class="modal-body">
 				<div class="jr-dark-body">
-					<div class="row text-center">
-						<h3>Pick a Rails Topic</h3>
-					</div>
-					<div class="row spacer">
-						<div class="col-xs-4">
-							<%= link_to "Setup", rails_initial_setup_path, 
-								class: 'btn btn-large btn-block btn-success btn-ghost'%>
-						</div>								
-						<div class="col-xs-4">
-							<%= link_to "Generate", rails_generate_path,
-								class: 'btn btn-large btn-block btn-warning btn-ghost'%>
-						</div>
-						<div class="col-xs-4">
-							<%= link_to "Sendgrid", rails_sendgrid_path, 
-								class: 'btn btn-large btn-block btn-danger btn-ghost'%>
-						</div>
-					</div>    
-					<div class="row spacer">
-						<div class="col-xs-4">
-							<%= link_to "bcrypt", rails_bcrypt_path, 
-								class: 'btn btn-large btn-block btn-info btn-ghost'%>
-						</div>								
-						<div class="col-xs-4">
-							<%= link_to "Devise", rails_devise_path, 
-								class: 'btn btn-large btn-block btn-success btn-ghost'%>
-						</div>
-						<div class="col-xs-4">
-							<%= link_to "Stripe", rails_stripe_path, 
-								class: 'btn btn-large btn-block btn-warning btn-ghost'%>
-						</div>
-					</div>
-					<div class="row spacer">
-						<div class="col-xs-4">
-							<%= link_to "Media", rails_media_path, 
-								class: 'btn btn-large btn-block btn-success btn-ghost'%>
-						</div>
-						<div class="col-xs-4">
-							<%= link_to "Markdown", rails_markdown_path, 
-								class: 'btn btn-large btn-block btn-danger btn-ghost'%>
-						</div>	
-					</div>
+					
+				<%= render :file => 'layouts/rails_menu' %>
+					
 				</div><br>
 				<div class="modal-footer"></div>
 			</div>
