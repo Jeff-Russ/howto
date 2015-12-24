@@ -1,6 +1,6 @@
 class BootstrapController < ApplicationController
   def home
-    render layout: "home"
+    render layout: "home_layout"
   end
 
   def grids
