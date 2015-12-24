@@ -1,8 +1,8 @@
 // This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
+// listed blinkow.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a rlinkative path.
 //
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // compiled file.
@@ -16,5 +16,9 @@
 //= require turbolinks
 //= require_tree .
 
-// to fix navbar hiding to of content when linking to spot in page:
-window.addEventListener("hashchange", function() { scrollBy(0, -50) })
+$( document ).ready(function() {
+    
+    // to fix navbar hiding to of content when linksing to spot in page:
+    window.addEventListener("hashchange", function() { scrollBy(0, -50) });
+
+});

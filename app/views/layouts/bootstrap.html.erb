@@ -2,7 +2,7 @@
 <html>
 <head>
 	<%= favicon_link_tag 'favicon.ico' %>
-	<title>Bootstrap Demo</title>
+	<title><%= yield(:topic) %> - <%= yield(:page) %> </title>
 	<%= stylesheet_link_tag    'application', media: 'all' %>
 	<%= javascript_include_tag 'application' %>
 	<%= csrf_meta_tags %>
@@ -22,12 +22,17 @@
 			
 			<div class="navbar-right">
 				
+				<button type='button' data-toggle='modal' 
+						class='btn navbar-btn nav-button' data-target='#modal-topic-menu'>
+					<%= yield(:topic) %>
+				</button>
+				
 				<%= link_to yield(:prev) do %>
 					<span class="glyphicon glyphicon-chevron-left navbar-prev"></span>
 				<% end %>
 				
 				<button type='button' data-toggle='modal' 
-						class="btn navbar-btn navbar-rbtn" data-target='#modal-menu'>
+						class="btn navbar-btn nav-button" data-target='#modal-bootstrap-menu'>
 					<%= yield(:page) %>
 				</button>
 				
@@ -39,7 +44,9 @@
 	</nav>
 	<div class="container nav-spacer">
 		
-		<div class="modal custom" id="modal-menu" tabindex='-1' role='dialog'>
+		<%= render :file => 'layouts/modal_topic_menu' %>
+		
+		<div class="modal" id="modal-bootstrap-menu" tabindex='-1' role='dialog'>
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header jr-dark-body">
@@ -50,7 +57,7 @@
 					<div class="modal-body">
 						<div class="jr-dark-body">
 							<div class="row text-center">
-								<h3>Pick a component</h3>
+								<h3>Pick a Bootstrap Component</h3>
 							</div>
 							<div class="row spacer">
 								<div class="col-xs-4">
@@ -116,11 +123,9 @@
 			</div>
 		</div>
 	
-		<%= link_to bootstrap_home_path do %>  
 		<div class="well text-center link">
-			<h1 class="link"><%= yield(:page) %></h1>
+			<h1><%= yield(:topic) %> - <%= yield(:page) %> </h1>
 		</div>
-		<% end %>
 
 		<%= yield %>
 

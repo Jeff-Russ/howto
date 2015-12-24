@@ -72,3 +72,5 @@ gem 'reverse_markdown'
 # equivalent for secrets.yml of that Figaro
 # gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'  # rake heroku:secrets RAILS_ENV=production
 
+
+gem 'sprockets-rails', '2.3.3'

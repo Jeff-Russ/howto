@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= favicon_link_tag 'favicon.ico' %>
+	<title><%= yield(:page) %></title>
+	<%= stylesheet_link_tag    'application', media: 'all' %>
+	<%= javascript_include_tag 'application' %>
+	<%= csrf_meta_tags %>
+</head>
+<body class="jr-dark-body ">
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top blacknav" role="navigation">
+		<div class='container'>
+			<div class="navbar-left">
+				<%= link_to 'http://www.jeffruss.com', class: "navbar-brand" do %>
+					<button class="btn navbar-btn greenwell">
+						<img style="max-width:50px;"
+							src="http://i1377.photobucket.com/albums/ah75/Jeffrey_Russ/JR_20px_wide_zpsy9os6cdz.png">
+					</button>
+				<% end %>
+			</div>
+			
+			<div class="navbar-right">
+				
+				<button type='button' data-toggle='modal' 
+						class='btn navbar-btn nav-button' data-target='#modal-topic-menu'>
+					<%= yield(:topic) %>
+				</button>
+				
+
+			</div>
+		</div>
+	</nav>
+	<div class="container nav-spacer">
+		
+		<%= render :file => 'layouts/modal_topic_menu' %>
+		
+
+		<div class="well text-center link">
+			<h1> <%= yield(:page) %></h1>
+		</div>
+
+		<%= yield %>
+
+		
+		<div class="row">
+			<div class="span12">
+				<br><br><hr><small>    © Copyright 2015 Jeffrey Russ.</small><br><br><br>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

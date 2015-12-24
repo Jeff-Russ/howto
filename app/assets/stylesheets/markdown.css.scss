@@ -3,30 +3,8 @@
  *= require_self
  */
 
-code {
-	color: #bbddee;
-	background-color: #404040;
-	font-weight: bold;
-	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
-}
-pre {
-	border:1px solid #999;
-	background-color: #444;
-    margin-left: 100px;
-// 	text-align: left;
-	color: #cceeff;
-	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
-	font-size: 85%;
-	tab-size: 3;
-}
-div >p {
-    margin-left: 50px;
-}
-li {
-    margin-left: 68px;
-}
-.row {
-    margin-left: -40px;
-}
-
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
+// @import "font-awesome-sprockets";
+// @import "font-awesome"; 
 

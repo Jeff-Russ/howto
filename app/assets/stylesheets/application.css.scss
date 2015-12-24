@@ -1,4 +1,12 @@
-/*
+/* This is a manifest file that'll be compiled into application.css, which will include all the files listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the compiled 
+ * file so the styles you add here take precedence over styles defined in any styles defined in the other 
+ * CSS/SCSS files in this directory. It is generally better to create a new file per style scope.
+ *
  *= require_tree .
  *= require_self
  */
@@ -8,49 +16,55 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-@media print {
-	@page { margin: 0; }
-	body { margin: 1.6cm; }
-}
-.invisible { display: none; }
-
 // BOOTSTRAP CLASS OVERRIDES
-.form-control { color: #ffe; background-color: #555; }
+	/* recoloring */
+.form-control { color: #ffe; background-color: #555; } // invert color for forms
 .jumbotron    { color: #ffffd0 !important; background-color: #505F50 !important; }
 .well         { color: #ffffd0 !important; background-color: #393939 !important; border-color: #666 !important;}
-/*-- change navbar dropdown color --*/
-.dropdown-menu {
-	background-color: #444;
-	color: white !important;
+.alert-notice { color: #8a6d3b;	background-color: #fcf8e3; border-color: #faebcc; }
+/* overwriting default behaviour of Modal Popup in Bootstrap  */
+body   { 
+	// overflow: auto !important;
+	
 }
-	/* navbar overrides */
-.navbar       { max-height:28px !important;}
-.navbar-brand { padding-top: 0px;}
-.navbar-right { padding-top: 14px; padding-right: 14px; float: right!important; }
-.modal.custom .modal-dialog .modal-body { background-color: #404040; }
+.modal {  
+	// overflow: hidden; 
+}
+.modal .modal-dialog .modal-body { background-color: #404040; }
+// a custom modal:
+.modal.bottom-right { 
+	right:-90%;
+	top:30%;
+	// margin-top:10%;
+	// border-top:10%;
+	// padding-top:10%;	
+}
+
+#dismiss {
+	margin-right:95%;
+}
+.toc { font-size: 90% }
+ul { 
+	counter-reset: item; 
+	list-style-type: none; 
+	margin-left: -3%;
+}
+li > a { color: #bdf; font-weight: 300; }
+
+	/* navbar positioning */
+.navbar       { max-height:28px !important;} // navbar was too big
+.navbar-brand { padding-top: 0px;padding-right: 0px;border-right: 0px;margin-right: 0px;}
 	/* disable navbar collapse */
+.navbar-right                       { float: right!important;  }
 .navbar-collapse.collapse           { display: block!important;       }
-.navbar-nav>li, .navbar-nav         { float: left !important;         }
+.navbar-nav > li, .navbar-nav       { float: left !important;         }
 .navbar-nav.navbar-right:last-child { margin-right: -15px !important; }
 
-// .navbar-form {
-//     float: right;
-//     width: auto;
-//     padding-top: 0;
-//     padding-bottom: 0;
-//     margin-right: 0;
-//     margin-left: 0;
-//     border: 0;
-//     -webkit-box-shadow: none;
-//     box-shadow: none;
-// }
+// BOOSTRAP ADDONS
+.navbar-prev{ color: #94ba65; font-size:15px; padding-right: 10px; padding-left: 12px; }
+.navbar-next{ color: #94ba65; font-size:15px; padding-left:  10px;}
+.nav-button { color: #94ba65; background-color: #3e423e;}
 
-
-
-// BOOTSTRAP ADD-ON CLASSES
-.navbar-prev{ color: #94ba65; font-size:35px; margin-right:12px; }
-.navbar-rbtn{ color: #94ba65; background-color: #3e423e; margin-top: -5px; margin-bottom: 0px; }
-.navbar-next{ color: #94ba65; font-size:35px; margin-left:12px;  }
 .nav-spacer { padding-top: 60px; }
 .spacer     { margin-top: 40px; background-color: #404040; }
 .blacknav   { color: #ffffd0 !important; background-color: #333333 !important; }
@@ -84,9 +98,8 @@
 }
 
 // CUSTOM CLASSES
-.jr-dark-body  { color: #ffffd0; background-color: #404040; }
+.jr-dark-body  { color: #ffffee; background-color: #404040; }
 .black-text    { color: #444; }
-.white-text    { color: #fff !important; }
 .jr-green-bg   { background-color: #606F60; }
 .bluish        { color: #bbddee; }
 .jr-green      { color: #94ba65; }
@@ -94,29 +107,65 @@
 .border-orange { outline: 1px solid orange;  }
 .border-red    { outline: 1px solid red;     }
 .border-green  { outline: 1px solid #20f030; }
+.invisible     { display: none; }
 
-// .sidebar-outer {
-//     position: relative;
-// }
-// @media (min-width: 768px) {
-//     .sidebar {
-//         position: fixed;
-//     }
-// }
-
-.fix-left {
-    margin-top: -12% !important;
-    margin-left: -8.3333% !important;
+// HTML OVERRIDES
+a:hover, a:focus { text-decoration: none !important; }
+xmp {
+	border:1px solid #999;
+	background-color: #444;
+	text-align: left;
+	color: #cceeff;
+	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+	font-size: 85%;
+	tab-size: 3;
 }
 
-.alert-notice {
-	color: #8a6d3b;
-	background-color: #fcf8e3;
-	border-color: #faebcc;
+// For markdown rendered to HTML
+code { // in-text code
+	color: #cff;
+	background-color: #444;
+	font-weight: bold;
+	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+}
+.markdown > pre, li > pre { // code blocks
+	border:1px solid #999;
+	border-color: #94ba65;
+	color: #cff;
+	background-color: #444;
+    margin-left: 100px;
+	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+	font-size: 85%;
+	tab-size: 3;
 }
 
+li > pre { // code blocks
+	border:1px solid #999;
+	border-color: #94ba65;
+	color: #cff;
+	background-color: #444;
+    margin-left: 20px;
+	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+	font-size: 85%;
+	tab-size: 3;
+}
 
+h1         { color: #cdb; }
+h2         { color: #eff; }
+h3         { color: #94ba65;  margin-left: 25px; }
+h4, h5, h6 { color: #94ba65; margin-left: 40px}
+.markdown > p    { margin-left: 70px; }
+.markdown > ol, .markdown > ul { margin-left: 100px; }
+// .markdown > .row { margin-left: -75px;}
 
 // for syntax highlighter
 //*= require syntax-highlighter-rails/shCore
 //*= require syntax-highlighter-rails/shThemeDefault
+
+
+
+
+
+
+/* created new class for targetting purpose - named ".modal2", ".modal1" */
+// .modal-right { bottom:-10%; right:-50%; }
