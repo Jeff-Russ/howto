@@ -145,7 +145,7 @@ li > pre { // code blocks
 	border-color: #94ba65;
 	color: #cff;
 	background-color: #444;
-    margin-left: 20px;
+    margin-left: 10px;
 	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
 	font-size: 85%;
 	tab-size: 3;
@@ -153,10 +153,10 @@ li > pre { // code blocks
 
 h1         { color: #cdb; }
 h2         { color: #eff; }
-h3         { color: #94ba65;  margin-left: 25px; }
-h4, h5, h6 { color: #94ba65; margin-left: 40px}
-.markdown > p    { margin-left: 70px; }
-.markdown > ol, .markdown > ul { margin-left: 100px; }
+h3         { color: #94ba65;  margin-left: 20px; }
+h4, h5, h6 { color: #94ba65; margin-left: 35px}
+.markdown > p    { margin-left: 50px; }
+.markdown > ol, .markdown > ul { margin-left: 40px; }
 // .markdown > .row { margin-left: -75px;}
 
 // for syntax highlighter

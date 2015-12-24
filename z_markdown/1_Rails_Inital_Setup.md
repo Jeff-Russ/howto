@@ -64,21 +64,20 @@ here is the complete Gemfile as used in a project running Rails 4.1.0:
 
 	source 'https://rubygems.org'
 	
-	
 	gem 'rails', '4.1.0'  Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 	gem 'sqlite3', group: [:development, :test] 		 Use sqlite3 as db for Active Record
 	
-	 Use postgresql as the database for production
+	# Use postgresql as the database for production
 	group :production do
 	gem 'pg'
 	gem 'rails_12factor'
 	end
 	
-	 See https://github.com/sstephenson/execjs#readme for more supported runtimes
-	 gem 'therubyracer',platforms: :ruby 
+	# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+	# gem 'therubyracer',platforms: :ruby 
 	
-	 Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-	 gem 'turbolinks'
+	# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+	# gem 'turbolinks'
 	
 	gem 'sass-rails', '4.0.3'				 Use SCSS for stylesheets
 	gem 'bootstrap-sass', '3.3.1'			 Use bootstrap library for styles
@@ -92,13 +91,13 @@ here is the complete Gemfile as used in a project running Rails 4.1.0:
 	gem 'spring', group: :development	 speeds up dev by keeping app running in the bg. 
 	
 	gem 'devise', '3.4.1'					 Use devise for user auth
-	 gem 'bcrypt', '3.1.7'					 Use ActiveModel has_secure_password
+	# gem 'bcrypt', '3.1.7'					 Use ActiveModel has_secure_password
 	
 	gem 'stripe', '1.16.1'					 Use stripe for handling payments
 	gem 'figaro', '1.0.0'					 Use figaro to hide secret keys
 	
 	gem 'paperclip', '4.2.1'				 Use paperclip for image uploads
-	 gem 'aws-sdk-v1'  For Amazon's S3 service If using paperclip <= v4.3.1
+	# gem 'aws-sdk-v1'  For Amazon's S3 service If using paperclip <= v4.3.1
 	
 	gem 'redcarpet', '~2.1.1' 			 for markdown support
 	gem 'coderay', '~1.0.7'				 for markdown support
@@ -108,7 +107,7 @@ here is the complete Gemfile as used in a project running Rails 4.1.0:
 
 Add this to Gemfile:
 
-	 add font awesome library for icons
+	# add font awesome library for icons
 	gem 'font-awesome-sass'
 	
 Run this terminal command which will fetch the gem online and install it:
@@ -125,7 +124,7 @@ Add this to app/assets/stylesheets/application.css.scss:
 
 Go to our Gemfile and add this anywhere logical and save the file:
 
-	 adding bootstrap's gem
+	# adding bootstrap's gem
 	gem 'bootstrap-sass'
    
 Run this terminal command which will fetch the gem online and install it:
@@ -183,21 +182,21 @@ not a normal way we would ever add content!
 1. In the file app/controllers/application_controller.rb you will find a class 
    called ApplicationController. Add to it this method:
 	
-	   def hello
-		 render text: "hello, world!"
-	   end
+		def hello
+		  render text: "hello, world!"
+		end
 	
    This method is also called an "action" and it usually corresponds to a page 
    on your site. Now lets tell the router to fetch it.
    
 2. In config/routes.rb add the following as the second line:
    
-	root 'application#hello'
+		root 'application#hello'
    
 3. Now launch the page locally again with one of these commands :
    
-	$ rails server -p 808						 Do this for local machines
-	$ bundle exec rails server -p $PORT -b $IP 	 Do this for cloud9
+		$ rails server -p 808						 Do this for local machines
+		$ bundle exec rails server -p $PORT -b $IP 	 Do this for cloud9
 
 --------------------------------------------------------------------------------
 
@@ -211,8 +210,8 @@ First make a Github or Bitbucket account and VERIFY YOUR EMAIL.
 Make sure your email address below is the same as you used with your Github or Bitbucket 
 account. I don't think it matters if usernames match. When doing anything with git
 always make sure you are at the project root. Do the following only once per computer: 
-
-	$ cd <project/root/directory/ 
+	
+	$ cd <project/root/directory/>
 	$ git config --global user.name "Your Name"
 	$ git config --global user.email "your@email.com"
 	$ git config --global push.default matching
@@ -225,7 +224,7 @@ Make a repository on Github. You'll probably want it to have the same name as yo
 Choose not to make a README.md. After you submit, on the next screen click SSH and copy.
 Before we connect our local file to Github we need to have git setup locally:
 
-	$ cd <project/root/directory/
+	$ cd <project/root/directory/>
 	$ git init		 this generates the git control files and folders
 	
 Rails uses .rdoc for readme files which is not what Github uses. Change the 
@@ -238,13 +237,13 @@ sensitive data, expecially if we have a public repo on Github. Even if the files
 don't yet exist, adding the following to the hidden file .gitignore will prevent 
 them from ever being uploaded. 
 
-See https://help.github.com/articles/ignoring-files for more about ignoring files.
+See [here](https://help.github.com/articles/ignoring-files) for more about ignoring files.
 
-	 TODO Comment out if OK with secrets being uploaded to the repo
+	# TODO Comment out if OK with secrets being uploaded to the repo
 	config/initializers/secret_token.rb
 	config/secrets.yml
 
-	 Ignore application configuration
+	# Ignore application configuration
 	/config/application.yml
 
 If you find yourself ignoring temporary files generated by your text editor
@@ -286,7 +285,7 @@ Keep server running. Open new terminal tab...
 	$ git add -A  add all and update deleted files (if needed)
 	$ git status  check if it was added
 	$ git commit -m "YOUR MSG"  local commit
-	$ git push origin <branch   push to github
+	$ git push origin <branch>   push to github
 	
 Consider the master branch to be the one that is completed and deployed.
 It should always mirror what is currently deployed to the live web. 
@@ -336,19 +335,18 @@ emulating even if we aren't hosting on Heroku. We push our app to Heroku and it
 provides it with a domain name for deployment.
 
 1. These modifications were made to Gemfile for Heroku compatibility:
-
-	gem 'sqlite3', group: [:development, :test]
 	
-	 Use postgresql as the database for production
-	group :production do
-	   gem 'pg'
-	   gem 'rails_12factor'
-	end
+		gem 'sqlite3', group: [:development, :test]
+		
+		# Use postgresql as the database for production
+		group :production do
+		  gem 'pg'
+		  gem 'rails_12factor'
+		end
 
-2. If you just added this, you need to run bundle install
+2. If you just added this, you need to run bundle install in project root directory:
 	
-	### in project root directory:
-	$ bundle install 
+		$ bundle install 
 
 ------------------------------------------------------------------------------
 ### 2. Heroku Account
@@ -356,15 +354,14 @@ provides it with a domain name for deployment.
 1. Make and account at heroku.com with the same email address you used with github. 
 2. Go to your email to complete the account creation. 
 3. Make sure email is verified with github
-4. Go back to cloud9 terminal:
-
-	### in project root directory:
-	$ heroku login
-	$ YOUREMAIL@gmail.com
-	$ ******** (one cap, one non alpha-num)
-	$ heroku keys:add
-	$ Y
-	$ heroku create
+4. Go back to cloud9 terminal in project root directory:
+	
+		$ heroku login
+		$ YOUREMAIL@gmail.com
+		$ ******** (one cap, one non alpha-num)
+		$ heroku keys:add
+		$ Y
+		$ heroku create
 	
 --------------------------------------------------------------------------------
 ### 3. Deploy to Heroku
@@ -414,13 +411,13 @@ not to be tracked by git. The problem we run into is that Heroku has you use git
 to send up the code for deployment and that code will not include the key. There 
 are a few solution to this such as the figaro and heroku_secrets gems. 
 
-I find there is need for figaro, heroku_secrets or any other gem. Secrets can be 
-organized into two files: config/intializers/secret_token.rb sets the 
-secret_key_base environmental variable used in production. This file is created 
+I find there is need for figaro, heroku\_secrets or any other gem. Secrets can be 
+organized into two files: config/intializers/secret\_token.rb sets the 
+secret\_key\_base environmental variable used in production. This file is created 
 manually and should be added to gitignore. The second file is config/secrets.yml 
 This file is also created manually and is NOT added to gitignore. It will set 
-secret_key_base used in production using the environmental variable created in 
-secret_token.rb as well as setting secret_key_base for development and testing 
+secret\_key\_base used in production using the environmental variable created in 
+secret\_token.rb as well as setting secret\_key\_base for development and testing 
 using strings. 
 
 I also found no need to set the variables using Heroku CLI's heroku config:set 
@@ -445,7 +442,7 @@ with `rake secret`.
 
 __example config/secrets.yml:__
 
-Insert a keys between '' that you generated with `rake secret`. SECRET_KEY_BASE 
+Insert a keys between '' that you generated with `rake secret`. SECRET\_KEY\_BASE 
 will take the value set in the gitignored secret_token.rb file. 
 
 	development:
