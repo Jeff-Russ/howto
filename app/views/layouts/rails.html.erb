@@ -1,25 +1,8 @@
 <% provide(:topic, "Rails ") %>
-<%= render :file => 'layouts/top' %>
 
-<!-- modal 2 - select a sub-topic (page)-->
-<div class="modal" id="modal-page-menu" tabindex='-1' role='dialog'>
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header jr-dark-body">
-				<button type="button" class="close jr-dark-body" data-dismiss='modal'>
-					&times;
-				</button><br>
-			</div>
-			<div class="modal-body">
-				<div class="jr-dark-body">
-					
-				<%= render :file => 'layouts/rails_menu' %>
-					
-				</div><br>
-				<div class="modal-footer"></div>
-			</div>
-		</div>
-	</div>
-</div>
+<% content_for :page_menu do %>
+	<%= render :file => 'layouts/rails_menu' %>
+<% end %>
 
-<%= render :file => 'layouts/bottom' %>
+<%= render :file => 'layouts/layout_shell' %>
+

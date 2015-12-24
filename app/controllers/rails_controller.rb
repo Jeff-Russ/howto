@@ -4,7 +4,7 @@ require 'open-uri'
 class RailsController < ApplicationController
 
   def home
-    render :layout => 'home'
+    render :layout => 'home_layout'
   end
   
   def initial_setup

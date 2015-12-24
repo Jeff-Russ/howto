@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= favicon_link_tag 'favicon.ico' %>
+	<title>
+		<%= yield :topic %>- 
+		<%= yield :page %>
+	</title>
+	<%= stylesheet_link_tag    'application', media: 'all' %>
+	<%= javascript_include_tag 'application' %>
+	<%= csrf_meta_tags %>
+</head>
+
+<body class="jr-dark-body ">
+	
+	<!-- BEGIN NAVBAR (non-collapsing)-->
+	<nav class="navbar navbar-inverse navbar-fixed-top blacknav" role="navigation">
+		<div class='container'>
+			
+			<div class="navbar-left">
+				
+				<%= link_to 'http://www.jeffruss.com', class: "navbar-btn navbar-brand" do %>
+					<button class="btn greenwell">
+						<img style="max-width:50px;"
+							src="http://i1377.photobucket.com/albums/ah75/Jeffrey_Russ/JR_20px_wide_zpsy9os6cdz.png">
+					</button>
+				<% end %>
+				
+			</div>
+			
+			<div class="navbar-right"> 
+				
+				<!-- navbar buttons for three modal windows -->
+				
+				<!-- modal 1 - select a topic (group of pages - controller )-->
+				<button type='button' data-toggle='modal' 
+						class='btn navbar-btn nav-button' data-target='#modal-topic-menu'>
+					<%= yield :topic %>
+				</button>
+				
+				<!-- modal 2 - select a sub-topic (particular page)-->
+				<button type='button' data-toggle='modal' 
+						class="btn navbar-btn nav-button" data-target='#modal-page-menu'>
+					<%= yield :page %>
+				</button>
+				
+				<!-- modal 3 - TOC to select a position in page -->
+				<button type='button' data-toggle='modal' 
+						class="btn navbar-btn nav-button" data-target='#modal-toc'>
+					<span class='caret'></span>
+				</button>
+				
+			</div> <!-- end navbar right -->
+		</div> <!-- end container -->
+	</nav> <!--END NAVBAR-->
+	
+	<div class="container nav-spacer">  <!--nav-space prevents obscuring under navbar-->
+		
+		<!-- CONTENTS OF THREE MODAL WINDOWS -->
+		
+		<!-- modal 1 - select a topic -->
+		<div class="modal" id="modal-topic-menu" tabindex='-1' role='dialog'>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header jr-dark-body">
+						<button type="button" class="close jr-dark-body" data-dismiss='modal'>
+							&times;
+						</button><br>
+					</div>
+					<div class="modal-body">
+						<%= render :file => 'layouts/home_menu' %>
+						<div class="modal-footer"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal 2 - select a sub-topic (page)-->
+		<div class="modal" id="modal-page-menu" tabindex='-1' role='dialog'>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header jr-dark-body">
+						<button type="button" class="close jr-dark-body" data-dismiss='modal'>
+							&times;
+						</button><br>
+					</div>
+					<div class="modal-body">
+						<div class="jr-dark-body">
+						
+						<%= yield :page_menu %> 
+						
+						</div><br>
+						<div class="modal-footer"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- modal 3 - TOC to select a position in page -->
+		<div class="modal bottom-right" id="modal-toc" tabindex='-1' role='dialog'>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body" >
+						<div class="jr-dark-body">
+						<button type="button" class="close jr-dark-body " data-dismiss='modal' id='dismiss'>
+							&times;
+						</button><br>
+							<div class="row">
+								<h4>
+									<%= yield :topic %> - 
+									<%= yield :page %>
+								</h4>
+							</div>
+							<div class="toc">
+								<%= @toc %>
+							</div>
+							</div><br>
+						</div>
+						
+					</div>
+				</div>
+			</div> <!-- END CONTENTS OF THREE MODAL WINDOWS -->
+		
+		<!-- BEGIN PAGE CONTENTS -->
+		<div class="well text-center"> <!-- page title banner -->
+			<h1><%= yield(:topic) %> - <%= yield(:page) %></h1>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-11 col-xs-12">
+				<div class="markdown">
+		      		<%= @html %> 
+		      	</div>
+		   </div>   
+		</div>   
+		
+		<!-- PAGE FOOTER -->
+		<div class="row"> 
+			<div class="span12">
+				<br><br><hr><small>    © Copyright 2015 Jeffrey Russ.</small><br><br><br>
+			</div>
+		</div>
+		
+	</div> <!-- END container -->
+</body>
+</html>

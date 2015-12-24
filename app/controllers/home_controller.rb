@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
   def index
-    redirect_to "http://www.jeffruss.com"
+    render :layout => 'home_layout'
   end
 
   def admin
+    render :layout => 'home_layout'
   end
 end

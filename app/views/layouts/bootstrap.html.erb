@@ -44,7 +44,22 @@
 	</nav>
 	<div class="container nav-spacer">
 		
-		<%= render :file => 'layouts/modal_topic_menu' %>
+		<!-- modal 1 - select a topic -->
+		<div class="modal" id="modal-topic-menu" tabindex='-1' role='dialog'>
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header jr-dark-body">
+						<button type="button" class="close jr-dark-body" data-dismiss='modal'>
+							&times;
+						</button><br>
+					</div>
+					<div class="modal-body">
+						<%= render :file => 'layouts/home_menu' %>
+						<div class="modal-footer"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 		
 		<div class="modal" id="modal-bootstrap-menu" tabindex='-1' role='dialog'>
 			<div class="modal-dialog">
