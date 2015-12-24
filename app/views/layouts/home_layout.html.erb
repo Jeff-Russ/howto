@@ -31,7 +31,7 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container nav-spacer">
+	<div class="container nav-spacer-xl">
 		<!-- modal 1 - select a topic -->
 		<div class="modal" id="modal-topic-menu" tabindex='-1' role='dialog'>
 			<div class="modal-dialog">
@@ -54,11 +54,14 @@
 
 		<%= yield %>
 		
+		<!-- PAGE FOOTER -->
 		<div class="row">
 			<div class="span12">
+				<%= link_to 'http://www.jeffruss.com', style: 'color:#ffe' do %>
 				<br><br><hr><small>    © Copyright 2015 Jeffrey Russ.</small><br><br><br>
+				<% end %>
 			</div>
 		</div>
-	</div>
+	</div><!-- END container -->
 </body>
 </html>
