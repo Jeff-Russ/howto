@@ -115,7 +115,7 @@ li > a { color: #bdf; font-weight: 300; }
 // HTML OVERRIDES
 a:focus, a:active, a:link a:visited { text-decoration: none !important; color:#8FBC8F!important;}
 a:hover{ color:#61ff91!important;}
-.nav-button:hover {  color: #94fa65!important;}
+.nav-button:hover, .btn:hover, .btn-success:hover{  color: #94fa65!important;}
 xmp {
 	border:1px solid #999;
 	background-color: #444;
