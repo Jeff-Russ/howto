@@ -3,3 +3,5 @@ change lesson 2 adding pages to https://github.com/mhartl/sample_app_3rd_edition
 then
 
 add it to the end of lesson 1 and add lesson 3 to the end, so all setup is in one file
+
+text = open('https://s3.amazonaws.com/howto.jeffruss/rails/all.md') {|f| f.read }

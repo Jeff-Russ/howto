@@ -4,14 +4,18 @@ Rails.application.routes.draw do
   get 'home/admin'
   
   get 'rails/home'
-  get 'rails/initial_setup'
-  get 'rails/generate'
+  get 'rails/setup'
+  get 'rails/deploy'
+  get 'rails/basics'
   get 'rails/sendgrid'
   get 'rails/bcrypt'
   get 'rails/devise'
   get 'rails/stripe'
-  get 'rails/media'
+  get 'rails/paperclip'
+  get 'rails/amazonaws'
   get 'rails/markdown'
+  
+  get 'rails/all'
 
   get 'bootstrap/home'
   get 'bootstrap/grids'

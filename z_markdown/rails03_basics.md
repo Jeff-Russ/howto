@@ -1,17 +1,22 @@
 --------------------------------------------------------------------------------
 
-## ADDING PAGES WITH GENERATE
+## THE RAILS MVC
   
 --------------------------------------------------------------------------------
 ### 1. About The Rails MVC
 
-## ADDING PAGES WITH GENERATE
-  
--------------------------------------------------------------------------------- 
-	local computer to serve up the site to you in a web browser. The server 
-	catches the request looks for the Rails application and decides what to do.
+1. **THE REQUEST**
+		
+	During rails development, you will use the server rails comes with, called WEBrick
+	to serve the pages to your own machine only and view them in your browser. This 
+	server is for development stages only although it function much like any other. 
+	
+	The WEBrick server receives an HTTP request from the brower (client) and figures out
+	what Rails app it is for based on the URL being requested. If the request is a GET
+	request (user wants to SEE a page) then it uses the end part of the URL to determine 
+	what files in the Rails application are needed to serve it back.  
 	<br>
-
+	
 2. **SERVER-SIDE PROCESSING**
 	
 	The WEBrick server contacts the routes.rb file which hopefully has registered 
@@ -68,7 +73,11 @@
 	The response can contain Javascript, which runs in the browser.
 	
 --------------------------------------------------------------------------------
-### 2. Generating a Controller for Pages
+
+# ADDING PAGES
+  
+--------------------------------------------------------------------------------
+### 1. Generating a Controller for Pages
 
 We will create two pages, a home page and an about page. First need a controller to
 handle the fetching of either view. Rails can generate this for us: 

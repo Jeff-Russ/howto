@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 
-# RAILS - RAILS USERS WITH BCRYPT
+## USERS WITH BCRYPT
   
 -------------------------------------------------------------------------------
 
@@ -11,17 +11,17 @@
 #### 1. The session Object
 
 Each Rails application has a session table which identifies each client and 
-persists a small amount of data across each of their requests. Rails does this by  
+persists a small amount of data across each of their requests. Rails does this by 
 assigning a seemingly random string to their cookie and uses it to associate each 
 request with a particular session.
 
 The cookies themselves are not large enough to contain actual user data and doing 
 so would be a very insecure way to handle user authenticaion. Hackers would not 
 have any meaningful way to manipulate the string contained in the cookies unless 
-they had your secret_key_base which would allow them to become any user they want! 
+they had your secret\_key\_base which would allow them to become any user they want! 
  
  
-.-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 #### 2. Sessions and Users
 
 A post request can tell your app what user is signed in:
@@ -36,38 +36,38 @@ A post request can tell your app what user is signed in:
 	    
 And a get request can query session information:
 
-class UsersController < ApplicationController
+	class UsersController < ApplicationController
 
 
-.-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 ## 1. The Plan
 
 An authentication system is made up of signup, login, logout functionality. 
-The password_digest column and has_secure_password method are provided by bcrypt 
+The password\_digest column and has\_secure\_password method are provided by bcrypt 
 to store passwords securely.
 
 A session begins when a users logs in, and ends when a user logs out.
 
-The current_user method allow us to access the current user; require_user 
+The current\_user method allow us to access the current user; require_user 
 redirects to the root of the app if there is no such user.
 
 Before actions act as filters. They call methods before executing controller actions.
 
 
-.-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 ## 2. Signup
 
 Store passwords as encrypted strings in the database. This is what the 
-has_secure_password method helps with - it uses the bcrypt algorithm to securely
+has\_secure\_password method helps with - it uses the bcrypt algorithm to securely
 hash a user's password, which then gets saved in the password_digest column.
 
-Then when a user logs in again, has_secure_password will collect the password that 
+Then when a user logs in again, has\_secure\_password will collect the password that 
 was submitted, hash it with bcrypt, and check if it matches the hash in the database.
 
-1. Users controller - get '/signup' => 'users#new' - def new @user = User.new end 
-2. users#new's submit => post '/signup' => 'users#create' => redirect_to '/'
-3. User model has_secure_password 
-4. User migration first_name:string last_name:string email:string password_digest:string
+1. Users controller - `get '/signup' => 'users#new' - def new @user = User.new end` 
+2. users#new's `submit => post '/signup' => 'users#create' => redirect_to '/'`
+3. User model `has_secure_password `
+4. User migration `first_name:string last_name:string email:string password_digest:string`
 
 app/views/users/new.html.erb
 
@@ -109,11 +109,11 @@ creates a new session by taking the value @user.id and assigning it to the key
 :user_id
 
 
-.-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 ## 3. Login
  
- 1. Sessions controller - get /login => def new end
- 2. sessions#new's submit => post '/login' => 'sessions#create' => redirect_to '/'
+ 1. Sessions controller - `get /login => def new end`
+ 2. sessions#new's `submit => post '/login' => 'sessions#create' => redirect_to '/'`
  
 app/views/sessions/new.html.erb
 
@@ -145,10 +145,10 @@ This create action checks whether your email and password exist in the database,
 creates a new session, and redirects to the albums page.
 
 
-.-------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 ## 4. Logout
 
-1. Sessions controller - delete '/logout' => 'sessions#destroy'
+1. Sessions controller - `delete '/logout' => 'sessions#destroy'`
 
 	def destroy 
 	  session[:user_id] = nil 
@@ -161,10 +161,10 @@ creates a new session, and redirects to the albums page.
 
 1. Add def for current_user in ApplicationController
 	
-	helper_method :current_user 
+	helper\_method :current\_user 
 	
 	def current_user 
-	  @current_user ||= User.find(session[:user_id]) if session[:user_id] 
+	  @current\_user ||= User.find(session[:user\_id]) if session[:user\_id] 
 	end
 	
 The current_user method determines whether a user is logged in or logged out. It 
@@ -172,7 +172,7 @@ does this by checking whether there's a user in the database with a given sessio
 id. If there is, this means the user is logged in and @current_user will store 
 that user; otherwise the user is logged out and @current_user will be nil.
 
-The line helper_method :current_user makes current_user method available in the 
+The line helper\_method :current\_user makes current_user method available in the 
 views. By default, all methods defined in Application Controller are already 
 available in the controllers.
 
@@ -180,18 +180,18 @@ available in the controllers.
 2. Also add require_user
 	
 	def require_user 
-	  redirect_to '/login' unless current_user 
+	  redirect\_to '/login' unless current_user 
 	end
 
-The require_user method uses the current_user method to redirect logged out users 
+The require\_user method uses the current\_user method to redirect logged out users 
 to the login page.
 
 3. Add the following filter to the top of any controller to restrict access to 
 signed in users only.
 
-	before_action :require_user, only: [:index, :show]
+	before\_action :require\_user, only: [:index, :show]
 	
-The before_action command calls the require_user method before running the index 
+The before\_action command calls the require\_user method before running the index 
 or show actions.
 
 4. Block out portions or views with this embedded ruby condition:
