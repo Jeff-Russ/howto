@@ -5,7 +5,7 @@
 -------------------------------------------------------------------------------
 
 
-## 0. Overview
+### 0. Overview
 
 --------------------------------------------------------------------------------
 #### 1. The session Object
@@ -40,7 +40,7 @@ And a get request can query session information:
 
 
 --------------------------------------------------------------------------------
-## 1. The Plan
+### 1. The Plan
 
 An authentication system is made up of signup, login, logout functionality. 
 The password\_digest column and has\_secure\_password method are provided by bcrypt 
@@ -55,7 +55,7 @@ Before actions act as filters. They call methods before executing controller act
 
 
 --------------------------------------------------------------------------------
-## 2. Signup
+### 2. Signup
 
 Store passwords as encrypted strings in the database. This is what the 
 has\_secure\_password method helps with - it uses the bcrypt algorithm to securely
@@ -110,7 +110,7 @@ creates a new session by taking the value @user.id and assigning it to the key
 
 
 --------------------------------------------------------------------------------
-## 3. Login
+### 3. Login
  
  1. Sessions controller - `get /login => def new end`
  2. sessions#new's `submit => post '/login' => 'sessions#create' => redirect_to '/'`
@@ -146,7 +146,7 @@ creates a new session, and redirects to the albums page.
 
 
 --------------------------------------------------------------------------------
-## 4. Logout
+### 4. Logout
 
 1. Sessions controller - `delete '/logout' => 'sessions#destroy'`
 
@@ -157,7 +157,7 @@ creates a new session, and redirects to the albums page.
 
 
 --------------------------------------------------------------------------------	
-## 5. current_user 
+### 5. current_user 
 
 1. Add def for current_user in ApplicationController
 	
@@ -200,7 +200,7 @@ or show actions.
 
 
 --------------------------------------------------------------------------------
-## 6. User Roles
+### 6. User Roles
 
 There are various ways to have different levels of access to different users. If 
 you want each user to only have one role - basic, pro, admin, editor, etc - then 

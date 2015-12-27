@@ -15,8 +15,7 @@
 	
 	<!-- BEGIN NAVBAR (non-collapsing)-->
 	<nav class="navbar navbar-inverse navbar-fixed-top blacknav" role="navigation">
-		<div class='container'>
-			
+
 			<div class="navbar-left">
 				
 				<%= link_to 'http://www.jeffruss.com', class: "navbar-btn navbar-brand" do %>
@@ -25,8 +24,9 @@
 							src="http://i1377.photobucket.com/albums/ah75/Jeffrey_Russ/JR_20px_wide_zpsy9os6cdz.png">
 					</button>
 				<% end %>
-				
 			</div>
+			
+
 			
 			<div class="navbar-right"> 
 				
@@ -51,10 +51,9 @@
 				</button>
 				
 			</div> <!-- end navbar right -->
-		</div> <!-- end container -->
 	</nav> <!--END NAVBAR-->
 	
-	<div class="container nav-spacer">  <!--nav-space prevents obscuring under navbar-->
+	<div class="nav-spacer">  <!--nav-space prevents obscuring under navbar-->
 		
 		<!-- CONTENTS OF THREE MODAL WINDOWS -->
 		
@@ -62,8 +61,8 @@
 		<div class="modal" id="modal-topic-menu" tabindex='-1' role='dialog'>
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header jr-dark-body">
-						<button type="button" class="close jr-dark-body" data-dismiss='modal'>
+					<div class="modal-header jr-dark-bg">
+						<button type="button" class="close" data-dismiss='modal'>
 							&times;
 						</button><br>
 					</div>
@@ -78,17 +77,15 @@
 		<div class="modal" id="modal-page-menu" tabindex='-1' role='dialog'>
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header jr-dark-body">
-						<button type="button" class="close jr-dark-body" data-dismiss='modal'>
+					<div class="modal-header jr-dark-bg">
+						<button type="button" class="close" data-dismiss='modal'>
 							&times;
 						</button><br>
 					</div>
 					<div class="modal-body">
-						<div class="jr-dark-body">
-						
+
 						<%= yield :page_menu %> 
 						
-						</div>
 						<div class="modal-footer"></div>
 					</div>
 				</div>
@@ -100,8 +97,8 @@
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body" >
-						<div class="jr-dark-body">
-						<button type="button" class="close jr-dark-body " data-dismiss='modal' id='dismiss'>
+						<div class="jr-dark-bg">
+						<button type="button" class="close" data-dismiss='modal'>
 							&times;
 						</button><br>
 							<div class="row">
@@ -121,27 +118,30 @@
 			</div> <!-- END CONTENTS OF THREE MODAL WINDOWS -->
 		
 		<!-- BEGIN PAGE CONTENTS -->
-		<div class="well text-center"> <!-- page title banner -->
-			<h1><%= yield(:topic) %> - <%= yield(:page) %></h1>
-		</div>
 		
-		<div class="row">
-			<div class="col-xs-11 col-xs-12">
-				<div class="markdown">
-		      		<%= @html %> 
+		<div class="row-fluid" id='page-wrap'>
+			<div class="span8 markdown" >
+				<div class="well text-center"id='body'> <!-- page title banner -->
+					<h1><%= yield(:topic) %> - <%= yield(:page) %></h1>
+				</div>
+		      	<%= @html %> 
+		   </div>
+			<div  id="sidebar">
+				<div class="toc" id="toc">	
+			      	<%= @toc %>
 		      	</div>
-		   </div>   
+		   </div>  
 		</div>   
 		
 		<!-- PAGE FOOTER -->
 		<div class="row">
 			<div class="span12">
 				<%= link_to 'http://www.jeffruss.com', style: 'color:#FFFFEE' do %>
-				<br><br><hr><small>    © Copyright <%= Time.now.year %> Jeffrey Russ.</small><br><br><br>
+				<br><hr><small>    © Copyright <%= Time.now.year %> Jeffrey Russ.</small><br><br><br>
 				<% end %>
 			</div>
 		</div>
-	</div><!-- END container -->
+	</div><!-- END nav-spacer -->
 </body>
 
 <!-- Google Tag Manager -->

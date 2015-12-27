@@ -1,176 +1,178 @@
-/* This is a manifest file that'll be compiled into application.css, which will include all the files listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+/* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the compiled 
- * file so the styles you add here take precedence over styles defined in any styles defined in the other 
+ * The application CSS takes precedence over styles defined in any styles defined in the other 
  * CSS/SCSS files in this directory. It is generally better to create a new file per style scope.
  *
  *= require_tree .
  *= require_self
  */
- 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
 // BOOTSTRAP CLASS OVERRIDES
-	/* recoloring */
-.form-control { color: #ffe; background-color: #555; } // invert color for forms
-.jumbotron    { color: #ffffd0 !important; background-color: #505F50 !important; }
-.well         { color: #ffffd0 !important; background-color: #393939 !important; border-color: #666 !important;}
-.alert-notice { color: #8a6d3b;	background-color: #fcf8e3; border-color: #faebcc; }
-/* overwriting default behaviour of Modal Popup in Bootstrap  */
-body   { 
-	// overflow: auto !important;
-	
-}
-.modal {  
-	// overflow: hidden; 
-}
-.modal .modal-dialog .modal-body { background-color: #404040; }
-// a custom modal:
-.modal.bottom-right { 
-	right:-90%;
-	top:30%;
-	// margin-top:10%;
-	// border-top:10%;
-	// padding-top:10%;	
-}
-
-#dismiss {
-	margin-right:95%;
-}
-.toc { font-size: 90% }
-ul { 
-	counter-reset: item; 
-	list-style-type: none; 
-	margin-left: -3%;
-}
-li > a { color: #bdf; font-weight: 300; }
-
-	/* navbar positioning */
-.navbar       { max-height:28px !important;} // navbar was too big
+.well { color: #ffffd0 !important; background-color: #444 !important; border-color:#94ba65; 
+    margin-left: auto ; margin-right: auto ; max-width: 60em; }
+.jumbotron        { color: #ffffd0 !important; background-color: #505F50 !important; }
+.alert-notice     { color: #8a6d3b;	background-color: #fcf8e3; border-color: #faebcc; }
+.form-control     { color: #ffe; background-color: #555; } // invert color for forms
+.carousel-caption > h3 { color:#dee!important; }
+.list-group-item       { margin-left: 0%!important; }
+.navbar-btn:hover      { color:#94ca55!important; background-color: #444949!important; }
+.navbar       { max-height:28px!important; } 
 .navbar-brand { padding-top: 0px;padding-right: 0px;border-right: 0px;margin-right: 0px;}
-	/* disable navbar collapse */
-.navbar-right                       { float: right!important;  }
-.navbar-collapse.collapse           { display: block!important;       }
-.navbar-nav > li, .navbar-nav       { float: left !important;         }
-.navbar-nav.navbar-right:last-child { margin-right: -15px !important; }
-
-// BOOSTRAP ADDONS
-.navbar-prev{ color: #94ba65; font-size:15px; padding-right: 10px; padding-left: 12px; }
+.navbar-prev{ color: #94ba65; font-size:15px; padding-right: 10px; padding-left: 12px; } 
 .navbar-next{ color: #94ba65; font-size:15px; padding-left:  10px;}
-.nav-button { color: #94ba65; background-color: #3e423e;}
+.nav-button { color: #94ba65; background-color: #3e423e; border-color:#94ba65;} // needed?
+    /* disable navbar collapse */
+.navbar-right { float: right!important; padding-right: 3em!important;} // jr.com has  margin-top: 0px;        
+.navbar-collapse.collapse           { display: block!important;      }
+.navbar-nav>li, .navbar-nav         { float: left!important;         }
+.navbar-nav.navbar-right:last-child { padding-right: 100px!important; }
 
-.nav-spacer     { padding-top: 60px; }
-.nav-spacer-xl { padding-top: 100px; }
-.spacer     { margin-top: 40px; background-color: #404040; }
-.blacknav   { color: #ffffd0 !important; background-color: #333333 !important; }
-.greenwell  { color: #94ba65 !important; background-color: #3e423e !important; }
-.nonwell    { color: #94ba65 !important; background: transparent !important;   }
-
-.btn-xlarge {
-	padding: 18px 28px;
-	font-size: 14px;
-	line-height: normal;
-	-webkit-border-radius: 8px;
-	   -moz-border-radius: 8px;
-	        border-radius: 8px;
-	}
-.btn-large {
-	margin-bottom: 30px;
-	padding: 18px 28px;
-	font-size: 12px;
-	line-height: normal;
-	-webkit-border-radius: 8px;
-	   -moz-border-radius: 8px;
-	        border-radius: 8px;
-	}
-.btn-ghost {
-	background: transparent !important;
-	color: #ffffd0 !important;
-	/* CSS Transition */
-	-webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
-	   -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
-	    -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
-	     -o-transition: background .2s ease-in-out, border .2s ease-in-out;
-	        transition: background .2s ease-in-out, border .2s ease-in-out;
-}
+// BOOTSTRAP ADD-ON CLASSES
+.btn-xlarge{@extend.trans-250ms;padding: 18px 28px;font-size: 14px;line-height: normal; margin-bottom: 30px;}
+.btn-large {@extend.trans-250ms;padding: 18px 28px;font-size: 12px;line-height: normal; margin-bottom: 30px;}
+.btn-ghost {@extend.trans-250ms;background: transparent!important;color:#ffffd0!important; 
+              &:hover { background-color: #444949!important; } }
+.btn-ghosty{@extend.trans-250ms; background-color: #444!important;color:#ffffd0!important; 
+              &:hover { background-color: #444949!important; } }
 
 // CUSTOM CLASSES
-.jr-dark-body  { color: #ffffee; background-color: #404040; }
-.black-text    { color: #444; }
-.jr-green-bg   { background-color: #606F60; }
-.bluish        { color: #bbddee; }
-.jr-green      { color: #94ba65; }
+.jr-green-bg   { background-color: #606F60;  }
 .dark-bg-g     { background-color: #404347;  }
+.jr-dark-body  { color: #ffffd0; background-color: #404040; } //  color: #ffffd0; jr.com
+.jr-dark-bg    { background-color: #404040; } //  color: #ffffd0; jr.com
+.jr-green      { color: #94ba65; }
+.bluish        { color: #bbddee; }
+.black-text    { color: #444; }
+.blacknav      { color: #ffffd0!important; background-color:#333333!important; }
+.greenwell     { color: #94ba65!important; background-color:#3e423e!important; border-color:#94ba65 }
+.nonwell       { color: #94ba65 !important; background: transparent !important;   } // needed?
+.nav-spacer    { padding-top: 60px; }
+.nav-spacer-xl { padding-top: 100px; }
+.spacer        { margin-top: 40px; background-color: #404040; }
+.invisible     { display: none; } 
+.center
 .border-orange { outline: 1px solid orange;  }
 .border-red    { outline: 1px solid red;     }
 .border-green  { outline: 1px solid #20f030; }
-.invisible     { display: none; }
 
-// HTML OVERRIDES
-a:focus, a:active, a:link a:visited { text-decoration: none !important; color:#8FBC8F!important;}
-a:hover{ color:#61ff91!important;}
-.nav-button:hover, .btn:hover, .btn-success:hover{  color: #94fa65!important;}
-xmp {
-	border:1px solid #999;
-	background-color: #444;
-	text-align: left;
-	color: #cceeff;
-	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
-	font-size: 85%;
-	tab-size: 3;
-}
 
-// For markdown rendered to HTML
-code { // in-text code
-	color: #cff;
-	background-color: #444;
-	font-weight: bold;
-	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+// sidebar:
+#reposition     { position:fixed; }
+#sidebar      { position:fixed; right:0.8em; padding-bottom:8em;  overflow-y: scroll;overflow-x: scroll; 
+    width:25%; height: 87%; white-space: nowrap; z-index: 999; 
+    border:2px solid#999!important; border-radius: 10px!important; border-color:#94ba65!important;
 }
-.markdown > pre, li > pre { // code blocks
-	border:1px solid #999;
-	border-color: #94ba65;
-	color: #cff;
-	background-color: #444;
-    margin-left: 100px;
-	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
-	font-size: 85%;
-	tab-size: 3;
+#toc { 
+    // top:-300px;
+    height:600px;
+    position:relative;
+    display: inline-block;
 }
+// .sidebar-scroll { 
+//     position:fixed;
+//     height:auto; 
+//     max-height:200%;
+//     // overflow:auto; 
+// }
+// #page-wrap { 
+//   position: relative; 
+// }
+#active { color: #ddd; }
+#inactive{color:#8FBC8F;}
 
-li > pre { // code blocks
-	border:1px solid #999;
-	border-color: #94ba65;
-	color: #cff;
-	background-color: #444;
-    margin-left: 10px;
-	font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
-	font-size: 85%;
-	tab-size: 3;
-}
+// a[state="active"] { color: #ddd; }
+// a[state="inactive"] { color: #8FBC8F; }
 
-h1         { color: #cdb; }
-h2         { color: #eff; }
-h3         { color: #94ba65;  margin-left: 20px; }
-h4, h5, h6 { color: #94ba65; margin-left: 35px}
-.markdown > p    { margin-left: 50px; }
-.markdown > ol, .markdown > ul { margin-left: 40px; }
-// .markdown > .row { margin-left: -75px;}
+
+// END sidebar:
+
+
+@media print {                         // format page for printing	
+    @page { margin: 0; }
+    body  { margin-left: 1.6cm;  margin-right: 1.6cm; margin-top: -0.5cm;
+        a[href]:after { content: none!important; }
+        #footer       { display: none;           }
+    }
+}
+#banner { 
+    position: relative; border-style: outset;  border-radius: 10px; border-width: 2px; 
+    margin-bottom: 50px; height: 104px; 
+    border-color: #44c19b #45b0a1; color: #ffffd0; background-color: #444!important;
+    &:hover { background-color: #444949!important; }
+    
+    img{margin-left: -30px;border-top-left-radius: 10px;border-bottom-left-radius:10px;} 
+    p  {margin-left: 25%; &:hover { color:#e6ffd6; }
+        font-size: 150%; font-weight: 900; text-align: center; line-height: 90%;
+    }
+}
 
 // for syntax highlighter
 //*= require syntax-highlighter-rails/shCore
 //*= require syntax-highlighter-rails/shThemeDefault
 
+// overwriting default behaviour of Modal Popup in Bootstrap:
+.modal-dialog { 
+    border:2px solid#999!important; border-radius: 10px!important; border-color:#94ba65!important;
+    // recolor the horizontal lines inside the modal window and more of background:
+    .modal-footer, .modal-body, .modal-header { background-color: #404040; border-color:#94ba65!important;}
+    .close       { margin-right:95%; color: #8FBC8F;  opacity: 1; }
+    .close:hover { margin-right:95%; color: #94fa55;  opacity: 1; }
+}
+
+// modal toc
+.modal.bottom-right { right:-90%; top:30%; }
+.toc * { padding-left: 0.5em; counter-reset: item; list-style-type: none; font-weight: 400;  }
+#modal-toc h4 { color:#ffffd0; padding-left: 1.6em;
+    max-height:600px;
+}
+// #modal-toc h4 { color:#ffffd0!important; padding-left: 1.6em;}
 
 
+#sidebar * { padding-left: 0.5em;  counter-reset: item; list-style-type: none; font-weight: 400;  
+    max-height:600px; 
+}
 
 
+xmp { @extend.mono; @extend.greenbox;
+    text-align: left; border-radius:7px; max-width: 60em; margin-right: auto ;
+	   }
 
-/* created new class for targetting purpose - named ".modal2", ".modal1" */
-// .modal-right { bottom:-10%; right:-50%; }
+// HTML OVERRIDES
+a:focus:not(.active),a:active:not(.active),a:link:not(.active),a:visited:not(.active){text-decoration: none;color:#8FBC8F;}
+a:hover  { color:#e6ffd6!important;}
+hr       { border-color:#455 }
+[class*="span"] {
+    float: left;
+    margin-left: 20px;
+}
+// For markdown rendered to HTML 
+.markdown      { margin-left: 0.8em; margin-right:25em; width:70%;position:relative;} // the left pane
+.markdown > h1 { color: #dee; }
+.markdown > h2 { color: #cdb; }
+.markdown > h3 { color: #94ca65;  margin-left: 20px; }
+// h4, h5, h6 { color: #849a75; margin-left: 35px;  }
+.markdown > p    { margin-left: 50px;  max-width: 55em; margin-right: auto ;}
+.markdown > ol, .markdown > ul { margin-left: 40px; }
+code      { @extend.mono; font-weight: bold; } // usually in-paragraph code insertion
+
+.markdown > pre {  @extend.mono; @extend.greenbox; margin-left: 100px; max-width: 60em; margin-right: auto ;}
+
+li > pre  {  @extend.mono; @extend.greenbox; margin-left: 10px;  max-width: 60em; margin-right: auto ;} //CONFLICT!!!
+	
+// PARENT CLASSES:
+.mono { font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu 
+        Sans Mono, Bitstream Vera Sans Mono,Courier New, monospace; 
+        font-size: 85%; color: #cff; background-color: #444; tab-size: 3; }
+.greenbox { border:1px solid#999; border-color:#94ba65;}
+
+.trans-250ms { // CSS Transition 
+    -webkit-transition: background .25 ease-in-out, border .25 ease-in-out;
+       -moz-transition: background .25 ease-in-out, border .25 ease-in-out;
+        -ms-transition: background .25 ease-in-out, border .25 ease-in-out;
+         -o-transition: background .25 ease-in-out, border .25 ease-in-out;
+            transition: background .25 ease-in-out, border .25 ease-in-out;
+}

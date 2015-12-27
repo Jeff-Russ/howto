@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   get 'rails/markdown'
   
   get 'rails/all'
-
+  get 'rails/test'
+  
   get 'bootstrap/home'
   get 'bootstrap/grids'
   get 'bootstrap/buttons'
