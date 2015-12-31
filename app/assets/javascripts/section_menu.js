@@ -41,7 +41,7 @@ $( document ).ready(function(){
 				</div>")	
 			i = ++i % 5;
 		})
-		// $('.dismiss').on('click', close_modal);
+		$('.dismiss').on('click', close_modal);
 	}
 	
 	
