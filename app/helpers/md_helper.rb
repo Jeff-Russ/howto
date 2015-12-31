@@ -1,0 +1,2 @@
+module MdHelper
+end

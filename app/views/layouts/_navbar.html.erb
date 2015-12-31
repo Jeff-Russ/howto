@@ -1,0 +1,104 @@
+<!-- BEGIN NAVBAR (non-collapsing)-->
+<div class="container">
+	<nav id='topbar' class="navbar navbar-inverse navbar-fixed-top blacknav" role="navigation" id='topbar'>
+	
+			<div class="navbar-left">
+				
+				<%= link_to 'http://www.jeffruss.com', class: "navbar-brand" do %>
+					<button class="btn navbar-btn greenwell">
+						<img style="max-width:50px;"
+							src="http://i1377.photobucket.com/albums/ah75/Jeffrey_Russ/JR_20px_wide_zpsy9os6cdz.png">
+					</button>
+				<% end %>
+			</div>
+			
+			<div class="navbar-center">
+				<p></p>
+			</div> 
+			
+			<div class="navbar-right"> 
+				
+				<!-- navbar buttons for modal windows -->
+				
+				<!-- modal 1 - select a page (group of pages - controller )-->
+				<button type='button' data-toggle='modal' id='page-btn' 
+						class='btn navbar-btn nav-button' data-target='#modal-page-menu'>
+					page
+				</button>
+				
+				<a href='' id='prev-btn'>
+					<span class="glyphicon glyphicon-chevron-left navbar-prev"></span>
+					prev
+				</a>
+				
+				<!-- modal 2 - select a topic (jump to id on page)-->
+				<button type='button' data-toggle='modal' id='section-btn' 
+						class="btn navbar-btn nav-button" data-target='#modal-section-menu'>
+					section
+				</button>
+				
+				<a  href='' id='next-btn'>next	
+					<span class="glyphicon glyphicon-chevron-right navbar-next"></span>
+				</a>
+				
+			</div> <!-- end navbar right -->
+	</nav> <!--END NAVBAR-->
+	
+	<!-- CONTENTS OF THREE MODAL WINDOWS -->
+	
+	<!-- modal 1 - select a page -->
+	<div class="modal" id="modal-page-menu" tabindex='-1' role='dialog'>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header jr-dark-bg">
+					<button type="button" class="close" data-dismiss='modal'>
+						&times;
+					</button><br>
+				</div>
+				<div class="modal-body">
+					
+					<div class="jr-dark-bg">
+						<div class="row center-text">
+							<h3>Pick a Page</h3>
+						</div>
+						<div class="row spacer center-text">
+							<%= #render :file => 'layouts/home_menu' 
+							%>
+							<div id="page-menu">
+								
+							</div>
+						</div>
+						<div class="modal-footer"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal 2 - select a section -->
+	<div class="modal" id="modal-section-menu" tabindex='-1' role='dialog'>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header jr-dark-bg">
+					<button type="button" class="close" data-dismiss='modal'>
+						&times;
+					</button><br>
+				</div>
+				<div class="modal-body">
+					
+					<div class="jr-dark-bg">
+						<div class="row center-text">
+							<h3>Pick a Section</h3>
+						</div>
+						<div class="row spacer center-text">
+							<%= #render :file => 'layouts/home_menu' 
+							%>
+							<div id="section-menu">
+								
+							</div>
+						</div>
+						<div class="modal-footer"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

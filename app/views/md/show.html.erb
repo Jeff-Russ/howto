@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<%= favicon_link_tag 'favicon.ico' %>
+		<title>LivePage</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	
+	<body class="jr-dark-body ">
+		
+		<%= render partial: 'layouts/navbar' 
+		%>
+		
+		<div class="nav-spacer">  <!--nav-space prevents obscuring under navbar-->
+				
+			<!-- BEGIN PAGE CONTENTS -->
+			<div class="row-fluid" id='page-wrap'>
+				<div class="span8 markdown" id='content' >
+					<%= @html %> 
+				</div>
+				<div  id="sidebar">
+					<!--<button class="btn btn-info btn-ghost" id='position'>-->
+					
+					<!--</button>-->
+					<div class="toc" id="toc">	
+						<%= @toc %>
+					</div>
+				</div>  
+			</div>   
+			
+			<%= #render partial: 'layouts/footer' 
+			%>
+		
+		</div><!-- END nav-spacer -->
+	</body>
+</html>

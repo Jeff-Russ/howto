@@ -104,8 +104,8 @@ before_filter :force_utf8_params
     @html = markdown.render(text).html_safe
   end
   def all
-    # text = open('https://s3.amazonaws.com/howto.jeffruss/rails/all.md') {|f| f.read }
-    text = File.read("z_markdown/all.md")
+    text = open('https://s3.amazonaws.com/howto.jeffruss/rails/all.md') {|f| f.read }
+    # text = File.read("z_markdown/all.md")
     html_toc = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC)
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(:with_toc_data => true))
     @toc  = html_toc.render(text).html_safe

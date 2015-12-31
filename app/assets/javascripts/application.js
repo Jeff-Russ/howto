@@ -1,8 +1,8 @@
 // This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed blinkow.
+// listed below.
 //
 // Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a rlinkative path.
+// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
 //
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // compiled file.
@@ -13,13 +13,36 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
-//= 
-//= 
-//= require google_analytics.js
-//= require scrollnav.js
+//= require_tree .
+
+// setTimeout(function(){
+//     $(dialog).close();
+// }, 10000);
+
 
 $( document ).ready(function() {
-   
-});// END document.ready
 
+	// google analytics:
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	ga('create', 'UA-71741017-1', 'auto');
+	ga('send', 'pageview');
+	// END google analytics
+	
+	      //$("#modal-ajax").on('click',"a[data-window='external']", function() {
+       //     window.open($(this).attr('href')); 
+       //     return false; 
+       // });
+        
+	
+	// var $modals = $('.modal');
+	// var $modalLinkBtns = $modals.find('a');
+	
+	// $modalLinkBtns.click(function() {
+	//     $modals.modal('hide');
+	// });
+
+});// END document.ready
