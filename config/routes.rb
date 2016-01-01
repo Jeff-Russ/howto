@@ -4,14 +4,14 @@ Rails.application.routes.draw do
   
   get 'md/index'
   # get '/md/:url', to: 'md#show'
-  get 'md/show'
+  root 'md#show'
   get 'md/new'
   get 'md/edit'
   get 'md/create'
   get 'md/update'
   get 'md/destroy'
 
-  root 'home#index'
+  # root 'home#index'
   get 'home/admin'
   
   get 'rails/home'
